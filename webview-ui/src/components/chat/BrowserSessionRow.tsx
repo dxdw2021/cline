@@ -178,8 +178,8 @@ const BrowserSessionRow = memo((props: BrowserSessionRowProps) => {
 					nextAction:
 						nextActionMessages.length > 0
 							? {
-								messages: [...nextActionMessages],
-							}
+									messages: [...nextActionMessages],
+								}
 							: undefined,
 				})
 
@@ -204,8 +204,8 @@ const BrowserSessionRow = memo((props: BrowserSessionRowProps) => {
 				nextAction:
 					nextActionMessages.length > 0
 						? {
-							messages: [...nextActionMessages],
-						}
+								messages: [...nextActionMessages],
+							}
 						: undefined,
 			})
 		}
@@ -264,17 +264,17 @@ const BrowserSessionRow = memo((props: BrowserSessionRowProps) => {
 	// Use latest state if we're on the last page and don't have a state yet
 	const displayState = isLastPage
 		? {
-			url: currentPage?.currentState.url || latestState.url || initialUrl,
-			mousePosition: currentPage?.currentState.mousePosition || latestState.mousePosition || defaultMousePosition,
-			consoleLogs: currentPage?.currentState.consoleLogs,
-			screenshot: currentPage?.currentState.screenshot || latestState.screenshot,
-		}
+				url: currentPage?.currentState.url || latestState.url || initialUrl,
+				mousePosition: currentPage?.currentState.mousePosition || latestState.mousePosition || defaultMousePosition,
+				consoleLogs: currentPage?.currentState.consoleLogs,
+				screenshot: currentPage?.currentState.screenshot || latestState.screenshot,
+			}
 		: {
-			url: currentPage?.currentState.url || initialUrl,
-			mousePosition: currentPage?.currentState.mousePosition || defaultMousePosition,
-			consoleLogs: currentPage?.currentState.consoleLogs,
-			screenshot: currentPage?.currentState.screenshot,
-		}
+				url: currentPage?.currentState.url || initialUrl,
+				mousePosition: currentPage?.currentState.mousePosition || defaultMousePosition,
+				consoleLogs: currentPage?.currentState.consoleLogs,
+				screenshot: currentPage?.currentState.screenshot,
+			}
 	const [rowIndex, setRowIndex] = useState<number>(0)
 	const [hoveredRowIndex, setHoveredRowIndex] = useState<number | null>(null)
 	const [actionContent, { height: actionHeight }] = useSize(

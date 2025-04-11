@@ -270,9 +270,7 @@ const McpMarketplaceView = () => {
 							padding: "20px",
 							color: "var(--vscode-descriptionForeground)",
 						}}>
-						{searchQuery || selectedCategory
-							? "未找到匹配的MCP服务器"
-							: "市场中未找到MCP服务器"}
+						{searchQuery || selectedCategory ? "未找到匹配的MCP服务器" : "市场中未找到MCP服务器"}
 					</div>
 				) : (
 					filteredItems.map((item) => <McpMarketplaceCard key={item.mcpId} item={item} installedServers={mcpServers} />)

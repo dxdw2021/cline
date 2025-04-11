@@ -34,7 +34,7 @@ describe("FileContextTracker", () => {
 		// Mock file system watcher
 		mockFileSystemWatcher = {
 			dispose: sandbox.stub(),
-			onDidChange: sandbox.stub().returns({ dispose: () => { } }),
+			onDidChange: sandbox.stub().returns({ dispose: () => {} }),
 		}
 
 		// Use a function replacement instead of a direct stub

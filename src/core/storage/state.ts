@@ -199,7 +199,9 @@ export async function getAllExtensionState(context: vscode.ExtensionContext) {
 		}
 	}
 
-	const o3MiniReasoningEffort = vscode.workspace.getConfiguration("cline-cn.modelSettings.o3Mini").get("reasoningEffort", "medium")
+	const o3MiniReasoningEffort = vscode.workspace
+		.getConfiguration("cline-cn.modelSettings.o3Mini")
+		.get("reasoningEffort", "medium")
 
 	const mcpMarketplaceEnabled = vscode.workspace.getConfiguration("cline").get<boolean>("mcpMarketplace.enabled", true)
 

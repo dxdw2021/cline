@@ -251,11 +251,13 @@ export const BrowserSettingsSection: React.FC = () => {
 						margin: "0 0 6px 0px",
 					}}>
 					使Cline能够使用您的Chrome浏览器
-					{isBundled ? "(未在你的机器上检测到)" : detectedChromePath ? ` (${detectedChromePath})` : ""}.这需要在调试模式下启动Chrome。
+					{isBundled ? "(未在你的机器上检测到)" : detectedChromePath ? ` (${detectedChromePath})` : ""}
+					.这需要在调试模式下启动Chrome。
 					{browserSettings.remoteBrowserEnabled ? (
 						<>
 							{" "}
-							手工 (<code>--remote-debugging-port=9222</code>) 或者使用下面的按钮。输入主机地址，若要自动发现则留空。
+							手工 (<code>--remote-debugging-port=9222</code>)
+							或者使用下面的按钮。输入主机地址，若要自动发现则留空。
 						</>
 					) : (
 						"."

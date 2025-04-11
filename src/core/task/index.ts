@@ -253,7 +253,7 @@ export class Task {
 			const taskMessage = this.clineMessages[0] // first message is always the task say
 			const lastRelevantMessage =
 				this.clineMessages[
-				findLastIndex(this.clineMessages, (m) => !(m.ask === "resume_task" || m.ask === "resume_completed_task"))
+					findLastIndex(this.clineMessages, (m) => !(m.ask === "resume_task" || m.ask === "resume_completed_task"))
 				]
 			const taskDir = await ensureTaskDirectoryExists(this.getContext(), this.taskId)
 			let taskDirSize = 0
@@ -437,11 +437,11 @@ export class Task {
 
 		let changedFiles:
 			| {
-				relativePath: string
-				absolutePath: string
-				before: string
-				after: string
-			}[]
+					relativePath: string
+					absolutePath: string
+					before: string
+					after: string
+			  }[]
 			| undefined
 
 		try {
@@ -793,7 +793,8 @@ export class Task {
 	async sayAndCreateMissingParamError(toolName: ToolUseName, paramName: string, relPath?: string) {
 		await this.say(
 			"error",
-			`Cline tried to use ${toolName}${relPath ? ` for '${relPath.toPosix()}'` : ""
+			`Cline tried to use ${toolName}${
+				relPath ? ` for '${relPath.toPosix()}'` : ""
 			} without value for required parameter '${paramName}'. Retrying...`,
 		)
 		return formatResponse.toolError(formatResponse.missingToolParameterError(paramName))
@@ -960,13 +961,15 @@ export class Task {
 		newUserContent.push({
 			type: "text",
 			text:
-				`[TASK RESUMPTION] ${this.chatSettings?.mode === "plan"
-					? `这项任务被中断了 ${agoText}对话可能不完整。请注意，自那之后项目状态可能已发生变化。当前工作目录现在是 '${cwd.toPosix()}'.\n\n注意：如果您之前尝试使用某个工具但用户未提供结果，应假定该工具使用未成功。不过您处于计划模式，因此不能继续执行任务，而必须回复用户的消息。`
-					: `这项任务被中断了 ${agoText}. 它可能完整，也可能不完整，因此请重新评估任务上下文。请注意，自上次操作后项目状态可能已发生变化。当前工作目录现在是'${cwd.toPosix()}'. 如果任务尚未完成，请在中断前重试最后一步，然后继续完成任务。
+				`[TASK RESUMPTION] ${
+					this.chatSettings?.mode === "plan"
+						? `这项任务被中断了 ${agoText}对话可能不完整。请注意，自那之后项目状态可能已发生变化。当前工作目录现在是 '${cwd.toPosix()}'.\n\n注意：如果您之前尝试使用某个工具但用户未提供结果，应假定该工具使用未成功。不过您处于计划模式，因此不能继续执行任务，而必须回复用户的消息。`
+						: `这项任务被中断了 ${agoText}. 它可能完整，也可能不完整，因此请重新评估任务上下文。请注意，自上次操作后项目状态可能已发生变化。当前工作目录现在是'${cwd.toPosix()}'. 如果任务尚未完成，请在中断前重试最后一步，然后继续完成任务。
 					 \n\n注意：如果您之前尝试使用某个工具但用户未提供结果，您应假定该工具使用未成功，并评估是否需要重试。如果最后一个工具是 browser_action，则浏览器已关闭，如有需要，您必须启动一个新浏览器。`
-				}${wasRecent
-					? "\n\n重要提示：如果上一次使用的工具是 replace_in_file 或 write_to_file 且操作被中断，文件会恢复到中断编辑前的原始状态，由于你已经拥有了文件的最新内容，因此无需重新读取该文件。"
-					: ""
+				}${
+					wasRecent
+						? "\n\n重要提示：如果上一次使用的工具是 replace_in_file 或 write_to_file 且操作被中断，文件会恢复到中断编辑前的原始状态，由于你已经拥有了文件的最新内容，因此无需重新读取该文件。"
+						: ""
 				}` +
 				(responseText
 					? `\n\n${this.chatSettings?.mode === "plan" ? "使用Plan_mode_respond工具响应的新消息（请确保在<响应>参数中提供您的响应）" : "任务继续的新说明"}:\n<user_message>\n${responseText}\n</user_message>`
@@ -1156,7 +1159,8 @@ export class Task {
 			return [
 				true,
 				formatResponse.toolResult(
-					`命令仍在用户的终端中运行.${result.length > 0 ? `\n这是到目前为止的输出:\n${result}` : ""
+					`命令仍在用户的终端中运行.${
+						result.length > 0 ? `\n这是到目前为止的输出:\n${result}` : ""
 					}\n\nThe user provided the following feedback:\n<feedback>\n${userFeedback.text}\n</feedback>`,
 					userFeedback.images,
 				),
@@ -1168,7 +1172,8 @@ export class Task {
 		} else {
 			return [
 				false,
-				`命令仍在用户的终端中运行.${result.length > 0 ? `\n这是到目前为止的输出:\n${result}` : ""
+				`命令仍在用户的终端中运行.${
+					result.length > 0 ? `\n这是到目前为止的输出:\n${result}` : ""
 				}\n\n您将来将对终端状态和新输出进行更新.`,
 			]
 		}
@@ -1474,8 +1479,9 @@ export class Task {
 						case "replace_in_file":
 							return `[${block.name} for '${block.params.path}']`
 						case "search_files":
-							return `[${block.name} for '${block.params.regex}'${block.params.file_pattern ? ` in '${block.params.file_pattern}'` : ""
-								}]`
+							return `[${block.name} for '${block.params.regex}'${
+								block.params.file_pattern ? ` in '${block.params.file_pattern}'` : ""
+							}]`
 						case "list_files":
 							return `[${block.name} for '${block.params.path}']`
 						case "list_code_definition_names":
@@ -1545,10 +1551,7 @@ export class Task {
 					if (!feedback && !images) {
 						return
 					}
-					const content = formatResponse.toolResult(
-						`用户提供了以下反馈:\n<feedback>\n${feedback}\n</feedback>`,
-						images,
-					)
+					const content = formatResponse.toolResult(`用户提供了以下反馈:\n<feedback>\n${feedback}\n</feedback>`, images)
 					if (typeof content === "string") {
 						this.userMessageContent.push({
 							type: "text",
@@ -1699,12 +1702,12 @@ export class Task {
 									pushToolResult(
 										formatResponse.toolError(
 											`${(error as Error)?.message}\n\n` +
-											`这可能是因为搜索块内容与文件中的内容完全不完全匹配，或者如果您使用了多个搜索/替换块，则可能没有按照它们显示在文件中的顺序.\n\n` +
-											`该文件被恢复为原始状态：\n\n` +
-											`<file_content path="${relPath.toPosix()}">\n${this.diffViewProvider.originalContent}\n</file_content>\n\n` +
-											`首先，请确保调用read_file工具并重新阅读文件，以防进行任何更改，以获取其最新状态。然后，使用write_to_file工具进行适当的，有针对性的搜索并替换编辑。` +
-											`You may want to try fewer/more precise SEARCH blocks.\n(如果您连续遇到此错误，则可以将Write_to_file工具用作后备。 ` +
-											`请记住，write_to_file的后备远非理想，因为这意味着您将重新编写文件的整个内容只是为了进行一些编辑，这需要时间和金钱。因此，让我们偏向尽可能有效地使用repent_in_file)`,
+												`这可能是因为搜索块内容与文件中的内容完全不完全匹配，或者如果您使用了多个搜索/替换块，则可能没有按照它们显示在文件中的顺序.\n\n` +
+												`该文件被恢复为原始状态：\n\n` +
+												`<file_content path="${relPath.toPosix()}">\n${this.diffViewProvider.originalContent}\n</file_content>\n\n` +
+												`首先，请确保调用read_file工具并重新阅读文件，以防进行任何更改，以获取其最新状态。然后，使用write_to_file工具进行适当的，有针对性的搜索并替换编辑。` +
+												`You may want to try fewer/more precise SEARCH blocks.\n(如果您连续遇到此错误，则可以将Write_to_file工具用作后备。 ` +
+												`请记住，write_to_file的后备远非理想，因为这意味着您将重新编写文件的整个内容只是为了进行一些编辑，这需要时间和金钱。因此，让我们偏向尽可能有效地使用repent_in_file)`,
 										),
 									)
 									await this.diffViewProvider.revertChanges()
@@ -1749,7 +1752,7 @@ export class Task {
 									await this.say("tool", partialMessage, undefined, block.partial)
 								} else {
 									this.removeLastPartialMessageIfExistsWithType("say", "tool")
-									await this.ask("tool", partialMessage, block.partial).catch(() => { })
+									await this.ask("tool", partialMessage, block.partial).catch(() => {})
 								}
 								// update editor
 								if (!this.diffViewProvider.isEditing) {
@@ -1790,7 +1793,7 @@ export class Task {
 								if (!this.diffViewProvider.isEditing) {
 									// show gui message before showing edit animation
 									const partialMessage = JSON.stringify(sharedMessageProps)
-									await this.ask("tool", partialMessage, true).catch(() => { }) // sending true for partial even though it's not a partial, this shows the edit row before the content is streamed into the editor
+									await this.ask("tool", partialMessage, true).catch(() => {}) // sending true for partial even though it's not a partial, this shows the edit row before the content is streamed into the editor
 									await this.diffViewProvider.open(relPath)
 								}
 								await this.diffViewProvider.update(newContent, true)
@@ -1830,9 +1833,7 @@ export class Task {
 									if (response !== "yesButtonClicked") {
 										// User either sent a message or pressed reject button
 										// TODO: add similar context for other tool denial responses, to emphasize ie that a command was not run
-										const fileDeniedNote = fileExists
-											? "该文件未更新，并维护其原始内容."
-											: "该文件未创建."
+										const fileDeniedNote = fileExists ? "该文件未更新，并维护其原始内容." : "该文件未创建."
 										pushToolResult(`用户拒绝了此操作。 ${fileDeniedNote}`)
 										if (text || images?.length) {
 											pushAdditionalToolFeedback(text, images)
@@ -1880,28 +1881,28 @@ export class Task {
 									)
 									pushToolResult(
 										`The user made the following updates to your content:\n\n${userEdits}\n\n` +
-										(autoFormattingEdits
-											? `用户的编辑器还将以下自动形式应用于您的内容：\n\n${autoFormattingEdits}\n\n(注意：请密切注意更改，例如将单引号转换为双引号，被删除或添加的分号，分为多行分为多行，调整凹痕样式，添加/删除尾随逗号等。这将有助于您确保您的未来搜索/更换此文件的搜索/替换操作是准确的。)\n\n`
-											: "") +
-										`更新的内容包括您的原始修改和其他编辑，已成功保存到 ${relPath.toPosix()}。这是已保存的文件的完整，更新的内容：\n\n` +
-										`<final_file_content path="${relPath.toPosix()}">\n${finalContent}\n</final_file_content>\n\n` +
-										`请注意：\n` +
-										`1. 您不需要通过已应用这些更改来重写文件。\n` +
-										`2. 使用此更新的文件内容作为新的基线继续执行任务。\n` +
-										`3. 如果用户的编辑已经解决了任务的一部分或更改了要求，请相应地调整您的方法。` +
-										`4. 重要的是：对于此文件的任何将来更改，请使用上面显示的Final_file_content作为您的参考。该内容反映了文件的当前状态，包括用户编辑和任何自动形式的词（例如，如果您使用了单个引号，但格式化了它们将其转换为双引号）。始终基于此最终版本的搜索/替换操作，以确保准确性。\n` +
-										`${newProblemsMessage}`,
+											(autoFormattingEdits
+												? `用户的编辑器还将以下自动形式应用于您的内容：\n\n${autoFormattingEdits}\n\n(注意：请密切注意更改，例如将单引号转换为双引号，被删除或添加的分号，分为多行分为多行，调整凹痕样式，添加/删除尾随逗号等。这将有助于您确保您的未来搜索/更换此文件的搜索/替换操作是准确的。)\n\n`
+												: "") +
+											`更新的内容包括您的原始修改和其他编辑，已成功保存到 ${relPath.toPosix()}。这是已保存的文件的完整，更新的内容：\n\n` +
+											`<final_file_content path="${relPath.toPosix()}">\n${finalContent}\n</final_file_content>\n\n` +
+											`请注意：\n` +
+											`1. 您不需要通过已应用这些更改来重写文件。\n` +
+											`2. 使用此更新的文件内容作为新的基线继续执行任务。\n` +
+											`3. 如果用户的编辑已经解决了任务的一部分或更改了要求，请相应地调整您的方法。` +
+											`4. 重要的是：对于此文件的任何将来更改，请使用上面显示的Final_file_content作为您的参考。该内容反映了文件的当前状态，包括用户编辑和任何自动形式的词（例如，如果您使用了单个引号，但格式化了它们将其转换为双引号）。始终基于此最终版本的搜索/替换操作，以确保准确性。\n` +
+											`${newProblemsMessage}`,
 									)
 								} else {
 									pushToolResult(
 										`The content was successfully saved to ${relPath.toPosix()}.\n\n` +
-										(autoFormattingEdits
-											? `与您的编辑一起，用户的编辑器将以下自动形式应用于您的内容：\n\n${autoFormattingEdits}\n\n(注意：请密切注意更改，例如将单引号转换为双引号，被删除或添加的分号，分为多行分为多行，调整凹痕样式，添加/删除尾随逗号等。这将有助于您确保您的未来搜索/更换此文件的搜索/替换操作是准确的。)\n\n`
-											: "") +
-										`这是已保存的文件的完整，更新的内容：\n\n` +
-										`<final_file_content path="${relPath.toPosix()}">\n${finalContent}\n</final_file_content>\n\n` +
-										`重要的是：对于此文件的任何将来更改，请使用上面显示的Final_file_content作为您的参考。该内容反映了文件的当前状态，包括任何自动形式的词（例如，如果您使用了单个引号，但格式化器将其转换为双引号）。始终基于此最终版本的搜索/替换操作，以确保准确性。\n\n` +
-										`${newProblemsMessage}`,
+											(autoFormattingEdits
+												? `与您的编辑一起，用户的编辑器将以下自动形式应用于您的内容：\n\n${autoFormattingEdits}\n\n(注意：请密切注意更改，例如将单引号转换为双引号，被删除或添加的分号，分为多行分为多行，调整凹痕样式，添加/删除尾随逗号等。这将有助于您确保您的未来搜索/更换此文件的搜索/替换操作是准确的。)\n\n`
+												: "") +
+											`这是已保存的文件的完整，更新的内容：\n\n` +
+											`<final_file_content path="${relPath.toPosix()}">\n${finalContent}\n</final_file_content>\n\n` +
+											`重要的是：对于此文件的任何将来更改，请使用上面显示的Final_file_content作为您的参考。该内容反映了文件的当前状态，包括任何自动形式的词（例如，如果您使用了单个引号，但格式化器将其转换为双引号）。始终基于此最终版本的搜索/替换操作，以确保准确性。\n\n` +
+											`${newProblemsMessage}`,
 									)
 								}
 
@@ -1940,7 +1941,7 @@ export class Task {
 									await this.say("tool", partialMessage, undefined, block.partial)
 								} else {
 									this.removeLastPartialMessageIfExistsWithType("say", "tool")
-									await this.ask("tool", partialMessage, block.partial).catch(() => { })
+									await this.ask("tool", partialMessage, block.partial).catch(() => {})
 								}
 								break
 							} else {
@@ -2017,7 +2018,7 @@ export class Task {
 									await this.say("tool", partialMessage, undefined, block.partial)
 								} else {
 									this.removeLastPartialMessageIfExistsWithType("say", "tool")
-									await this.ask("tool", partialMessage, block.partial).catch(() => { })
+									await this.ask("tool", partialMessage, block.partial).catch(() => {})
 								}
 								break
 							} else {
@@ -2087,7 +2088,7 @@ export class Task {
 									await this.say("tool", partialMessage, undefined, block.partial)
 								} else {
 									this.removeLastPartialMessageIfExistsWithType("say", "tool")
-									await this.ask("tool", partialMessage, block.partial).catch(() => { })
+									await this.ask("tool", partialMessage, block.partial).catch(() => {})
 								}
 								break
 							} else {
@@ -2158,7 +2159,7 @@ export class Task {
 									await this.say("tool", partialMessage, undefined, block.partial)
 								} else {
 									this.removeLastPartialMessageIfExistsWithType("say", "tool")
-									await this.ask("tool", partialMessage, block.partial).catch(() => { })
+									await this.ask("tool", partialMessage, block.partial).catch(() => {})
 								}
 								break
 							} else {
@@ -2249,7 +2250,7 @@ export class Task {
 											"browser_action_launch",
 											removeClosingTag("url", url),
 											block.partial,
-										).catch(() => { })
+										).catch(() => {})
 									}
 								} else {
 									await this.say(
@@ -2365,7 +2366,8 @@ export class Task {
 										await this.say("browser_action_result", JSON.stringify(browserActionResult))
 										pushToolResult(
 											formatResponse.toolResult(
-												`浏览器动作已执行。控制台日志和屏幕截图已被捕获用于您的分析.\n\nConsole logs:\n${browserActionResult.logs || "(没有新日志)"
+												`浏览器动作已执行。控制台日志和屏幕截图已被捕获用于您的分析.\n\nConsole logs:\n${
+													browserActionResult.logs || "(没有新日志)"
 												}\n\n(请记住：如果您需要继续使用非 -\`browser_action\` 工具或启动新浏览器，您必须首先关闭此浏览器。例如，如果在分析了日志和屏幕截图后，则需要编辑文件，则必须首先关闭浏览器，然后才能使用write_to_file工具。)`,
 												browserActionResult.screenshot ? [browserActionResult.screenshot] : [],
 											),
@@ -2373,11 +2375,7 @@ export class Task {
 
 										break
 									case "close":
-										pushToolResult(
-											formatResponse.toolResult(
-												`浏览器已关闭。您现在可以继续使用其他工具.`,
-											),
-										)
+										pushToolResult(formatResponse.toolResult(`浏览器已关闭。您现在可以继续使用其他工具.`))
 
 										break
 								}
@@ -2408,7 +2406,7 @@ export class Task {
 									// ).catch(() => {})
 								} else {
 									// don't need to remove last partial since we couldn't have streamed a say
-									await this.ask("command", removeClosingTag("command", command), block.partial).catch(() => { })
+									await this.ask("command", removeClosingTag("command", command), block.partial).catch(() => {})
 								}
 								break
 							} else {
@@ -2468,7 +2466,7 @@ export class Task {
 									const didApprove = await askApproval(
 										"command",
 										command +
-										`${this.shouldAutoApproveTool(block.name) && requiresApprovalPerLLM ? COMMAND_REQ_APP_STRING : ""}`, // ugly hack until we refactor combineCommandSequences
+											`${this.shouldAutoApproveTool(block.name) && requiresApprovalPerLLM ? COMMAND_REQ_APP_STRING : ""}`, // ugly hack until we refactor combineCommandSequences
 									)
 									if (!didApprove) {
 										break
@@ -2481,8 +2479,7 @@ export class Task {
 									timeoutId = setTimeout(() => {
 										showSystemNotification({
 											subtitle: "Command is still running",
-											message:
-												"自动批准的命令已经运行了30秒，可能需要您的注意力.",
+											message: "自动批准的命令已经运行了30秒，可能需要您的注意力.",
 										})
 									}, 30_000)
 								}
@@ -2528,7 +2525,7 @@ export class Task {
 									await this.say("use_mcp_server", partialMessage, undefined, block.partial)
 								} else {
 									this.removeLastPartialMessageIfExistsWithType("say", "use_mcp_server")
-									await this.ask("use_mcp_server", partialMessage, block.partial).catch(() => { })
+									await this.ask("use_mcp_server", partialMessage, block.partial).catch(() => {})
 								}
 
 								break
@@ -2557,10 +2554,7 @@ export class Task {
 										parsedArguments = JSON.parse(mcp_arguments)
 									} catch (error) {
 										this.consecutiveMistakeCount++
-										await this.say(
-											"error",
-											`Cline tried to use ${tool_name} 有无效的JSON论证。重试...`,
-										)
+										await this.say("error", `Cline tried to use ${tool_name} 有无效的JSON论证。重试...`)
 										pushToolResult(
 											formatResponse.toolError(
 												formatResponse.invalidMcpToolArgumentError(server_name, tool_name),
@@ -2607,19 +2601,19 @@ export class Task {
 								// TODO: add progress indicator and ability to parse images and non-text responses
 								const toolResultPretty =
 									(toolResult?.isError ? "Error:\n" : "") +
-									toolResult?.content
-										.map((item) => {
-											if (item.type === "text") {
-												return item.text
-											}
-											if (item.type === "resource") {
-												const { blob, ...rest } = item.resource
-												return JSON.stringify(rest, null, 2)
-											}
-											return ""
-										})
-										.filter(Boolean)
-										.join("\n\n") || "(No response)"
+										toolResult?.content
+											.map((item) => {
+												if (item.type === "text") {
+													return item.text
+												}
+												if (item.type === "resource") {
+													const { blob, ...rest } = item.resource
+													return JSON.stringify(rest, null, 2)
+												}
+												return ""
+											})
+											.filter(Boolean)
+											.join("\n\n") || "(No response)"
 								await this.say("mcp_server_response", toolResultPretty)
 								pushToolResult(formatResponse.toolResult(toolResultPretty))
 
@@ -2649,7 +2643,7 @@ export class Task {
 									await this.say("use_mcp_server", partialMessage, undefined, block.partial)
 								} else {
 									this.removeLastPartialMessageIfExistsWithType("say", "use_mcp_server")
-									await this.ask("use_mcp_server", partialMessage, block.partial).catch(() => { })
+									await this.ask("use_mcp_server", partialMessage, block.partial).catch(() => {})
 								}
 
 								break
@@ -2721,7 +2715,7 @@ export class Task {
 						} satisfies ClineAskQuestion
 						try {
 							if (block.partial) {
-								await this.ask("followup", JSON.stringify(sharedMessage), block.partial).catch(() => { })
+								await this.ask("followup", JSON.stringify(sharedMessage), block.partial).catch(() => {})
 								break
 							} else {
 								if (!question) {
@@ -2777,7 +2771,7 @@ export class Task {
 						const context: string | undefined = block.params.context
 						try {
 							if (block.partial) {
-								await this.ask("new_task", removeClosingTag("context", context), block.partial).catch(() => { })
+								await this.ask("new_task", removeClosingTag("context", context), block.partial).catch(() => {})
 								break
 							} else {
 								if (!context) {
@@ -2807,9 +2801,7 @@ export class Task {
 									)
 								} else {
 									// If no response, the user clicked the "Create New Task" button
-									pushToolResult(
-										formatResponse.toolResult(`用户通过提供的上下文创建了一个新任务.`),
-									)
+									pushToolResult(formatResponse.toolResult(`用户通过提供的上下文创建了一个新任务.`))
 								}
 								break
 							}
@@ -2827,7 +2819,7 @@ export class Task {
 						} satisfies ClinePlanModeResponse
 						try {
 							if (block.partial) {
-								await this.ask("plan_mode_respond", JSON.stringify(sharedMessage), block.partial).catch(() => { })
+								await this.ask("plan_mode_respond", JSON.stringify(sharedMessage), block.partial).catch(() => {})
 								break
 							} else {
 								if (!response) {
@@ -2882,9 +2874,9 @@ export class Task {
 									pushToolResult(
 										formatResponse.toolResult(
 											`[用户已切换到ACT模式，因此您现在可以继续执行任务.]` +
-											(text
-												? `\n\n用户在切换到ACT模式时还提供了以下消息:\n<user_message>\n${text}\n</user_message>`
-												: ""),
+												(text
+													? `\n\n用户在切换到ACT模式时还提供了以下消息:\n<user_message>\n${text}\n</user_message>`
+													: ""),
 											images,
 										),
 									)
@@ -2953,7 +2945,7 @@ export class Task {
 									if (lastMessage && lastMessage.ask === "command") {
 										// update command
 										await this.ask("command", removeClosingTag("command", command), block.partial).catch(
-											() => { },
+											() => {},
 										)
 									} else {
 										// last message is completion_result
@@ -2962,7 +2954,7 @@ export class Task {
 										await this.saveCheckpoint(true)
 										await addNewChangesFlagToLastCompletionResultMessage()
 										await this.ask("command", removeClosingTag("command", command), block.partial).catch(
-											() => { },
+											() => {},
 										)
 									}
 								} else {
@@ -3178,8 +3170,7 @@ export class Task {
 					CheckpointTracker.create(this.taskId, this.controllerRef.deref()?.context.globalStorageUri.fsPath),
 					{
 						milliseconds: 15_000,
-						message:
-							"检查点需要太长以至于无法初始化。考虑在使用GIT或禁用检查点的项目中重新打开Cline。",
+						message: "检查点需要太长以至于无法初始化。考虑在使用GIT或禁用检查点的项目中重新打开Cline。",
 					},
 				)
 			} catch (error) {
@@ -3273,9 +3264,10 @@ export class Task {
 							type: "text",
 							text:
 								assistantMessage +
-								`\n\n[${cancelReason === "streaming_failed"
-									? "Response interrupted by API Error"
-									: "Response interrupted by user"
+								`\n\n[${
+									cancelReason === "streaming_failed"
+										? "Response interrupted by API Error"
+										: "Response interrupted by user"
 								}]`,
 						},
 					],
@@ -3364,8 +3356,7 @@ export class Task {
 					// PREV: we need to let the request finish for openrouter to get generation details
 					// UPDATE: it's better UX to interrupt the request at the cost of the api cost not being retrieved
 					if (this.didAlreadyUseTool) {
-						assistantMessage +=
-							"\n\n[响应被工具使用结果中断。一次只能使用一个工具，应放置在消息末尾。]"
+						assistantMessage += "\n\n[响应被工具使用结果中断。一次只能使用一个工具，应放置在消息末尾。]"
 						break
 					}
 				}
@@ -3462,10 +3453,7 @@ export class Task {
 				didEndLoop = recDidEndLoop
 			} else {
 				// if there's no assistant_responses, that means we got no text or tool_use content blocks from API which we should assume is an error
-				await this.say(
-					"error",
-					"意外的API响应语言模型未提供任何助手消息。这可能表明API或模型的输出问题。",
-				)
+				await this.say("error", "意外的API响应语言模型未提供任何助手消息。这可能表明API或模型的输出问题。")
 				await this.addToApiConversationHistory({
 					role: "assistant",
 					content: [
@@ -3576,7 +3564,7 @@ export class Task {
 			await pWaitFor(() => busyTerminals.every((t) => !this.terminalManager.isProcessHot(t.id)), {
 				interval: 100,
 				timeout: 15_000,
-			}).catch(() => { })
+			}).catch(() => {})
 		}
 
 		// we want to get diagnostics AFTER terminal cools down for a few reasons: terminal could be scaffolding a project, dev servers (compilers like webpack) will first re-compile and then send diagnostics, etc

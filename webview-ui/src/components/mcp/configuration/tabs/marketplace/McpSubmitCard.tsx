@@ -1,4 +1,12 @@
+declare const vscode: {
+	postMessage: (message: { type: string }) => void
+}
+
 const McpSubmitCard = () => {
+	const handleSubmit = () => {
+		vscode.postMessage({ type: "mcpSubmit" })
+	}
+
 	return (
 		<div
 			style={{
@@ -34,9 +42,21 @@ const McpSubmitCard = () => {
 					提交MCP服务器
 				</h3>
 				<p style={{ fontSize: "13px", margin: 0, color: "var(--vscode-descriptionForeground)" }}>
-					通过将问题提交给其他人{" "}
-					<a href="https://github.com/cline/mcp-marketplace">github.com/cline/mcp-marketplace</a>
+					通过将问题提交给其他人 <a href="https://github.com/cline/mcp-marketplace">github.com/cline/mcp-marketplace</a>
 				</p>
+				<button
+					onClick={handleSubmit}
+					style={{
+						marginTop: "12px",
+						padding: "6px 12px",
+						backgroundColor: "var(--vscode-button-background)",
+						color: "var(--vscode-button-foreground)",
+						border: "none",
+						borderRadius: "4px",
+						cursor: "pointer",
+					}}>
+					提交
+				</button>
 			</div>
 		</div>
 	)

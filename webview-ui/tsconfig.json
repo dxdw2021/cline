@@ -2,37 +2,19 @@
 	"extends": "./tsconfig.app.json",
 	"compilerOptions": {
 		"composite": true,
-		"lib": [
-			"ES2020",
-			"DOM",
-			"DOM.Iterable"
-		],
-		"types": [
-			"vite/client"
-		],
+		"lib": ["ES2020", "DOM", "DOM.Iterable"],
+		"types": ["vite/client"],
 		"jsx": "react-jsx",
 		"baseUrl": ".",
 		"paths": {
-			"@/*": [
-				"src/*"
-			],
-			"@shared/*": [
-				"../src/shared/*"
-			],
-			"@utils/*": [
-				"../src/utils/*"
-			]
+			"@/*": ["src/*"],
+			"@shared/*": ["../src/shared/*"],
+			"@utils/*": ["../src/utils/*"]
 		},
 		"skipLibCheck": true,
 		"esModuleInterop": true,
 		"allowSyntheticDefaultImports": true
 	},
-	"include": [
-		"src/**/*",
-		"../src/shared/**/*",
-		"../src/utils/**/*"
-	],
-	"exclude": [
-		"node_modules"
-	]
+	"include": ["src/**/*", "../src/shared/**/*", "../src/utils/**/*"],
+	"exclude": ["node_modules"]
 }

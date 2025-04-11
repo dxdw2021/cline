@@ -199,7 +199,7 @@ export function getContextMenuOptions(
 		const item = {
 			type: result.type === "folder" ? ContextMenuOptionType.Folder : ContextMenuOptionType.File,
 			value: formattedPath,
-			label: result.label || result.path.split('/').pop() || result.path,
+			label: result.label || result.path.split("/").pop() || result.path,
 			description: formattedPath,
 		}
 		return item

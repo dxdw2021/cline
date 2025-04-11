@@ -14,57 +14,57 @@ interface ConnectionInfo {
 }
 
 const SettingsMenu = styled.div<{ maxWidth?: number }>`
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background: ${CODE_BLOCK_BG_COLOR};
-  border: 1px solid var(--vscode-widget-border);
-  border-radius: 2px;
-  padding: 8px;
-  z-index: 100;
-  max-width: ${props => props.maxWidth ? `${props.maxWidth}px` : 'none'};
+	position: absolute;
+	top: 100%;
+	right: 0;
+	background: ${CODE_BLOCK_BG_COLOR};
+	border: 1px solid var(--vscode-widget-border);
+	border-radius: 2px;
+	padding: 8px;
+	z-index: 100;
+	max-width: ${(props) => (props.maxWidth ? `${props.maxWidth}px` : "none")};
 `
 
 const SettingsGroup = styled.div`
-  margin-bottom: 16px;
-  &:last-child {
-    margin-bottom: 0;
-  }
+	margin-bottom: 16px;
+	&:last-child {
+		margin-bottom: 0;
+	}
 `
 
 const SettingsDescription = styled.div`
-  font-size: 12px;
-  color: var(--vscode-descriptionForeground);
-  margin-top: 4px;
+	font-size: 12px;
+	color: var(--vscode-descriptionForeground);
+	margin-top: 4px;
 `
 
 const ConnectionInfoPopover = styled.div`
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background: ${CODE_BLOCK_BG_COLOR};
-  border: 1px solid var(--vscode-widget-border);
-  border-radius: 2px;
-  padding: 12px;
-  z-index: 100;
-  min-width: 200px;
+	position: absolute;
+	top: 100%;
+	right: 0;
+	background: ${CODE_BLOCK_BG_COLOR};
+	border: 1px solid var(--vscode-widget-border);
+	border-radius: 2px;
+	padding: 12px;
+	z-index: 100;
+	min-width: 200px;
 `
 
 const ConnectionInfoRow = styled.div`
-  display: flex;
-  margin-bottom: 8px;
-  &:last-child {
-    margin-bottom: 0;
-  }
+	display: flex;
+	margin-bottom: 8px;
+	&:last-child {
+		margin-bottom: 0;
+	}
 `
 
 const ConnectionInfoLabel = styled.span`
-  color: var(--vscode-descriptionForeground);
-  margin-right: 8px;
+	color: var(--vscode-descriptionForeground);
+	margin-right: 8px;
 `
 
 const ConnectionInfoValue = styled.span`
-  color: var(--vscode-foreground);
+	color: var(--vscode-foreground);
 `
 
 export const BrowserSettingsMenu = () => {
@@ -76,7 +76,6 @@ export const BrowserSettingsMenu = () => {
 
 	const handleMouseEnter = () => setShowMenu(true)
 	const handleMouseLeave = () => setShowMenu(false)
-
 
 	const [showInfoPopover, setShowInfoPopover] = useState(false)
 	const [connectionInfo, setConnectionInfo] = useState<ConnectionInfo>({
@@ -245,8 +244,6 @@ export const BrowserSettingsMenu = () => {
 			</VSCodeButton>
 			{showMenu && (
 				<SettingsMenu ref={menuRef} maxWidth={maxWidth} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-
-
 					{/* <SettingsGroup>
 						<SettingsHeader>Chrome Executable</SettingsHeader>
 						<VSCodeDropdown
@@ -346,7 +343,7 @@ const handleViewportChange = (event: Event) => {
 	const selectedPreset = BROWSER_VIEWPORT_PRESETS[target.value as keyof typeof BROWSER_VIEWPORT_PRESETS]
 	vscode.postMessage({
 		type: "browserSettings",
-		browserSettings: { viewport: selectedPreset }
+		browserSettings: { viewport: selectedPreset },
 	})
 }
 

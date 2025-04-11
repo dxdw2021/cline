@@ -86,7 +86,7 @@ export async function getTheme() {
 			base: "vs-dark",
 			inherit: true,
 			rules: [],
-			colors: {}
+			colors: {},
 		}
 	}
 }

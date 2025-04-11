@@ -455,9 +455,7 @@ export const ChatRowContent = ({
 						<div style={headerStyle}>
 							{toolIcon("folder-opened")}
 							<span style={{ fontWeight: "bold" }}>
-								{message.type === "ask"
-									? "Cline想要在此目录中查看顶级文件:"
-									: "Cline查看了此目录中的顶级文件："}
+								{message.type === "ask" ? "Cline想要在此目录中查看顶级文件:" : "Cline查看了此目录中的顶级文件："}
 							</span>
 						</div>
 						<CodeAccordian
