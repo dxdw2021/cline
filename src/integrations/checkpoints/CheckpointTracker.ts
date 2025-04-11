@@ -88,7 +88,7 @@ class CheckpointTracker {
 	 * - Creates/initializes shadow git repository
 	 *
 	 * Configuration:
-	 * - Respects 'cline.enableCheckpoints' VS Code setting
+	 * - Respects 'cline-cn.enableCheckpoints' VS Code setting
 	 */
 	public static async create(taskId: string, globalStoragePath: string | undefined): Promise<CheckpointTracker | undefined> {
 		if (!globalStoragePath) {

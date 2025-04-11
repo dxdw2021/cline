@@ -15,11 +15,11 @@ export class ClineHandler implements ApiHandler {
 	constructor(options: ApiHandlerOptions) {
 		this.options = options
 		this.client = new OpenAI({
-			baseURL: "https://api.cline.bot/v1",
+			baseURL: "https://api.cline-cn.bot/v1",
 			apiKey: this.options.clineApiKey || "",
 			defaultHeaders: {
-				"HTTP-Referer": "https://cline.bot", // Optional, for including your app on cline.bot rankings.
-				"X-Title": "Cline", // Optional. Shows in rankings on cline.bot.
+				"HTTP-Referer": "https://cline-cn.bot", // Optional, for including your app on cline-cn.bot rankings.
+				"X-Title": "Cline", // Optional. Shows in rankings on cline-cn.bot.
 				"X-Task-ID": this.options.taskId || "", // Include the task ID in the request headers
 			},
 		})
@@ -95,7 +95,7 @@ export class ClineHandler implements ApiHandler {
 	async getApiStreamUsage(): Promise<ApiStreamUsageChunk | undefined> {
 		if (this.lastGenerationId) {
 			try {
-				const response = await axios.get(`https://api.cline.bot/v1/generation?id=${this.lastGenerationId}`, {
+				const response = await axios.get(`https://api.cline-cn.bot/v1/generation?id=${this.lastGenerationId}`, {
 					headers: {
 						Authorization: `Bearer ${this.options.clineApiKey}`,
 					},

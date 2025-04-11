@@ -39,12 +39,12 @@ const Announcement = ({ version, hideAnnouncement }: AnnouncementProps) => {
 				<span className="codicon codicon-close"></span>
 			</VSCodeButton>
 			<h3 style={h3TitleStyle}>
-				🎉{"  "}New in v{minorVersion}
+				🎉{"  "}盛世中华——新版来袭 v{minorVersion}
 			</h3>
 			<ul style={ulStyle}>
 				<li>
-					<b>Browser Tool Upgrades:</b> Use your local Chrome browser for session-based browsing, enabling debugging and
-					productivity workflows tied to your actual browser state!
+					<b>Browser Tool Upgrades:</b> 使用您的本地铬浏览器进行基于会话的浏览，启用调试和
+					生产力工作流与您的实际浏览器状态相关！
 				</li>
 				<li>
 					<b>Auto-Approve Commands:</b> New option to automatically approve <b>ALL</b> commands (use at your own risk!)
@@ -109,18 +109,18 @@ const Announcement = ({ version, hideAnnouncement }: AnnouncementProps) => {
 			</ul>*/}
 			<div style={hrStyle} />
 			<p style={linkContainerStyle}>
-				Join us on{" "}
-				<VSCodeLink style={linkStyle} href="https://x.com/cline">
-					X,
+				加入我们{" "}
+				<VSCodeLink style={linkStyle} href="https://github.com/dxdw2021/cline">
+					盛世中华 Cline 中文版本,
 				</VSCodeLink>{" "}
-				<VSCodeLink style={linkStyle} href="https://discord.gg/cline">
-					discord,
+				<VSCodeLink style={linkStyle} href="https://github.com/dxdw2021/cline">
+					盛世中华 Cline 中文版本,
 				</VSCodeLink>{" "}
-				or{" "}
-				<VSCodeLink style={linkStyle} href="https://www.reddit.com/r/cline/">
-					r/cline
+				和{" "}
+				<VSCodeLink style={linkStyle} href="https://github.com/dxdw2021/cline">
+					盛世中华 Cline 中文版本
 				</VSCodeLink>
-				for more updates!
+				有关更多更新！
 			</p>
 		</div>
 	)

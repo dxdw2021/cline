@@ -557,7 +557,7 @@ export class Controller {
 				const uriScheme = vscode.env.uriScheme
 
 				const authUrl = vscode.Uri.parse(
-					`https://app.cline.bot/auth?state=${encodeURIComponent(nonce)}&callback_url=${encodeURIComponent(`${uriScheme || "vscode"}://saoudrizwan.claude-dev/auth`)}`,
+					`https://app.cline-cn.bot/auth?state=${encodeURIComponent(nonce)}&callback_url=${encodeURIComponent(`${uriScheme || "vscode"}://617694668.cline-cn/auth`)}`,
 				)
 				vscode.env.openExternal(authUrl)
 				break
@@ -599,7 +599,7 @@ export class Controller {
 
 					// 2. Enable MCP settings if disabled
 					// Enable MCP mode if disabled
-					const mcpConfig = vscode.workspace.getConfiguration("cline.mcp")
+					const mcpConfig = vscode.workspace.getConfiguration("cline-cn.mcp")
 					if (mcpConfig.get<string>("mode") !== "full") {
 						await mcpConfig.update("mode", "full", true)
 					}
@@ -620,7 +620,7 @@ export class Controller {
 				break
 			// case "openMcpMarketplaceServerDetails": {
 			// 	if (message.text) {
-			// 		const response = await fetch(`https://api.cline.bot/v1/mcp/marketplace/item?mcpId=${message.mcpId}`)
+			// 		const response = await fetch(`https://api.cline-cn.bot/v1/mcp/marketplace/item?mcpId=${message.mcpId}`)
 			// 		const details: McpDownloadResponse = await response.json()
 
 			// 		if (details.readmeContent) {
@@ -727,7 +727,7 @@ export class Controller {
 				const settingsFilter = message.text || ""
 				await vscode.commands.executeCommand(
 					"workbench.action.openSettings",
-					`@ext:saoudrizwan.claude-dev ${settingsFilter}`.trim(), // trim whitespace if no settings filter
+					`@ext:617694668.cline-cn ${settingsFilter}`.trim(), // trim whitespace if no settings filter
 				)
 				break
 			}
@@ -1240,7 +1240,7 @@ export class Controller {
 
 	private async fetchMcpMarketplaceFromApi(silent: boolean = false): Promise<McpMarketplaceCatalog | undefined> {
 		try {
-			const response = await axios.get("https://api.cline.bot/v1/mcp/marketplace", {
+			const response = await axios.get("https://api.cline-cn.bot/v1/mcp/marketplace", {
 				headers: {
 					"Content-Type": "application/json",
 				},
@@ -1334,7 +1334,7 @@ export class Controller {
 
 			// Fetch server details from marketplace
 			const response = await axios.post<McpDownloadResponse>(
-				"https://api.cline.bot/v1/mcp/download",
+				"https://api.cline-cn.bot/v1/mcp/download",
 				{ mcpId },
 				{
 					headers: { "Content-Type": "application/json" },
@@ -1613,7 +1613,7 @@ Here is the project's README to help you get started:\n\n${mcpDetails.readmeCont
 	// 'Add to Cline' context menu in editor and code action
 	async addSelectedCodeToChat(code: string, filePath: string, languageId: string, diagnostics?: vscode.Diagnostic[]) {
 		// Ensure the sidebar view is visible
-		await vscode.commands.executeCommand("claude-dev.SidebarProvider.focus")
+		await vscode.commands.executeCommand("cline-cn.SidebarProvider.focus")
 		await setTimeoutPromise(100)
 
 		// Post message to webview with the selected code
@@ -1636,7 +1636,7 @@ Here is the project's README to help you get started:\n\n${mcpDetails.readmeCont
 	// 'Add to Cline' context menu in Terminal
 	async addSelectedTerminalOutputToChat(output: string, terminalName: string) {
 		// Ensure the sidebar view is visible
-		await vscode.commands.executeCommand("claude-dev.SidebarProvider.focus")
+		await vscode.commands.executeCommand("cline-cn.SidebarProvider.focus")
 		await setTimeoutPromise(100)
 
 		// Post message to webview with the selected terminal output
@@ -1657,7 +1657,7 @@ Here is the project's README to help you get started:\n\n${mcpDetails.readmeCont
 	// 'Fix with Cline' in code actions
 	async fixWithCline(code: string, filePath: string, languageId: string, diagnostics: vscode.Diagnostic[]) {
 		// Ensure the sidebar view is visible
-		await vscode.commands.executeCommand("claude-dev.SidebarProvider.focus")
+		await vscode.commands.executeCommand("cline-cn.SidebarProvider.focus")
 		await setTimeoutPromise(100)
 
 		const fileMention = this.getFileMentionFromPath(filePath)

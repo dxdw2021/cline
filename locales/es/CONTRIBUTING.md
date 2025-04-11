@@ -1,6 +1,6 @@
 # Contribuir a Cline
 
-Nos alegra que estés interesado en contribuir a Cline. Ya sea que corrijas un error, añadas una función o mejores nuestra documentación, ¡cada contribución hace que Cline sea más inteligente! Para mantener nuestra comunidad viva y acogedora, todos los miembros deben cumplir con nuestro [Código de Conducta](CODE_OF_CONDUCT.md).
+Nos alegra que estés interesado en contribuir a cline-cn. Ya sea que corrijas un error, añadas una función o mejores nuestra documentación, ¡cada contribución hace que Cline sea más inteligente! Para mantener nuestra comunidad viva y acogedora, todos los miembros deben cumplir con nuestro [Código de Conducta](CODE_OF_CONDUCT.md).
 
 ## Informar de errores o problemas
 
@@ -14,9 +14,9 @@ Nos alegra que estés interesado en contribuir a Cline. Ya sea que corrijas un e
 
 ¿Buscas una buena primera contribución? Revisa los issues etiquetados con ["good first issue"](https://github.com/cline/cline/labels/good%20first%20issue) o ["help wanted"](https://github.com/cline/cline/labels/help%20wanted). ¡Estos están especialmente seleccionados para nuevos colaboradores y son áreas donde nos encantaría recibir ayuda!
 
-También damos la bienvenida a contribuciones a nuestra [documentación](https://github.com/cline/cline/tree/main/docs). Ya sea corrigiendo errores tipográficos, mejorando guías existentes o creando nuevos contenidos educativos, queremos construir un repositorio de recursos gestionado por la comunidad que ayude a todos a sacar el máximo provecho de Cline. Puedes comenzar explorando `/docs` y buscando áreas que necesiten mejoras.
+También damos la bienvenida a contribuciones a nuestra [documentación](https://github.com/cline/cline/tree/main/docs). Ya sea corrigiendo errores tipográficos, mejorando guías existentes o creando nuevos contenidos educativos, queremos construir un repositorio de recursos gestionado por la comunidad que ayude a todos a sacar el máximo provecho de cline-cn. Puedes comenzar explorando `/docs` y buscando áreas que necesiten mejoras.
 
-Si planeas trabajar en una función más grande, por favor crea primero una [solicitud de función](https://github.com/cline/cline/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop) para que podamos discutir si se alinea con la visión de Cline.
+Si planeas trabajar en una función más grande, por favor crea primero una [solicitud de función](https://github.com/cline/cline/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop) para que podamos discutir si se alinea con la visión de cline-cn.
 
 ## Configurar el entorno de desarrollo
 

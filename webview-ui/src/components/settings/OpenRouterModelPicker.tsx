@@ -21,18 +21,18 @@ export interface OpenRouterModelPickerProps {
 const featuredModels = [
 	{
 		id: "anthropic/claude-3.7-sonnet",
-		description: "Leading model for agentic coding",
-		label: "Best",
+		description: "领先的智能体编码模型\nLeading model for agentic coding",
+		label: "Best\n最好的",
 	},
 	{
 		id: "google/gemini-2.5-pro-preview-03-25",
-		description: "Large 1M context window, great value",
-		label: "Trending",
+		description: "超大100万上下文窗口，性价比高\nLarge 1M context window, great value",
+		label: "Trending\n热门",
 	},
 	{
 		id: "meta-llama/llama-4-maverick",
-		description: "Efficient performance at lower cost",
-		label: "New",
+		description: "高效性能，成本更低\nEfficient performance at lower cost",
+		label: "New\n新的",
 	},
 ]
 
@@ -486,7 +486,7 @@ export const ModelDescriptionMarkdown = memo(
 						paddingRight: 2,
 					}}
 					onClick={() => setIsExpanded(false)}>
-					See less
+					少看
 				</div>
 			)} */}
 			</StyledMarkdown>

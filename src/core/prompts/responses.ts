@@ -5,38 +5,38 @@ import { ClineIgnoreController, LOCK_TEXT_SYMBOL } from "../ignore/ClineIgnoreCo
 
 export const formatResponse = {
 	duplicateFileReadNotice: () =>
-		`[[NOTE] This file read has been removed to save space in the context window. Refer to the latest file read for the most up to date version of this file.]`,
+		`[[NOTE] 此文件已读取已删除以在上下文窗口中保存空间。有关此文件的最新版本，请参阅最新文件。]`,
 
 	contextTruncationNotice: () =>
-		`[NOTE] Some previous conversation history with the user has been removed to maintain optimal context window length. The initial user task and the most recent exchanges have been retained for continuity, while intermediate conversation history has been removed. Please keep this in mind as you continue assisting the user.`,
+		`[NOTE] 与用户的一些以前的对话历史记录已被删除，以保持最佳上下文窗口长度。最初的用户任务和最新的交流已保留以进行连续性，而中间对话历史记录已被删除。在继续协助用户时，请记住这一点。`,
 
-	toolDenied: () => `The user denied this operation.`,
+	toolDenied: () => `用户拒绝了此操作。`,
 
-	toolError: (error?: string) => `The tool execution failed with the following error:\n<error>\n${error}\n</error>`,
+	toolError: (error?: string) => `工具执行失败，但有以下错误：\n<error>\n${error}\n</error>`,
 
 	clineIgnoreError: (path: string) =>
-		`Access to ${path} is blocked by the .clineignore file settings. You must try to continue in the task without using this file, or ask the user to update the .clineignore file.`,
+		`访问 ${path} 由.clineignore文件设置阻止。您必须尝试在不使用此文件的情况下继续执行任务，或要求用户更新.clineignore文件。`,
 
 	noToolsUsed: () =>
-		`[ERROR] You did not use a tool in your previous response! Please retry with a tool use.
+		`[错误] 您没有在先前的回复中使用工具！请用工具使用重试。
 
 ${toolUseInstructionsReminder}
 
 # Next Steps
 
-If you have completed the user's task, use the attempt_completion tool. 
-If you require additional information from the user, use the ask_followup_question tool. 
-Otherwise, if you have not completed the task and do not need additional information, then proceed with the next step of the task. 
-(This is an automated message, so do not respond to it conversationally.)`,
+如果您已经完成了用户的任务，请使用over_completion工具。
+如果您需要用户的其他信息，请使用ask_followup_question工具。
+否则，如果您尚未完成任务并且不需要其他信息，请继续执行任务的下一步。
+(这是一个自动消息，因此请勿在对话中对其进行响应。)`,
 
 	tooManyMistakes: (feedback?: string) =>
-		`You seem to be having trouble proceeding. The user has provided the following feedback to help guide you:\n<feedback>\n${feedback}\n</feedback>`,
+		`您似乎在继续前进。用户提供了以下反馈，以帮助您指导您：\n<feedback>\n${feedback}\n</feedback>`,
 
 	missingToolParameterError: (paramName: string) =>
-		`Missing value for required parameter '${paramName}'. Please retry with complete response.\n\n${toolUseInstructionsReminder}`,
+		`所需参数的缺少值'${paramName}'. 请完全回复.\n\n${toolUseInstructionsReminder}`,
 
 	invalidMcpToolArgumentError: (serverName: string, toolName: string) =>
-		`Invalid JSON argument used with ${serverName} for ${toolName}. Please retry with a properly formatted JSON argument.`,
+		`使用无效的JSON参数${serverName} for ${toolName}. 请以适当格式的JSON论证重试.`,
 
 	toolResult: (text: string, images?: string[]): string | Array<Anthropic.TextBlockParam | Anthropic.ImageBlockParam> => {
 		if (images && images.length > 0) {
@@ -61,54 +61,54 @@ Otherwise, if you have not completed the task and do not need additional informa
 	): string => {
 		const sorted = files
 			.map((file) => {
-				// convert absolute path to relative path
+				// 将绝对路径转换为相对路径
 				const relativePath = path.relative(absolutePath, file).toPosix()
 				return file.endsWith("/") ? relativePath + "/" : relativePath
 			})
-			// Sort so files are listed under their respective directories to make it clear what files are children of what directories. Since we build file list top down, even if file list is truncated it will show directories that cline can then explore further.
+			// 排序以便在其各自目录下列出文件，以清楚哪些目录的孩子是哪些文件。由于我们可以自上而下地构建文件列表，即使文件列表被截断，它也会显示Cline可以进一步探索的目录。
 			.sort((a, b) => {
-				const aParts = a.split("/") // only works if we use toPosix first
+				const aParts = a.split("/") //仅当我们首先使用toposix时才有效
 				const bParts = b.split("/")
 				for (let i = 0; i < Math.min(aParts.length, bParts.length); i++) {
 					if (aParts[i] !== bParts[i]) {
-						// If one is a directory and the other isn't at this level, sort the directory first
+						// 如果一个是目录，另一个不是该级别，请先对目录进行排序
 						if (i + 1 === aParts.length && i + 1 < bParts.length) {
 							return -1
 						}
 						if (i + 1 === bParts.length && i + 1 < aParts.length) {
 							return 1
 						}
-						// Otherwise, sort alphabetically
+						// 否则，按字母顺序排序
 						return aParts[i].localeCompare(bParts[i], undefined, {
 							numeric: true,
 							sensitivity: "base",
 						})
 					}
 				}
-				// If all parts are the same up to the length of the shorter path,
-				// the shorter one comes first
+				//如果所有零件都相同，直到较短路径的长度，
+				//较短的一个
 				return aParts.length - bParts.length
 			})
 
 		const clineIgnoreParsed = clineIgnoreController
 			? sorted.map((filePath) => {
-					// path is relative to absolute path, not cwd
-					// validateAccess expects either path relative to cwd or absolute path
-					// otherwise, for validating against ignore patterns like "assets/icons", we would end up with just "icons", which would result in the path not being ignored.
-					const absoluteFilePath = path.resolve(absolutePath, filePath)
-					const isIgnored = !clineIgnoreController.validateAccess(absoluteFilePath)
-					if (isIgnored) {
-						return LOCK_TEXT_SYMBOL + " " + filePath
-					}
+				// 路径相对于绝对路径，而不是CWD
+				// valataccess期望相对于CWD或绝对路径的路径
+				// 否则，为了验证忽略诸如“资产/图标”之类的模式，我们最终将以“图标”为例，这将导致路径不被忽略。
+				const absoluteFilePath = path.resolve(absolutePath, filePath)
+				const isIgnored = !clineIgnoreController.validateAccess(absoluteFilePath)
+				if (isIgnored) {
+					return LOCK_TEXT_SYMBOL + " " + filePath
+				}
 
-					return filePath
-				})
+				return filePath
+			})
 			: sorted
 
 		if (didHitLimit) {
 			return `${clineIgnoreParsed.join(
 				"\n",
-			)}\n\n(File list truncated. Use list_files on specific subdirectories if you need to explore further.)`
+			)}\n\n(文件列表被截断。如果需要进一步探索，请在特定子目录上使用List_files.)`
 		} else if (clineIgnoreParsed.length === 0 || (clineIgnoreParsed.length === 1 && clineIgnoreParsed[0] === "")) {
 			return "No files found."
 		} else {
@@ -130,27 +130,29 @@ Otherwise, if you have not completed the task and do not need additional informa
 		cwd: string,
 		wasRecent: boolean | 0 | undefined,
 		responseText?: string,
-	) => {
-		return `[TASK RESUMPTION] ${
-			mode === "plan"
-				? `This task was interrupted ${agoText}. The conversation may have been incomplete. Be aware that the project state may have changed since then. The current working directory is now '${cwd.toPosix()}'.\n\nNote: If you previously attempted a tool use that the user did not provide a result for, you should assume the tool use was not successful. However you are in PLAN MODE, so rather than continuing the task, you must respond to the user's message.`
-				: `This task was interrupted ${agoText}. It may or may not be complete, so please reassess the task context. Be aware that the project state may have changed since then. The current working directory is now '${cwd.toPosix()}'. If the task has not been completed, retry the last step before interruption and proceed with completing the task.\n\nNote: If you previously attempted a tool use that the user did not provide a result for, you should assume the tool use was not successful and assess whether you should retry. If the last tool was a browser_action, the browser has been closed and you must launch a new browser if needed.`
-		}${
-			wasRecent
-				? "\n\nIMPORTANT: If the last tool use was a replace_in_file or write_to_file that was interrupted, the file was reverted back to its original state before the interrupted edit, and you do NOT need to re-read the file as you already have its up-to-date contents."
+	): [string, string] => {
+		const taskResumptionMessage = `[TASK RESUMPTION] ${mode === "plan"
+			? `这个任务被打断了 ${agoText}。对话可能是不完整的。请注意，从那时起，项目状态可能已经改变。当前的工作目录现在为'$ {cwd.toposix（）}'.\n\n注意：如果您以前尝试使用用户没有提供结果的工具，则应假设工具使用不成功。但是，您处于计划模式，因此您不必继续任务，而必须响应用户的消息。`
+			: `这个任务被打断了 ${agoText}。它可能完成也可能不完整，因此请重新评估任务上下文。请注意，从那时起，项目状态可能已经改变。当前的工作目录现在是'${cwd.toPosix()}'。如果任务尚未完成，请在中断之前重试最后一步，然后继续完成任务。\n\n注意：如果您以前尝试使用用户没有提供结果的工具使用，则应假定工具使用不成功，并评估是否应该重试。如果最后一个工具是浏览器_action，则浏览器已关闭，并且必须在需要时启动新浏览器。`
+			}${wasRecent
+				? "\n\n重要的是：如果最后一个工具使用是中断的替换_in_file或write_to_file，则文件在中断编辑之前将文件恢复回原始状态，并且您无需重新阅读该文件，因为您已经拥有其最新内容。"
 				: ""
-		}${
-			responseText
-				? `\n\n${mode === "plan" ? "New message to respond to with plan_mode_respond tool (be sure to provide your response in the <response> parameter)" : "New instructions for task continuation"}:\n<user_message>\n${responseText}\n</user_message>`
-				: mode === "plan"
-					? "(The user did not provide a new message. Consider asking them how they'd like you to proceed, or to switch to Act mode to continue with the task.)"
-					: ""
-		}`
+			}`
+
+		const userResponseMessage = `${responseText
+			? `${mode === "plan" ? "使用Plan_mode_respond工具响应的新消息（请确保在<响应>参数中提供您的响应）" : "任务继续的新说明"}:\n<user_message>\n${responseText}\n</user_message>`
+			: mode === "plan"
+				? "(用户没有提供新的消息。考虑询问他们希望您如何进行，或者切换到ACT模式以继续执行任务。)"
+				: ""
+			}`
+
+		return [taskResumptionMessage, userResponseMessage]
 	},
 
 	planModeInstructions: () => {
-		return `In this mode you should focus on information gathering, asking questions, and architecting a solution. Once you have a plan, use the plan_mode_respond tool to engage in a conversational back and forth with the user. Do not use the plan_mode_respond tool until you've gathered all the information you need e.g. with read_file or ask_followup_question.
-(Remember: If it seems the user wants you to use tools only available in Act Mode, you should ask the user to "toggle to Act mode" (use those words) - they will have to manually do this themselves with the Plan/Act toggle button below. You do not have the ability to switch to Act Mode yourself, and must wait for the user to do it themselves once they are satisfied with the plan. You also cannot present an option to toggle to Act mode, as this will be something you need to direct the user to do manually themselves.)`
+		return `在这种模式下，您应该专注于信息收集，提出问题和构建解决方案。有了计划后，请使用plan_mode_respond工具与用户来回进行对话。在收集所有需要的信息之前，请勿使用plan_mode_respond工具，例如使用read_file或ask_followup_question。
+(
+请记住：如果用户似乎希望您仅在ACT模式下使用工具，则应要求用户“切换到ACT模式”（使用这些单词） -他们将不得不使用下面的计划/ACT切换按钮手动执行此操作。您没有能力自己切换到ACT模式，并且必须等待用户对计划感到满意后自己进行操作。您也不能提供切换以进行ACT模式的选项，因为这将是您指导用户手动执行自己的操作。）`
 	},
 
 	fileEditWithUserChanges: (
@@ -160,17 +162,17 @@ Otherwise, if you have not completed the task and do not need additional informa
 		finalContent: string | undefined,
 		newProblemsMessage: string | undefined,
 	) =>
-		`The user made the following updates to your content:\n\n${userEdits}\n\n` +
+		`用户对您的内容进行了以下更新：\n\n${userEdits}\n\n` +
 		(autoFormattingEdits
-			? `The user's editor also applied the following auto-formatting to your content:\n\n${autoFormattingEdits}\n\n(Note: Pay close attention to changes such as single quotes being converted to double quotes, semicolons being removed or added, long lines being broken into multiple lines, adjusting indentation style, adding/removing trailing commas, etc. This will help you ensure future SEARCH/REPLACE operations to this file are accurate.)\n\n`
+			? `用户的编辑器还将以下自动形式应用于您的内容：\n\n${autoFormattingEdits}\n\n(注意：请密切注意更改，例如将单引号转换为双引号，被删除或添加的分号，分为多行分为多行，调整凹痕样式，添加/删除尾随逗号等。这将有助于您确保您的未来搜索/更换此文件的搜索/替换操作是准确的。)\n\n`
 			: "") +
-		`The updated content, which includes both your original modifications and the additional edits, has been successfully saved to ${relPath.toPosix()}. Here is the full, updated content of the file that was saved:\n\n` +
+		`更新的内容包括您的原始修改和其他编辑，已成功保存到 ${relPath.toPosix()}。这是已保存的文件的完整，更新的内容：\n\n` +
 		`<final_file_content path="${relPath.toPosix()}">\n${finalContent}\n</final_file_content>\n\n` +
-		`Please note:\n` +
-		`1. You do not need to re-write the file with these changes, as they have already been applied.\n` +
-		`2. Proceed with the task using this updated file content as the new baseline.\n` +
-		`3. If the user's edits have addressed part of the task or changed the requirements, adjust your approach accordingly.` +
-		`4. IMPORTANT: For any future changes to this file, use the final_file_content shown above as your reference. This content reflects the current state of the file, including both user edits and any auto-formatting (e.g., if you used single quotes but the formatter converted them to double quotes). Always base your SEARCH/REPLACE operations on this final version to ensure accuracy.\n` +
+		`请注意：\n` +
+		`1. 您不需要通过已应用这些更改来重写文件。\n` +
+		`2. 使用此更新的文件内容作为新的基线继续执行任务。\n` +
+		`3. 如果用户的编辑已经解决了任务的一部分或更改了要求，请相应地调整您的方法。` +
+		`4.重要的是：对于此文件的任何将来更改，请使用上面显示的Final_file_content作为您的参考。该内容反映了文件的当前状态，包括用户编辑和任何自动形式的词（例如，如果您使用了单个引号，但格式化了它们将其转换为双引号）。始终基于此最终版本的搜索/替换操作，以确保准确性。\n` +
 		`${newProblemsMessage}`,
 
 	fileEditWithoutUserChanges: (
@@ -179,56 +181,56 @@ Otherwise, if you have not completed the task and do not need additional informa
 		finalContent: string | undefined,
 		newProblemsMessage: string | undefined,
 	) =>
-		`The content was successfully saved to ${relPath.toPosix()}.\n\n` +
+		`内容成功保存到 ${relPath.toPosix()}.\n\n` +
 		(autoFormattingEdits
-			? `Along with your edits, the user's editor applied the following auto-formatting to your content:\n\n${autoFormattingEdits}\n\n(Note: Pay close attention to changes such as single quotes being converted to double quotes, semicolons being removed or added, long lines being broken into multiple lines, adjusting indentation style, adding/removing trailing commas, etc. This will help you ensure future SEARCH/REPLACE operations to this file are accurate.)\n\n`
+			? `与您的编辑一起，用户的编辑器将以下自动形式应用于您的内容：\n\n${autoFormattingEdits}\n\n(注意：请密切注意更改，例如将单引号转换为双引号，被删除或添加的半句号，将长行分为多行，调整凹痕样式，添加/删除尾随的逗号等。这将帮助您确保您的未来搜索/更换此文件的未来搜索/替换操作是准确的。）\n\n`
 			: "") +
-		`Here is the full, updated content of the file that was saved:\n\n` +
+		`这是已保存的文件的完整，更新的内容：\n\n` +
 		`<final_file_content path="${relPath.toPosix()}">\n${finalContent}\n</final_file_content>\n\n` +
-		`IMPORTANT: For any future changes to this file, use the final_file_content shown above as your reference. This content reflects the current state of the file, including any auto-formatting (e.g., if you used single quotes but the formatter converted them to double quotes). Always base your SEARCH/REPLACE operations on this final version to ensure accuracy.\n\n` +
+		`重要的是：对于此文件的任何将来更改，请使用上面显示的Final_file_content作为您的参考。该内容反映了文件的当前状态，包括任何自动形式的词（例如，如果您使用了单个引号，但格式化器将其转换为双引号）。始终基于此最终版本的搜索/替换操作，以确保准确性。\n\n` +
 		`${newProblemsMessage}`,
 
 	diffError: (relPath: string, originalContent: string | undefined) =>
-		`This is likely because the SEARCH block content doesn't match exactly with what's in the file, or if you used multiple SEARCH/REPLACE blocks they may not have been in the order they appear in the file.\n\n` +
+		`这可能是因为搜索块内容与文件中的内容不完全匹配，或者如果您使用了多个搜索/替换块，则可能没有按照它们显示在文件中的顺序。\n\n` +
 		`The file was reverted to its original state:\n\n` +
 		`<file_content path="${relPath.toPosix()}">\n${originalContent}\n</file_content>\n\n` +
-		`Now that you have the latest state of the file, try the operation again with fewer/more precise SEARCH blocks.\n(If you run into this error 3 times in a row, you may use the write_to_file tool as a fallback. Keep in mind, the write_to_file fallback is far from ideal, as this means you'll be re-writing the entire contents of the file just to make a few edits, which takes time and money. So let's bias towards using replace_in_file as effectively as possible)`,
+		`现在您已经有了文件的最新状态，可以使用更少/更精确的搜索块再次尝试操作。尽可能有效地更换_in_file）`,
 
 	toolAlreadyUsed: (toolName: string) =>
-		`Tool [${toolName}] was not executed because a tool has already been used in this message. Only one tool may be used per message. You must assess the first tool's result before proceeding to use the next tool.`,
+		`工具 [${toolName}] 之所以没有执行，是因为在此消息中已经使用了工具。每个消息只能使用一个工具。在继续使用下一个工具之前，您必须评估第一个工具的结果。`,
 
 	clineIgnoreInstructions: (content: string) =>
-		`# .clineignore\n\n(The following is provided by a root-level .clineignore file where the user has specified files and directories that should not be accessed. When using list_files, you'll notice a ${LOCK_TEXT_SYMBOL} next to files that are blocked. Attempting to access the file's contents e.g. through read_file will result in an error.)\n\n${content}\n.clineignore`,
+		`# .Clineignore\n\n(以下内容由root级.clineignore文件提供，其中用户指定了不应访问的文件和目录。使用list_files时，您会注意到${LOCK_TEXT_SYMBOL}在被阻止的文件旁边。尝试访问文件的内容，例如通过read_file将导致错误。）\n\n${content}\n.Clineignore`,
 
 	clineRulesDirectoryInstructions: (cwd: string, content: string) =>
-		`# .clinerules/\n\nThe following is provided by a root-level .clinerules/ directory where the user has specified instructions for this working directory (${cwd.toPosix()})\n\n${content}`,
+		`# .临床/\n\n以下由用户指定此工作目录指定说明的根级别.clinerules/目录提供了以下内容 (${cwd.toPosix()})\n\n${content}`,
 
 	clineRulesFileInstructions: (cwd: string, content: string) =>
-		`# .clinerules\n\nThe following is provided by a root-level .clinerules file where the user has specified instructions for this working directory (${cwd.toPosix()})\n\n${content}`,
+		`# .临床\n\n以下由root级.clinerules文件提供(${cwd.toPosix()})\n\n${content}`,
 }
 
 // to avoid circular dependency
 const formatImagesIntoBlocks = (images?: string[]): Anthropic.ImageBlockParam[] => {
 	return images
 		? images.map((dataUrl) => {
-				// data:image/png;base64,base64string
-				const [rest, base64] = dataUrl.split(",")
-				const mimeType = rest.split(":")[1].split(";")[0]
-				return {
-					type: "image",
-					source: {
-						type: "base64",
-						media_type: mimeType,
-						data: base64,
-					},
-				} as Anthropic.ImageBlockParam
-			})
+			// data:image/png;base64,base64string
+			const [rest, base64] = dataUrl.split(",")
+			const mimeType = rest.split(":")[1].split(";")[0]
+			return {
+				type: "image",
+				source: {
+					type: "base64",
+					media_type: mimeType,
+					data: base64,
+				},
+			} as Anthropic.ImageBlockParam
+		})
 		: []
 }
 
-const toolUseInstructionsReminder = `# Reminder: Instructions for Tool Use
+const toolUseInstructionsReminder = `# 提醒：工具使用说明
 
-Tool uses are formatted using XML-style tags. The tool name is enclosed in opening and closing tags, and each parameter is similarly enclosed within its own set of tags. Here's the structure:
+使用XML风格的标签格式化工具使用。该工具名称封闭在打开和关闭标签中，每个参数类似地包含在其自己的标签集中。这是结构:
 
 <tool_name>
 <parameter1_name>value1</parameter1_name>
@@ -244,4 +246,4 @@ I have completed the task...
 </result>
 </attempt_completion>
 
-Always adhere to this format for all tool uses to ensure proper parsing and execution.`
+始终遵守所有工具用途的格式，以确保正确解析和执行。`

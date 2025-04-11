@@ -255,7 +255,7 @@ const McpResponseDisplay: React.FC<McpResponseDisplayProps> = ({ responseText })
 				// Start the background processing
 				processImageChecks()
 			} catch (error) {
-				setError("Failed to process response content. Switch to plain text mode to view safely.")
+				setError("处理响应内容失败，请切换到纯文本模式查看安全内容。")
 				setIsLoading(false)
 			}
 		}
@@ -360,7 +360,7 @@ const McpResponseDisplay: React.FC<McpResponseDisplayProps> = ({ responseText })
 										height: "128px", // Fixed height
 										overflow: "auto", // Allow scrolling if content overflows
 									}}>
-									Failed to create preview for: {url}
+									无法为以下链接创建预览: {url}
 								</div>,
 							)
 						}
@@ -386,9 +386,9 @@ const McpResponseDisplay: React.FC<McpResponseDisplayProps> = ({ responseText })
 		return (
 			<ResponseContainer>
 				<ResponseHeader>
-					<span className="header-title">Response</span>
+					<span className="header-title">响应内容</span>
 					<ToggleSwitch>
-						<span className="toggle-label">{displayMode === "rich" ? "Rich Display" : "Plain Text"}</span>
+						<span className="toggle-label">{displayMode === "rich" ? "富文本模式" : "纯文本模式"}</span>
 						<div className={`toggle-container ${displayMode === "rich" ? "active" : ""}`} onClick={toggleDisplayMode}>
 							<div className="toggle-handle"></div>
 						</div>
@@ -403,10 +403,10 @@ const McpResponseDisplay: React.FC<McpResponseDisplayProps> = ({ responseText })
 		return (
 			<ResponseContainer>
 				<ResponseHeader>
-					<span className="header-title">Response</span>
+					<span className="header-title">响应内容</span>
 				</ResponseHeader>
 				<div className="response-content">
-					<div>Error parsing response:</div>
+					<div>解析响应时出错:</div>
 					<UrlText>{responseText}</UrlText>
 				</div>
 			</ResponseContainer>

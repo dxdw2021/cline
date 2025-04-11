@@ -8,6 +8,12 @@ export interface SearchResult {
 	label?: string
 }
 
+export interface SearchResult {
+	path: string
+	type: "file" | "folder"
+	label?: string
+}
+
 export function insertMention(text: string, position: number, value: string): { newValue: string; mentionIndex: number } {
 	const beforeCursor = text.slice(0, position)
 	const afterCursor = text.slice(position)
@@ -193,7 +199,7 @@ export function getContextMenuOptions(
 		const item = {
 			type: result.type === "folder" ? ContextMenuOptionType.Folder : ContextMenuOptionType.File,
 			value: formattedPath,
-			label: result.label || path.basename(result.path),
+			label: result.label || result.path.split('/').pop() || result.path,
 			description: formattedPath,
 		}
 		return item

@@ -84,7 +84,7 @@ export type ApiConfiguration = ApiHandlerOptions & {
 
 interface PriceTier {
 	tokenLimit: number // Upper limit (inclusive) of *input* tokens for this price. Use Infinity for the highest tier.
-	price: number // Price per million tokens for this tier.
+	price: number // Price per 每一百万个令牌 for this tier.
 }
 
 export interface ModelInfo {
@@ -131,8 +131,8 @@ export const anthropicModels = {
 		supportsPromptCache: true,
 		inputPrice: 3.0, // $3 per million input tokens
 		outputPrice: 15.0, // $15 per million output tokens
-		cacheWritesPrice: 3.75, // $3.75 per million tokens
-		cacheReadsPrice: 0.3, // $0.30 per million tokens
+		cacheWritesPrice: 3.75, // $3.75 per 每一百万个令牌
+		cacheReadsPrice: 0.3, // $0.30 per 每一百万个令牌
 	},
 	"claude-3-5-haiku-20241022": {
 		maxTokens: 8192,
@@ -286,7 +286,7 @@ export const openRouterDefaultModelInfo: ModelInfo = {
 	cacheWritesPrice: 3.75,
 	cacheReadsPrice: 0.3,
 	description:
-		"Claude 3.7 Sonnet is an advanced large language model with improved reasoning, coding, and problem-solving capabilities. It introduces a hybrid reasoning approach, allowing users to choose between rapid responses and extended, step-by-step processing for complex tasks. The model demonstrates notable improvements in coding, particularly in front-end development and full-stack updates, and excels in agentic workflows, where it can autonomously navigate multi-step processes. \n\nClaude 3.7 Sonnet maintains performance parity with its predecessor in standard mode while offering an extended reasoning mode for enhanced accuracy in math, coding, and instruction-following tasks.\n\nRead more at the [blog post here](https://www.anthropic.com/news/claude-3-7-sonnet)",
+		"Claude 3.7 Sonnet 是一个先进的大语言模型，具有改进的推理、编码和问题解决能力。它引入了混合推理方法，允许用户在快速响应和针对复杂任务的逐步处理之间进行选择。该模型在编码方面表现出显著改进，特别是在前端开发和全栈更新方面，并且在代理工作流中表现出色，能够自主导航多步骤流程。\n\nClaude 3.7 Sonnet 在标准模式下保持与前一版本相同的性能，同时提供扩展推理模式以提高数学、编码和指令遵循任务的准确性。\n\n了解更多请查看[博客文章](https://www.anthropic.com/news/claude-3-7-sonnet)",
 }
 // Vertex AI
 // https://cloud.google.com/vertex-ai/generative-ai/docs/partner-models/use-claude
@@ -1319,8 +1319,44 @@ export const askSageModels = {
 // X AI
 // https://docs.x.ai/docs/api-reference
 export type XAIModelId = keyof typeof xaiModels
-export const xaiDefaultModelId: XAIModelId = "grok-2-latest"
+export const xaiDefaultModelId: XAIModelId = "grok-3-beta"
 export const xaiModels = {
+	"grok-3-beta": {
+		maxTokens: 8192,
+		contextWindow: 131072,
+		supportsImages: false,
+		supportsPromptCache: false,
+		inputPrice: 3.0,
+		outputPrice: 15.0,
+		description: "X AI's Grok-3 beta model with 131K context window",
+	},
+	"grok-3-fast-beta": {
+		maxTokens: 8192,
+		contextWindow: 131072,
+		supportsImages: false,
+		supportsPromptCache: false,
+		inputPrice: 5.0,
+		outputPrice: 25.0,
+		description: "X AI's Grok-3 fast beta model with 131K context window",
+	},
+	"grok-3-mini-beta": {
+		maxTokens: 8192,
+		contextWindow: 131072,
+		supportsImages: false,
+		supportsPromptCache: false,
+		inputPrice: 0.3,
+		outputPrice: 0.5,
+		description: "X AI's Grok-3 mini beta model with 131K context window",
+	},
+	"grok-3-mini-fast-beta": {
+		maxTokens: 8192,
+		contextWindow: 131072,
+		supportsImages: false,
+		supportsPromptCache: false,
+		inputPrice: 0.6,
+		outputPrice: 4.0,
+		description: "X AI's Grok-3 mini fast beta model with 131K context window",
+	},
 	"grok-2-latest": {
 		maxTokens: 8192,
 		contextWindow: 131072,
@@ -1328,7 +1364,7 @@ export const xaiModels = {
 		supportsPromptCache: false,
 		inputPrice: 2.0,
 		outputPrice: 10.0,
-		description: "X AI's Grok-2 model - latest version with 131K context window",
+		description: "X AI的Grok-2模型 - 最新版本，支持131K上下文窗口",
 	},
 	"grok-2": {
 		maxTokens: 8192,
@@ -1337,7 +1373,7 @@ export const xaiModels = {
 		supportsPromptCache: false,
 		inputPrice: 2.0,
 		outputPrice: 10.0,
-		description: "X AI's Grok-2 model with 131K context window",
+		description: "X AI的Grok-2模型，支持131K上下文窗口",
 	},
 	"grok-2-1212": {
 		maxTokens: 8192,
@@ -1346,7 +1382,7 @@ export const xaiModels = {
 		supportsPromptCache: false,
 		inputPrice: 2.0,
 		outputPrice: 10.0,
-		description: "X AI's Grok-2 model (version 1212) with 131K context window",
+		description: "X AI的Grok-2模型(版本1212)，支持131K上下文窗口",
 	},
 	"grok-2-vision-latest": {
 		maxTokens: 8192,
@@ -1355,7 +1391,7 @@ export const xaiModels = {
 		supportsPromptCache: false,
 		inputPrice: 2.0,
 		outputPrice: 10.0,
-		description: "X AI's Grok-2 Vision model - latest version with image support and 32K context window",
+		description: "X AI的Grok-2 Vision模型 - 最新版本，支持图像处理和32K上下文窗口",
 	},
 	"grok-2-vision": {
 		maxTokens: 8192,
@@ -1364,7 +1400,7 @@ export const xaiModels = {
 		supportsPromptCache: false,
 		inputPrice: 2.0,
 		outputPrice: 10.0,
-		description: "X AI's Grok-2 Vision model with image support and 32K context window",
+		description: "X AI的Grok-2 Vision模型，支持图像处理和32K上下文窗口",
 	},
 	"grok-2-vision-1212": {
 		maxTokens: 8192,
@@ -1373,7 +1409,7 @@ export const xaiModels = {
 		supportsPromptCache: false,
 		inputPrice: 2.0,
 		outputPrice: 10.0,
-		description: "X AI's Grok-2 Vision model (version 1212) with image support and 32K context window",
+		description: "X AI的Grok-2 Vision模型(版本1212)，支持图像处理和32K上下文窗口",
 	},
 	"grok-vision-beta": {
 		maxTokens: 8192,
@@ -1382,7 +1418,7 @@ export const xaiModels = {
 		supportsPromptCache: false,
 		inputPrice: 5.0,
 		outputPrice: 15.0,
-		description: "X AI's Grok Vision Beta model with image support and 8K context window",
+		description: "X AI的Grok Vision Beta模型，支持图像处理和8K上下文窗口",
 	},
 	"grok-beta": {
 		maxTokens: 8192,
@@ -1391,7 +1427,7 @@ export const xaiModels = {
 		supportsPromptCache: false,
 		inputPrice: 5.0,
 		outputPrice: 15.0,
-		description: "X AI's Grok Beta model (legacy) with 131K context window",
+		description: "X AI的Grok Beta模型(旧版)，支持131K上下文窗口",
 	},
 } as const satisfies Record<string, ModelInfo>
 

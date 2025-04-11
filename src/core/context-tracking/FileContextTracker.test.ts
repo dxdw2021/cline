@@ -5,7 +5,7 @@ import * as vscode from "vscode"
 import * as path from "path"
 import { FileContextTracker } from "./FileContextTracker"
 import * as diskModule from "../storage/disk"
-import type { TaskMetadata, ControllerLike, FileMetadataEntry } from "./FileContextTrackerTypes"
+import type { TaskMetadata, ControllerLike, FileMetadataEntry } from "./ContextTrackerTypes"
 
 describe("FileContextTracker", () => {
 	let sandbox: sinon.SinonSandbox
@@ -34,7 +34,7 @@ describe("FileContextTracker", () => {
 		// Mock file system watcher
 		mockFileSystemWatcher = {
 			dispose: sandbox.stub(),
-			onDidChange: sandbox.stub().returns({ dispose: () => {} }),
+			onDidChange: sandbox.stub().returns({ dispose: () => { } }),
 		}
 
 		// Use a function replacement instead of a direct stub
@@ -53,7 +53,7 @@ describe("FileContextTracker", () => {
 		}
 
 		// Mock disk module functions
-		mockTaskMetadata = { files_in_context: [] }
+		mockTaskMetadata = { files_in_context: [], model_usage: [] }
 		getTaskMetadataStub = sandbox.stub(diskModule, "getTaskMetadata").resolves(mockTaskMetadata)
 		saveTaskMetadataStub = sandbox.stub(diskModule, "saveTaskMetadata").resolves()
 

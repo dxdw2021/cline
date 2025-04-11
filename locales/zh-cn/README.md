@@ -20,7 +20,7 @@
 <a href="https://github.com/cline/cline/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop" target="_blank"><strong>功能请求</strong></a>
 </td>
 <td align="center">
-<a href="https://docs.cline.bot/getting-started/for-new-coders" target="_blank"><strong>新手上路</strong></a>
+<a href="https://docs.cline-cn.bot/getting-started/for-new-coders" target="_blank"><strong>新手上路</strong></a>
 </td>
 </tbody>
 </table>
@@ -47,7 +47,14 @@
 
 ### 使用任何 API 和模型
 
-Cline 支持 OpenRouter、Anthropic、OpenAI、Google Gemini、AWS Bedrock、Azure 和 GCP Vertex 等 API 提供商。你还可以配置任何兼容 OpenAI 的 API，或通过 LM Studio/Ollama 使用本地模型。如果你使用 OpenRouter，扩展会获取他们的最新模型列表，让你在新模型可用时立即使用。
+Cline 支持 OpenRouter、Anthropic、OpenAI、Google Gemini、AWS Bedrock、Azure 和 GCP Vertex 等 API 提供商。最新支持的 Claude 3.7 Sonnet 模型具备以下特性：
+
+- **混合推理模式**：用户可选择快速响应模式或扩展推理模式处理复杂任务
+- **代理工作流增强**：支持自主完成多步骤操作流程（如前端开发到全栈更新）
+- **编程能力提升**：改进代码生成质量，特别是在 React/Vue 组件开发场景
+- **性能保持**：标准模式保持原有性能，扩展推理模式在数学计算和复杂指令遵循场景准确率提升 15%
+
+你还可以配置任何兼容 OpenAI 的 API，或通过 LM Studio/Ollama 使用本地模型。如果你使用 OpenRouter，扩展会获取他们的最新模型列表（包含 Claude 3.7 Sonnet），让你在新模型可用时立即使用。
 
 扩展还会跟踪整个任务循环和单个请求的总令牌和 API 使用成本，让你在每一步都了解支出情况。
 
@@ -135,14 +142,14 @@ Cline 所做的所有更改都会记录在你的文件时间轴中，提供了�
 
 ## 贡献
 
-要为项目做出贡献，请从我们的 [贡献指南](CONTRIBUTING.md) 开始，了解基础知识。你还可以加入我们的 [Discord](https://discord.gg/cline) 在 `#contributors` 频道与其他贡献者聊天。如果你正在寻找全职工作，请查看我们在 [招聘页面](https://cline.bot/join-us) 上的开放职位！
+要为项目做出贡献，请从我们的 [贡献指南](CONTRIBUTING.md) 开始，了解基础知识。你还可以加入我们的 [Discord](https://discord.gg/cline) 在 `#contributors` 频道与其他贡献者聊天。如果你正在寻找全职工作，请查看我们在 [招聘页面](https://cline-cn.bot/join-us) 上的开放职位！
 
 <details>
 <summary>本地开发说明</summary>
 
 1. 克隆仓库 _(需要 [git-lfs](https://git-lfs.com/))_：
         ```bash
-        git clone https://github.com/cline/cline.git
+        git clone https://github.com/cline/cline-cn.git
         ```
 2. 在 VSCode 中打开项目：
         ```bash

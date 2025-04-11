@@ -8,8 +8,8 @@ describe("Cost Utilities", () => {
 		it("should calculate basic input/output costs", () => {
 			const modelInfo: ModelInfo = {
 				supportsPromptCache: false,
-				inputPrice: 3.0, // $3 per million tokens
-				outputPrice: 15.0, // $15 per million tokens
+				inputPrice: 3.0, // $3 per 每一百万个令牌
+				outputPrice: 15.0, // $15 per 每一百万个令牌
 			}
 
 			const cost = calculateApiCostAnthropic(modelInfo, 1000, 500)
@@ -69,8 +69,8 @@ describe("Cost Utilities", () => {
 		it("should calculate basic input/output costs", () => {
 			const modelInfo: ModelInfo = {
 				supportsPromptCache: false,
-				inputPrice: 3.0, // $3 per million tokens
-				outputPrice: 15.0, // $15 per million tokens
+				inputPrice: 3.0, // $3 per 每一百万个令牌
+				outputPrice: 15.0, // $15 per 每一百万个令牌
 			}
 
 			const cost = calculateApiCostOpenAI(modelInfo, 1000, 500)

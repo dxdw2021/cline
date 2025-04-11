@@ -1,5 +1,6 @@
 import { VSCodeButton } from "@vscode/webview-ui-toolkit/react"
 import React, { useState } from "react"
+import { vscode } from "@/utils/vscode"
 
 export const TAB_NAVBAR_HEIGHT = 24
 const BUTTON_MARGIN_RIGHT = "3px"
@@ -131,6 +132,15 @@ const TabNavbar = ({ onPlusClick, onHistoryClick, onSettingsClick }: TabNavbarPr
 					justifyContent: "flex-end",
 					alignItems: "center",
 				}}>
+				<VSCodeButton
+					appearance="icon"
+					onClick={() => vscode.postMessage({ type: "openDocumentation" })}
+					style={buttonStyle}
+					onMouseEnter={(e) => showTooltip("Documentation", e, "center")}
+					onMouseLeave={hideTooltip}
+					onMouseMove={(e) => showTooltip("Documentation", e, "center")}>
+					<span className="codicon codicon-book"></span>
+				</VSCodeButton>
 				<VSCodeButton
 					appearance="icon"
 					onClick={onPlusClick}

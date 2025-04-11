@@ -1,6 +1,6 @@
 # Cline Custom Instructions Library
 
-This repository aims to foster a collaborative space where developers can share, refine, and leverage effective custom instructions for Cline. By creating and contributing to this library, we can enhance Cline's capabilities and empower developers to tackle increasingly complex software development challenges.
+This repository aims to foster a collaborative space where developers can share, refine, and leverage effective custom instructions for cline-cn. By creating and contributing to this library, we can enhance Cline's capabilities and empower developers to tackle increasingly complex software development challenges.
 
 ## What are Cline Custom Instructions?
 

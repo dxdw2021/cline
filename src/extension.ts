@@ -9,6 +9,7 @@ import { DIFF_VIEW_URI_SCHEME } from "./integrations/editor/DiffViewProvider"
 import assert from "node:assert"
 import { telemetryService } from "./services/telemetry/TelemetryService"
 import { WebviewProvider } from "./core/webview"
+import { createTestServer, shutdownTestServer } from "./services/test/TestServer"
 
 /*
 Built using https://github.com/microsoft/vscode-webview-ui-toolkit
@@ -32,7 +33,8 @@ export function activate(context: vscode.ExtensionContext) {
 
 	const sidebarWebview = new WebviewProvider(context, outputChannel)
 
-	vscode.commands.executeCommand("setContext", "cline.isDevMode", IS_DEV && IS_DEV === "true")
+	vscode.commands.executeCommand("setContext", "cline-cn.isDevMode", IS_DEV && IS_DEV === "true")
+	vscode.commands.executeCommand("setContext", "cline-cn.isTestMode", IS_TEST && IS_TEST === "true")
 
 	context.subscriptions.push(
 		vscode.window.registerWebviewViewProvider(WebviewProvider.sideBarId, sidebarWebview, {
@@ -41,7 +43,7 @@ export function activate(context: vscode.ExtensionContext) {
 	)
 
 	context.subscriptions.push(
-		vscode.commands.registerCommand("cline.plusButtonClicked", async (webview: any) => {
+		vscode.commands.registerCommand("cline-cn.plusButtonClicked", async (webview: any) => {
 			const openChat = async (instance?: WebviewProvider) => {
 				await instance?.controller.clearTask()
 				await instance?.controller.postStateToWebview()
@@ -60,7 +62,7 @@ export function activate(context: vscode.ExtensionContext) {
 	)
 
 	context.subscriptions.push(
-		vscode.commands.registerCommand("cline.mcpButtonClicked", (webview: any) => {
+		vscode.commands.registerCommand("cline-cn.mcpButtonClicked", (webview: any) => {
 			const openMcp = (instance?: WebviewProvider) =>
 				instance?.controller.postMessageToWebview({
 					type: "action",
@@ -108,11 +110,11 @@ export function activate(context: vscode.ExtensionContext) {
 		await vscode.commands.executeCommand("workbench.action.lockEditorGroup")
 	}
 
-	context.subscriptions.push(vscode.commands.registerCommand("cline.popoutButtonClicked", openClineInNewTab))
-	context.subscriptions.push(vscode.commands.registerCommand("cline.openInNewTab", openClineInNewTab))
+	context.subscriptions.push(vscode.commands.registerCommand("cline-cn.popoutButtonClicked", openClineInNewTab))
+	context.subscriptions.push(vscode.commands.registerCommand("cline-cn.openInNewTab", openClineInNewTab))
 
 	context.subscriptions.push(
-		vscode.commands.registerCommand("cline.settingsButtonClicked", (webview: any) => {
+		vscode.commands.registerCommand("cline-cn.settingsButtonClicked", (webview: any) => {
 			WebviewProvider.getAllInstances().forEach((instance) => {
 				const openSettings = async (instance?: WebviewProvider) => {
 					instance?.controller.postMessageToWebview({
@@ -131,7 +133,7 @@ export function activate(context: vscode.ExtensionContext) {
 	)
 
 	context.subscriptions.push(
-		vscode.commands.registerCommand("cline.historyButtonClicked", (webview: any) => {
+		vscode.commands.registerCommand("cline-cn.historyButtonClicked", (webview: any) => {
 			WebviewProvider.getAllInstances().forEach((instance) => {
 				const openHistory = async (instance?: WebviewProvider) => {
 					instance?.controller.postMessageToWebview({
@@ -150,7 +152,7 @@ export function activate(context: vscode.ExtensionContext) {
 	)
 
 	context.subscriptions.push(
-		vscode.commands.registerCommand("cline.accountButtonClicked", (webview: any) => {
+		vscode.commands.registerCommand("cline-cn.accountButtonClicked", (webview: any) => {
 			WebviewProvider.getAllInstances().forEach((instance) => {
 				const openAccount = async (instance?: WebviewProvider) => {
 					instance?.controller.postMessageToWebview({
@@ -165,6 +167,14 @@ export function activate(context: vscode.ExtensionContext) {
 					WebviewProvider.getTabInstances().forEach(openAccount)
 				}
 			})
+		}),
+		vscode.commands.registerCommand("cline-cn.openDocumentation", (webview: any) => {
+			if (webview) {
+				webview.webview.postMessage({
+					type: "action",
+					action: "openDocumentation",
+				})
+			}
 		}),
 	)
 
@@ -247,7 +257,7 @@ export function activate(context: vscode.ExtensionContext) {
 	}
 
 	context.subscriptions.push(
-		vscode.commands.registerCommand("cline.addToChat", async (range?: vscode.Range, diagnostics?: vscode.Diagnostic[]) => {
+		vscode.commands.registerCommand("cline-cn.addToChat", async (range?: vscode.Range, diagnostics?: vscode.Diagnostic[]) => {
 			const editor = vscode.window.activeTextEditor
 			if (!editor) {
 				return
@@ -277,7 +287,7 @@ export function activate(context: vscode.ExtensionContext) {
 	)
 
 	context.subscriptions.push(
-		vscode.commands.registerCommand("cline.addTerminalOutputToChat", async () => {
+		vscode.commands.registerCommand("cline-cn.addTerminalOutputToChat", async () => {
 			const terminal = vscode.window.activeTerminal
 			if (!terminal) {
 				return
@@ -349,14 +359,14 @@ export function activate(context: vscode.ExtensionContext) {
 
 					const addAction = new vscode.CodeAction("Add to Cline", vscode.CodeActionKind.QuickFix)
 					addAction.command = {
-						command: "cline.addToChat",
+						command: "cline-cn.addToChat",
 						title: "Add to Cline",
 						arguments: [expandedRange, context.diagnostics],
 					}
 
 					const fixAction = new vscode.CodeAction("Fix with Cline", vscode.CodeActionKind.QuickFix)
 					fixAction.command = {
-						command: "cline.fixWithCline",
+						command: "cline-cn.fixWithCline",
 						title: "Fix with Cline",
 						arguments: [expandedRange, context.diagnostics],
 					}
@@ -377,7 +387,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	// Register the command handler
 	context.subscriptions.push(
-		vscode.commands.registerCommand("cline.fixWithCline", async (range: vscode.Range, diagnostics: any[]) => {
+		vscode.commands.registerCommand("cline-cn.fixWithCline", async (range: vscode.Range, diagnostics: any[]) => {
 			const editor = vscode.window.activeTextEditor
 			if (!editor) {
 				return
@@ -396,20 +406,24 @@ export function activate(context: vscode.ExtensionContext) {
 	return createClineAPI(outputChannel, sidebarWebview.controller)
 }
 
-// This method is called when your extension is deactivated
-export function deactivate() {
-	telemetryService.shutdown()
-	Logger.log("Cline extension deactivated")
-}
-
 // TODO: Find a solution for automatically removing DEV related content from production builds.
 //  This type of code is fine in production to keep. We just will want to remove it from production builds
 //  to bring down built asset sizes.
 //
 // This is a workaround to reload the extension when the source code changes
 // since vscode doesn't support hot reload for extensions
-const { IS_DEV, DEV_WORKSPACE_FOLDER } = process.env
+const { IS_DEV, DEV_WORKSPACE_FOLDER, IS_TEST } = process.env
 
+// This method is called when your extension is deactivated
+export function deactivate() {
+	// Shutdown the test server if it exists
+	shutdownTestServer()
+
+	telemetryService.shutdown()
+	Logger.log("Cline extension deactivated")
+}
+
+// Set up development mode file watcher
 if (IS_DEV && IS_DEV !== "false") {
 	assert(DEV_WORKSPACE_FOLDER, "DEV_WORKSPACE_FOLDER must be set in development")
 	const watcher = vscode.workspace.createFileSystemWatcher(new vscode.RelativePattern(DEV_WORKSPACE_FOLDER, "src/**/*"))
@@ -419,4 +433,9 @@ if (IS_DEV && IS_DEV !== "false") {
 
 		vscode.commands.executeCommand("workbench.action.reloadWindow")
 	})
+}
+
+// Set up test server if in test mode
+if (IS_TEST && IS_TEST === "true") {
+	createTestServer()
 }

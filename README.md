@@ -1,12 +1,95 @@
-<div align="center"><sub>
-English | <a href="https://github.com/cline/cline/blob/main/locales/es/README.md" target="_blank">Español</a> | <a href="https://github.com/cline/cline/blob/main/locales/de/README.md" target="_blank">Deutsch</a> | <a href="https://github.com/cline/cline/blob/main/locales/ja/README.md" target="_blank">日本語</a> | <a href="https://github.com/cline/cline/blob/main/locales/zh-cn/README.md" target="_blank">简体中文</a> | <a href="https://github.com/cline/cline/blob/main/locales/zh-tw/README.md" target="_blank">繁體中文</a> | <a href="https://github.com/cline/cline/blob/main/locales/ko/README.md" target="_blank">한국어</a>
-</sub></div>
+# Cline-cn 中文版本 (盛世中华版本) 🌏
 
-# Cline – \#1 on OpenRouter
-
+> 🎉 截止到2025.04.11，Cline-cn 在VS Code插件市场的下载量突破100啦！
+2025年4月11日 - 发布 3.10.1
+ -修复MCP服务器安装不能跳转到聊天
+ -增加硅基流动，豆包模型
 <p align="center">
-  <img src="https://media.githubusercontent.com/media/cline/cline/main/assets/docs/demo.gif" width="100%" />
+
+[![Version](https://img.shields.io/visual-studio-marketplace/v/617694668.cline-cn)](https://marketplace.visualstudio.com/items?itemName=617694668.cline-cn)
+[![字节Trae扩展安装教程](https://img.shields.io/badge/字节Trae扩展安装-阿里云盘-blue)](https://www.alipan.com/s/TWqXrtFqqRa)
+[![离线下载助手](https://img.shields.io/badge/离线下载助手-阿里云盘-orange)](https://www.alipan.com/s/ZeCnNGQrQad)
+[![插件离线下载教程](https://img.shields.io/badge/插件离线下载教程-阿里云盘-green)](https://www.alipan.com/s/1aEUaHuyW6P)
+
 </p>
+
+## 项目地址
+https://github.com/dxdw2021/cline
+欢迎大家star，fork，提出issue，贡献代码，一起完善这个项目。
+
+## 文档地址(包括使用方法，MCP知识，常见问题解答等)
+https://hybridtalentcomputing.gitbook.io/cline-chinese-doc/
+
+## 功能展示
+
+<video width="100%" controls src="https://github.com/user-attachments/assets/89b51f15-d368-4af7-983e-816e52b7fdbf" type="video/mp4"></video>
+> 演示视频使用 DeepSeek-R1-Distill-Qwen-14B 模型，展示了 Cline 中文汉化版的主要功能和使用效果，视频没有加速，推理速度快到飞起。
+
+
+## 免费白嫖API入口
+> 日常开发时，我使用的是某基某动的白嫖额度的模型API，如果您尚未注册，
+1.欢迎通过我的邀请链接： [硅基流动https://cloud.siliconflow.cn/i/HUTeVyQ9](https://cloud.siliconflow.cn/i/HUTeVyQ9)，或者注册的时候填写邀请码：HUTeVyQ9，注册后双方均可获得2000万tokens的免费额度。
+2.第2选择:使用国外的AI路由器：[OpenRouter](https://openrouter.ai)，注册后使用free，后缀的API，即可免费使用。如下图:
+![OpenRouter免费模型截图](User%20Tutorials/png/OpenRouter.png)
+![OpenRouter免费模型截图](https://github.com/user-attachments/assets/52ce142c-925f-4c6c-a523-cdb450e0c619)
+
+## 安装使用
+Cline-Chinese已发布到VSCode插件市场，欢迎感兴趣的小伙伴们下载体验。
+
+## 简介
+
+这个项目是基于 [Cline](https://github.com/cline/cline) 的汉化版本。旨在优化由于英文 prompt 导致 Cline 在中文输入下+国产大模型（如：deepseek）表现不佳的问题, 并提供更符合中文用户习惯的UI界面和功能。目前已测试[DeepSeek-R1/DeepSeek-V3](https://github.com/deepseek-ai/DeepSeek-R1)工作良好。
+
+日常使用cline等编程助手时发现使用某些模型推理速度较慢（如deepseek-R1, Claude-3.5-Sonnet），这个项目优先尝试在中文输入下，对轻量化LLM进行实验（如Deepseek-R1-Distill-Qwen-7B/14B），优化中文prompt, 以提升推理速度，大大减少等待的时间。
+
+> **🚀 重要提示：经过测试，3.10.1版本下，DeepSeek-R1-Distill-Qwen-14B 模型工作良好，推理速度极快，强烈推荐尝试！**
+
+## 背景
+
+本人是一名AI从业者+爱好者，在使用Cline时，发现Cline的UI界面和提示词均为英文，使用中文输入时，有时会出现奇奇怪怪的输出，影响体验。因此，决定自己动手，汉化Cline。
+另外，秉着学习的态度，未来将着手修改Cline的核心代码，增加新的功能，以提升体验。
+
+## 版本说明
+## [3.10.1]
+ 2025年4月11日 - 发布 3.10.1
+ -修复MCP服务器安装不能跳转到聊天
+ -增加硅基流动，豆包模型
+ -添加硅基流动API入口
+ -添加CMD+'键盘快捷键以将选定的文本添加到Cline
+ - Cline现在使用“添加到Cline”快捷方式时自动将文本字段聚焦
+ -添加新的“创建新任务”工具以使Cline自动启动新任务！ 
+ -修复美人鱼图问题
+ -修复双子座提供商的成本计算以考虑新的分层定价结构
+
+## [3.10.0]
+ -添加设置以使浏览器工具通过远程调试，启用基于会话的浏览。取代与您的真实浏览器状态相关的无会话铬，解锁调试和生产力工作流程。
+ -添加新的auto-approve选项以批准_all_命令（以您自己的风险使用！）
+ -在聊天区域中添加模态以更轻松地启用或禁用MCP服务器
+ -将文件/文件夹的拖放添加到Cline聊天中（感谢Eljapi！）
+ -添加提示缓存for litellm + claude（感谢SAMMCJ！）
+ -添加改进的上下文管理
+ -修复MCP Auto批准切换问题与设置不同步
+
+## [3.9.2]
+
+ -为Cline提供商添加推荐的型号
+ -添加能够检测用户何时手动编辑文件的能力，以便Cline知道重新阅读，从而减少了diff编辑错误
+ -添加改进以提及搜索更快的搜索速度
+ -将评分逻辑添加到文件提及以根据相关性进行排序和Exlcude结果
+ -添加对BONDEDANCE DOUBAO的支持（谢谢Tunixer！）
+ -修复以防止重复BOM（感谢BAMPS53！）
+
+
+## 2024.03.30 [3.8.4]
+-   2025年3月30日 - 发布 中华人民共和国中文版本 3.8.4
+-   添加 Sambanova Deepseek-V3-0324
+-   为 LiteLLM provider 添加成本计算支持
+-   修复 Cline 在没有 response 参数时使用 plan_mode_response 的错误
+
+
+## 加入社群
+
+感兴趣的可以扫码加入微信社群，一起交流学习AI：
 
 <div align="center">
 <table>
@@ -24,7 +107,7 @@ English | <a href="https://github.com/cline/cline/blob/main/locales/es/README.md
 <a href="https://github.com/cline/cline/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop" target="_blank"><strong>Feature Requests</strong></a>
 </td>
 <td align="center">
-<a href="https://docs.cline.bot/getting-started/for-new-coders" target="_blank"><strong>Getting Started</strong></a>
+<a href="https://docs.cline-cn.bot/getting-started/for-new-coders" target="_blank"><strong>Getting Started</strong></a>
 </td>
 </tbody>
 </table>
@@ -139,14 +222,14 @@ For example, when working with a local web server, you can use 'Restore Workspac
 
 ## Contributing
 
-To contribute to the project, start with our [Contributing Guide](CONTRIBUTING.md) to learn the basics. You can also join our [Discord](https://discord.gg/cline) to chat with other contributors in the `#contributors` channel. If you're looking for full-time work, check out our open positions on our [careers page](https://cline.bot/join-us)!
+To contribute to the project, start with our [Contributing Guide](CONTRIBUTING.md) to learn the basics. You can also join our [Discord](https://discord.gg/cline) to chat with other contributors in the `#contributors` channel. If you're looking for full-time work, check out our open positions on our [careers page](https://cline-cn.bot/join-us)!
 
 <details>
 <summary>Local Development Instructions</summary>
 
 1. Clone the repository _(Requires [git-lfs](https://git-lfs.com/))_:
     ```bash
-    git clone https://github.com/cline/cline.git
+    git clone https://github.com/cline/cline-cn.git
     ```
 2. Open the project in VSCode:
     ```bash

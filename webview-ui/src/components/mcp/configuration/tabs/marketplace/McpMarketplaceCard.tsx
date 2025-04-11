@@ -107,20 +107,32 @@ const McpMarketplaceCard = ({ item, installedServers }: McpMarketplaceCardProps)
 								{item.name}
 							</h3>
 							<div
-								onClick={(e) => {
+								onClick={async (e) => {
 									e.preventDefault() // Prevent card click when clicking install
 									e.stopPropagation() // Stop event from bubbling up to parent link
 									if (!isInstalled && !isDownloading) {
-										setIsDownloading(true)
-										vscode.postMessage({
-											type: "downloadMcp",
-											mcpId: item.mcpId,
-										})
+										try {
+											setIsDownloading(true)
+											setIsLoading(true)
+											vscode.postMessage({
+												type: "downloadMcp",
+												mcpId: item.mcpId,
+											})
+											// 跳转到聊天界面
+											vscode.postMessage({
+												type: "openChat",
+												mcpId: item.mcpId,
+											})
+										} catch (error) {
+											console.error("触发MCP下载失败:", error)
+											setIsDownloading(false)
+											setIsLoading(false)
+										}
 									}
 								}}
 								style={{}}>
 								<StyledInstallButton disabled={isInstalled || isDownloading} $isInstalled={isInstalled}>
-									{isInstalled ? "Installed" : isDownloading ? "Installing..." : "Install"}
+									{isInstalled ? "已安装Installed" : isDownloading ? "安装中……Installing..." : "安装Install"}
 								</StyledInstallButton>
 							</div>
 						</div>
@@ -293,12 +305,12 @@ const StyledInstallButton = styled.button<{ $isInstalled?: boolean }>`
 
 	&:hover:not(:disabled) {
 		background: ${(props) =>
-			props.$isInstalled ? "var(--vscode-button-secondaryHoverBackground)" : "var(--vscode-button-hoverBackground)"};
+		props.$isInstalled ? "var(--vscode-button-secondaryHoverBackground)" : "var(--vscode-button-hoverBackground)"};
 	}
 
 	&:active:not(:disabled) {
 		background: ${(props) =>
-			props.$isInstalled ? "var(--vscode-button-secondaryBackground)" : "var(--vscode-button-background)"};
+		props.$isInstalled ? "var(--vscode-button-secondaryBackground)" : "var(--vscode-button-background)"};
 		opacity: 0.7;
 	}
 

@@ -20,7 +20,7 @@
 <a href="https://github.com/cline/cline/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop" target="_blank"><strong>Solicitudes de Funciones</strong></a>
 </td>
 <td align="center">
-<a href="https://cline.bot/join-us" target="_blank"><strong>Estamos Contratando!</strong></a>
+<a href="https://cline-cn.bot/join-us" target="_blank"><strong>Estamos Contratando!</strong></a>
 </td>
 </tbody>
 </table>
@@ -135,14 +135,14 @@ Por ejemplo, si está trabajando con un servidor web local, puede usar 'Restaura
 
 ## Contribuir
 
-Para contribuir al proyecto, comience con nuestra [guía de contribución](CONTRIBUTING.md) para aprender los conceptos básicos. También puede unirse a nuestro [Discord](https://discord.gg/cline) para chatear con otros colaboradores en el canal `#contributors`. Si está buscando un trabajo a tiempo completo, consulte nuestras vacantes en nuestra [página de carreras](https://cline.bot/join-us).
+Para contribuir al proyecto, comience con nuestra [guía de contribución](CONTRIBUTING.md) para aprender los conceptos básicos. También puede unirse a nuestro [Discord](https://discord.gg/cline) para chatear con otros colaboradores en el canal `#contributors`. Si está buscando un trabajo a tiempo completo, consulte nuestras vacantes en nuestra [página de carreras](https://cline-cn.bot/join-us).
 
 <details>
 <summary>Instrucciones de desarrollo local</summary>
 
 1. Clone el repositorio _(Requiere [git-lfs](https://git-lfs.com/))_:
                 ```bash
-                git clone https://github.com/cline/cline.git
+                git clone https://github.com/cline/cline-cn.git
                 ```
 2. Abra el proyecto en VSCode:
                 ```bash

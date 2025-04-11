@@ -24,13 +24,13 @@ describe("Filesystem Utilities", () => {
 			await fs.writeFile(testFile, "test")
 
 			const exists = await fileExistsAtPath(testFile)
-			exists.should.be.true()
+			exists.should.equal(true)
 		})
 
 		it("should return false for non-existing paths", async () => {
 			const nonExistentPath = path.join(tmpDir, "does-not-exist.txt")
 			const exists = await fileExistsAtPath(nonExistentPath)
-			exists.should.be.false()
+			exists.should.equal(false)
 		})
 	})
 
@@ -43,7 +43,7 @@ describe("Filesystem Utilities", () => {
 			createdDirs.length.should.be.greaterThan(0)
 			for (const dir of createdDirs) {
 				const exists = await fileExistsAtPath(dir)
-				exists.should.be.true()
+				exists.should.equal(true)
 			}
 		})
 
@@ -65,27 +65,27 @@ describe("Filesystem Utilities", () => {
 			// Should create only the necessary directory
 			createdDirs.length.should.equal(1)
 			const exists = await fileExistsAtPath(path.join(tmpDir, "b"))
-			exists.should.be.true()
+			exists.should.equal(true)
 		})
 	})
 	describe("isDirectory", () => {
 		it("should return true for directories", async () => {
 			await fs.mkdir(tmpDir, { recursive: true })
 			const isDir = await isDirectory(tmpDir)
-			isDir.should.be.true()
+			isDir.should.equal(true)
 		})
 
 		it("should return false for files", async () => {
 			const testFile = path.join(tmpDir, "test.txt")
 			await fs.writeFile(testFile, "test")
 			const isDir = await isDirectory(testFile)
-			isDir.should.be.false()
+			isDir.should.equal(false)
 		})
 
 		it("should return false for non-existent paths", async () => {
 			const nonExistentPath = path.join(tmpDir, "does-not-exist")
 			const isDir = await isDirectory(nonExistentPath)
-			isDir.should.be.false()
+			isDir.should.equal(false)
 		})
 	})
 })

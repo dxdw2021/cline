@@ -2,7 +2,7 @@ import { VSCodeButton, VSCodeCheckbox, VSCodeDropdown, VSCodeOption } from "@vsc
 import React, { useEffect, useRef, useState } from "react"
 import { useClickAway } from "react-use"
 import styled from "styled-components"
-import { BROWSER_VIEWPORT_PRESETS } from "@shared/BrowserSettings"
+import { BROWSER_VIEWPORT_PRESETS, BrowserSettings } from "@shared/BrowserSettings"
 import { useExtensionState } from "@/context/ExtensionStateContext"
 import { vscode } from "@/utils/vscode"
 import { CODE_BLOCK_BG_COLOR } from "../common/CodeBlock"
@@ -13,9 +13,71 @@ interface ConnectionInfo {
 	host?: string
 }
 
+const SettingsMenu = styled.div<{ maxWidth?: number }>`
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: ${CODE_BLOCK_BG_COLOR};
+  border: 1px solid var(--vscode-widget-border);
+  border-radius: 2px;
+  padding: 8px;
+  z-index: 100;
+  max-width: ${props => props.maxWidth ? `${props.maxWidth}px` : 'none'};
+`
+
+const SettingsGroup = styled.div`
+  margin-bottom: 16px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+`
+
+const SettingsDescription = styled.div`
+  font-size: 12px;
+  color: var(--vscode-descriptionForeground);
+  margin-top: 4px;
+`
+
+const ConnectionInfoPopover = styled.div`
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: ${CODE_BLOCK_BG_COLOR};
+  border: 1px solid var(--vscode-widget-border);
+  border-radius: 2px;
+  padding: 12px;
+  z-index: 100;
+  min-width: 200px;
+`
+
+const ConnectionInfoRow = styled.div`
+  display: flex;
+  margin-bottom: 8px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+`
+
+const ConnectionInfoLabel = styled.span`
+  color: var(--vscode-descriptionForeground);
+  margin-right: 8px;
+`
+
+const ConnectionInfoValue = styled.span`
+  color: var(--vscode-foreground);
+`
+
 export const BrowserSettingsMenu = () => {
 	const { browserSettings } = useExtensionState()
 	const containerRef = useRef<HTMLDivElement>(null)
+	const menuRef = useRef<HTMLDivElement>(null)
+	const [showMenu, setShowMenu] = useState(false)
+	const [maxWidth, setMaxWidth] = useState<number | undefined>(undefined)
+
+	const handleMouseEnter = () => setShowMenu(true)
+	const handleMouseLeave = () => setShowMenu(false)
+
+
 	const [showInfoPopover, setShowInfoPopover] = useState(false)
 	const [connectionInfo, setConnectionInfo] = useState<ConnectionInfo>({
 		isConnected: false,
@@ -181,6 +243,63 @@ export const BrowserSettingsMenu = () => {
 			<VSCodeButton appearance="icon" onClick={openBrowserSettings}>
 				<i className="codicon codicon-settings-gear" style={{ fontSize: "14.5px" }} />
 			</VSCodeButton>
+			{showMenu && (
+				<SettingsMenu ref={menuRef} maxWidth={maxWidth} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+
+
+					{/* <SettingsGroup>
+						<SettingsHeader>Chrome Executable</SettingsHeader>
+						<VSCodeDropdown
+							style={{ width: "100%", marginBottom: "8px" }}
+							value={browserSettings.chromeType}
+							onChange={(e) =>
+								updateChromeType((e.target as HTMLSelectElement).value as BrowserSettings["chromeType"])
+							}>
+							<VSCodeOption value="chromium">Chromium (Auto-downloaded)</VSCodeOption>
+							<VSCodeOption value="system">System Chrome</VSCodeOption>
+						</VSCodeDropdown>
+						<SettingsDescription>
+							{browserSettings.chromeType === "system" ? (
+								<>
+									Cline will use your personal browser. You must{" "}
+									<VSCodeLink
+										href="#"
+										style={{ fontSize: "inherit" }}
+										onClick={(e: React.MouseEvent) => {
+											e.preventDefault()
+											relaunchChromeDebugMode()
+										}}>
+										relaunch Chrome in debug mode
+									</VSCodeLink>{" "}
+									to use this setting.
+								</>
+							) : (
+								"Cline will use a Chromium browser bundled with the extension."
+							)}
+						</SettingsDescription>
+					</SettingsGroup> */}
+
+					<SettingsGroup>
+						<SettingsHeader>视口大小</SettingsHeader>
+						<VSCodeDropdown
+							style={{ width: "100%" }}
+							value={
+								Object.entries(BROWSER_VIEWPORT_PRESETS).find(
+									([_, size]) =>
+										size.width === browserSettings.viewport.width &&
+										size.height === browserSettings.viewport.height,
+								)?.[0]
+							}
+							onChange={(event) => handleViewportChange(event as Event)}>
+							{Object.entries(BROWSER_VIEWPORT_PRESETS).map(([name]) => (
+								<VSCodeOption key={name} value={name}>
+									{name}
+								</VSCodeOption>
+							))}
+						</VSCodeDropdown>
+					</SettingsGroup>
+				</SettingsMenu>
+			)}
 		</div>
 	)
 }
@@ -215,5 +334,20 @@ const InfoValue = styled.div`
 	flex: 1;
 	word-break: break-word;
 `
+
+const SettingsHeader = styled.h4`
+	margin: 0 0 8px 0;
+	font-size: 13px;
+	font-weight: 600;
+`
+
+const handleViewportChange = (event: Event) => {
+	const target = event.target as HTMLSelectElement
+	const selectedPreset = BROWSER_VIEWPORT_PRESETS[target.value as keyof typeof BROWSER_VIEWPORT_PRESETS]
+	vscode.postMessage({
+		type: "browserSettings",
+		browserSettings: { viewport: selectedPreset }
+	})
+}
 
 export default BrowserSettingsMenu

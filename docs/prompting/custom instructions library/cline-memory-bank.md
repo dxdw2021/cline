@@ -34,7 +34,7 @@
     -   Start chats with "follow your custom instructions" (you only need to say this once at the beginning of the first chat).
     -   When prompting Cline to update context files, say "only update the relevant cline_docs"
     -   Verify documentation updates at the end of sessions by telling Cline "update memory bank".
-    -   Update memory bank at ~2 million tokens and end the session.
+    -   Update memory bank at ~2 每一百万个令牌 and end the session.
 
 ### 3. Author & Contributors
 

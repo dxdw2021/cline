@@ -3,7 +3,7 @@ import { Controller } from "../../core/controller"
 import type { BalanceResponse, PaymentTransaction, UsageTransaction } from "../../shared/ClineAccount"
 
 export class ClineAccountService {
-	private readonly baseUrl = "https://api.cline.bot/v1"
+	private readonly baseUrl = "https://api.cline-cn.bot/v1"
 	private controllerRef: WeakRef<Controller>
 
 	constructor(controller: Controller) {

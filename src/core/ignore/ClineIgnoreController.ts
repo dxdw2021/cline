@@ -8,7 +8,7 @@ export const LOCK_TEXT_SYMBOL = "\u{1F512}"
 
 /**
  * Controls LLM access to files by enforcing ignore patterns.
- * Designed to be instantiated once in Cline.ts and passed to file manipulation services.
+ * Designed to be instantiated once in cline-cn.ts and passed to file manipulation services.
  * Uses the 'ignore' library to support standard .gitignore syntax in .clineignore files.
  */
 export class ClineIgnoreController {

@@ -155,7 +155,7 @@ const TaskHeader: React.FC<TaskHeaderProps> = ({
 						}}>
 						<span style={{ fontWeight: "bold" }}>
 							{/* {windowWidth > 280 && windowWidth < 310 ? "Context:" : "Context Window:"} */}
-							Context Window:
+							上下文窗口:
 						</span>
 					</div>
 					<div
@@ -251,7 +251,7 @@ const TaskHeader: React.FC<TaskHeaderProps> = ({
 								minWidth: 0, // This allows the div to shrink below its content size
 							}}>
 							<span style={{ fontWeight: "bold" }}>
-								Task
+								任务
 								{!isTaskExpanded && ":"}
 							</span>
 							{!isTaskExpanded && <span style={{ marginLeft: 4 }}>{highlightMentions(task.text, false)}</span>}
@@ -327,7 +327,7 @@ const TaskHeader: React.FC<TaskHeaderProps> = ({
 											backgroundColor: "var(--vscode-badge-background)",
 										}}
 										onClick={() => setIsTextExpanded(!isTextExpanded)}>
-										See more
+										查看更多
 									</div>
 								</div>
 							)}
@@ -342,7 +342,7 @@ const TaskHeader: React.FC<TaskHeaderProps> = ({
 									paddingRight: 2,
 								}}
 								onClick={() => setIsTextExpanded(!isTextExpanded)}>
-								See less
+								显示更少
 							</div>
 						)}
 						{task.images && task.images.length > 0 && <Thumbnails images={task.images} />}
@@ -366,7 +366,7 @@ const TaskHeader: React.FC<TaskHeaderProps> = ({
 										gap: "4px",
 										flexWrap: "wrap",
 									}}>
-									<span style={{ fontWeight: "bold" }}>Tokens:</span>
+									<span style={{ fontWeight: "bold" }}>令牌:</span>
 									<span
 										style={{
 											display: "flex",
@@ -416,7 +416,7 @@ const TaskHeader: React.FC<TaskHeaderProps> = ({
 											gap: "4px",
 											flexWrap: "wrap",
 										}}>
-										<span style={{ fontWeight: "bold" }}>Cache:</span>
+										<span style={{ fontWeight: "bold" }}>缓存:</span>
 										<span
 											style={{
 												display: "flex",
@@ -466,7 +466,7 @@ const TaskHeader: React.FC<TaskHeaderProps> = ({
 											alignItems: "center",
 											gap: "4px",
 										}}>
-										<span style={{ fontWeight: "bold" }}>API Cost:</span>
+										<span style={{ fontWeight: "bold" }}>API成本:</span>
 										<span>${totalCost?.toFixed(4)}</span>
 									</div>
 									<DeleteButton taskSize={formatSize(currentTaskItem?.size)} taskId={currentTaskItem?.id} />
@@ -511,7 +511,7 @@ const TaskHeader: React.FC<TaskHeaderProps> = ({
 														color: "inherit",
 														textDecoration: "underline",
 													}}>
-													See here for instructions.
+													请参阅此处以获取说明.
 												</a>
 											</>
 										)}

@@ -80,9 +80,9 @@ const AddRemoteServerForm = ({ onServerAdded }: { onServerAdded: () => void }) =
 	return (
 		<div className="p-4 px-5">
 			<div className="text-[var(--vscode-foreground)] mb-2">
-				Add a remote MCP server by providing a name and its URL endpoint. Learn more{" "}
+				通过提供名称和其URL端点添加一个远程MCP服务器。了解更多{" "}
 				<VSCodeLink href={LINKS.DOCUMENTATION.REMOTE_MCP_SERVER_DOCS} style={{ display: "inline" }}>
-					here.
+					点击这里here.
 				</VSCodeLink>
 			</div>
 
@@ -96,8 +96,8 @@ const AddRemoteServerForm = ({ onServerAdded }: { onServerAdded: () => void }) =
 						}}
 						disabled={isSubmitting}
 						className="w-full"
-						placeholder="mcp-server">
-						Server Name
+						placeholder="mcp-server，MCP 服务器">
+						服务器名称
 					</VSCodeTextField>
 				</div>
 
@@ -111,7 +111,7 @@ const AddRemoteServerForm = ({ onServerAdded }: { onServerAdded: () => void }) =
 						disabled={isSubmitting}
 						placeholder="https://example.com/mcp-server"
 						className="w-full mr-4">
-						Server URL
+						服务器网址
 					</VSCodeTextField>
 				</div>
 

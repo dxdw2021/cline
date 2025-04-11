@@ -49,10 +49,10 @@ export const FirebaseAuthProvider: React.FC<{ children: React.ReactNode }> = ({ 
 				type: "authStateChanged",
 				user: user
 					? {
-							displayName: user.displayName,
-							email: user.email,
-							photoURL: user.photoURL,
-						}
+						displayName: user.displayName,
+						email: user.email,
+						photoURL: user.photoURL,
+					}
 					: null,
 			})
 		})

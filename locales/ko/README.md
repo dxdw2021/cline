@@ -20,7 +20,7 @@
 <a href="https://github.com/cline/cline/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop" target="_blank"><strong>기능 요청</strong></a>
 </td>
 <td align="center">
-<a href="https://cline.bot/join-us" target="_blank"><strong>채용 정보</strong></a>
+<a href="https://cline-cn.bot/join-us" target="_blank"><strong>채용 정보</strong></a>
 </td>
 </tbody>
 </table>
@@ -122,14 +122,14 @@ Cline이 작업을 진행하는 동안 확장 프로그램은 각 단계에서 �
 
 ## 기여
 
-프로젝트에 기여하려면, [기여 가이드](CONTRIBUTING.md)에서 기본 사항을 익히세요. 또한, [Discord](https://discord.gg/cline)에 참여하여 `#contributors` 채널에서 다른 기여자들과 이야기할 수 있습니다. 풀타임 직업을 찾고 있다면, [채용 페이지](https://cline.bot/join-us)에서 열려있는 포지션을 확인하세요.
+프로젝트에 기여하려면, [기여 가이드](CONTRIBUTING.md)에서 기본 사항을 익히세요. 또한, [Discord](https://discord.gg/cline)에 참여하여 `#contributors` 채널에서 다른 기여자들과 이야기할 수 있습니다. 풀타임 직업을 찾고 있다면, [채용 페이지](https://cline-cn.bot/join-us)에서 열려있는 포지션을 확인하세요.
 
 <details>
 <summary>로컬 개발 방법</summary>
 
 1. 리포지토리를 클론합니다 _(Requires [git-lfs](https://git-lfs.com/))_：
         ```bash
-        git clone https://github.com/cline/cline.git
+        git clone https://github.com/cline/cline-cn.git
         ```
 2. 프로젝트를 VSCode에서 엽니다：
         ```bash

@@ -178,8 +178,8 @@ const BrowserSessionRow = memo((props: BrowserSessionRowProps) => {
 					nextAction:
 						nextActionMessages.length > 0
 							? {
-									messages: [...nextActionMessages],
-								}
+								messages: [...nextActionMessages],
+							}
 							: undefined,
 				})
 
@@ -204,8 +204,8 @@ const BrowserSessionRow = memo((props: BrowserSessionRowProps) => {
 				nextAction:
 					nextActionMessages.length > 0
 						? {
-								messages: [...nextActionMessages],
-							}
+							messages: [...nextActionMessages],
+						}
 						: undefined,
 			})
 		}
@@ -264,22 +264,30 @@ const BrowserSessionRow = memo((props: BrowserSessionRowProps) => {
 	// Use latest state if we're on the last page and don't have a state yet
 	const displayState = isLastPage
 		? {
-				url: currentPage?.currentState.url || latestState.url || initialUrl,
-				mousePosition: currentPage?.currentState.mousePosition || latestState.mousePosition || defaultMousePosition,
-				consoleLogs: currentPage?.currentState.consoleLogs,
-				screenshot: currentPage?.currentState.screenshot || latestState.screenshot,
-			}
+			url: currentPage?.currentState.url || latestState.url || initialUrl,
+			mousePosition: currentPage?.currentState.mousePosition || latestState.mousePosition || defaultMousePosition,
+			consoleLogs: currentPage?.currentState.consoleLogs,
+			screenshot: currentPage?.currentState.screenshot || latestState.screenshot,
+		}
 		: {
-				url: currentPage?.currentState.url || initialUrl,
-				mousePosition: currentPage?.currentState.mousePosition || defaultMousePosition,
-				consoleLogs: currentPage?.currentState.consoleLogs,
-				screenshot: currentPage?.currentState.screenshot,
-			}
-
+			url: currentPage?.currentState.url || initialUrl,
+			mousePosition: currentPage?.currentState.mousePosition || defaultMousePosition,
+			consoleLogs: currentPage?.currentState.consoleLogs,
+			screenshot: currentPage?.currentState.screenshot,
+		}
+	const [rowIndex, setRowIndex] = useState<number>(0)
+	const [hoveredRowIndex, setHoveredRowIndex] = useState<number | null>(null)
 	const [actionContent, { height: actionHeight }] = useSize(
 		<div>
 			{currentPage?.nextAction?.messages.map((message) => (
-				<BrowserSessionRowContent key={message.ts} {...props} message={message} setMaxActionHeight={setMaxActionHeight} />
+				<BrowserSessionRowContent
+					key={message.ts}
+					{...props}
+					message={message}
+					setMaxActionHeight={setMaxActionHeight}
+					rowIndex={rowIndex}
+					hoveredRowIndex={hoveredRowIndex}
+				/>
 			))}
 			{!isBrowsing && messages.some((m) => m.say === "browser_action_result") && currentPageIndex === 0 && (
 				<BrowserActionBox action={"launch"} text={initialUrl} />
@@ -473,6 +481,8 @@ const BrowserSessionRow = memo((props: BrowserSessionRowProps) => {
 interface BrowserSessionRowContentProps extends Omit<BrowserSessionRowProps, "messages"> {
 	message: ClineMessage
 	setMaxActionHeight: (height: number) => void
+	rowIndex: number
+	hoveredRowIndex: number | null
 }
 
 const BrowserSessionRowContent = ({
@@ -482,6 +492,8 @@ const BrowserSessionRowContent = ({
 	lastModifiedMessage,
 	isLast,
 	setMaxActionHeight,
+	rowIndex,
+	hoveredRowIndex,
 }: BrowserSessionRowContentProps) => {
 	if (message.ask === "browser_action_launch" || message.say === "browser_action_launch") {
 		return (
@@ -504,6 +516,8 @@ const BrowserSessionRowContent = ({
 					return (
 						<div style={chatRowContentContainerStyle}>
 							<ChatRowContent
+								rowIndex={rowIndex}
+								hoveredRowIndex={hoveredRowIndex}
 								message={message}
 								isExpanded={isExpanded(message.ts)}
 								onToggleExpand={() => {

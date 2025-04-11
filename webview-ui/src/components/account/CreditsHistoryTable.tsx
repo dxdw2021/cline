@@ -65,7 +65,7 @@ const CreditsHistoryTable = ({ isLoading, usageData, paymentsData }: CreditsHist
 									</VSCodeDataGrid>
 								) : (
 									<div className="flex justify-center items-center p-4">
-										<div className="text-[var(--vscode-descriptionForeground)]">No usage history</div>
+										<div className="text-[var(--vscode-descriptionForeground)]">没有用法历史</div>
 									</div>
 								)}
 							</>
@@ -99,7 +99,7 @@ const CreditsHistoryTable = ({ isLoading, usageData, paymentsData }: CreditsHist
 									</VSCodeDataGrid>
 								) : (
 									<div className="flex justify-center items-center p-4">
-										<div className="text-[var(--vscode-descriptionForeground)]">No payment history</div>
+										<div className="text-[var(--vscode-descriptionForeground)]">没有付款历史记录</div>
 									</div>
 								)}
 							</>

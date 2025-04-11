@@ -26,37 +26,52 @@ const WelcomeView = memo(() => {
 	}, [apiConfiguration])
 
 	return (
-		<div className="fixed inset-0 p-0 flex flex-col">
-			<div className="h-full px-5 overflow-auto">
-				<h2>Hi, I'm Cline</h2>
-				<div className="flex justify-center my-5">
-					<ClineLogoWhite className="size-16" />
+		<div
+			style={{
+				position: "fixed",
+				top: 0,
+				left: 0,
+				right: 0,
+				bottom: 0,
+				padding: "0 0px",
+				display: "flex",
+				flexDirection: "column",
+			}}>
+			<div
+				style={{
+					height: "100%",
+					padding: "0 10px",
+					overflow: "auto",
+				}}>
+				<h2>你好，我是Cline，中国人民共和国版本！</h2>
+				<div style={{ display: "flex", justifyContent: "center", margin: "60px 0" }}>
+					<ClineLogoWhite className="size-60" />
 				</div>
 				<p>
-					I can do all kinds of tasks thanks to breakthroughs in{" "}
-					<VSCodeLink href="https://www.anthropic.com/claude/sonnet" className="inline">
-						Claude 3.7 Sonnet's
-					</VSCodeLink>
-					agentic coding capabilities and access to tools that let me create & edit files, explore complex projects, use
-					a browser, and execute terminal commands <i>(with your permission, of course)</i>. I can even use MCP to
-					create new tools and extend my own capabilities.
+					得益于
+					{
+						<VSCodeLink href="https://www.anthropic.com/claude/sonnet" style={{ display: "inline" }}>
+							Claude 3.7 Sonnet
+						</VSCodeLink>
+					}
+					的突破性编码能力，我可以完成各种任务，包括创建和编辑文件、探索复杂项目、使用浏览器、执行终端命令
+					<i>(当然需要您的许可)</i>。我甚至可以使用MCP创建新工具来扩展自己的能力。
 				</p>
 
-				<p className="text-[var(--vscode-descriptionForeground)]">
-					Sign up for an account to get started for free, or use an API key that provides access to models like Claude
-					3.7 Sonnet.
+				<p style={{ color: "var(--vscode-descriptionForeground)" }}>
+					注册账号即可免费开始使用，或者使用API密钥来访问Claude 3.7 Sonnet等模型。
 				</p>
 
-				<VSCodeButton appearance="primary" onClick={handleLogin} className="w-full mt-1">
-					Get Started for Free
+				<VSCodeButton appearance="primary" onClick={handleLogin} style={{ width: "100%", marginTop: 4 }}>
+					免费开始使用
 				</VSCodeButton>
 
 				{!showApiOptions && (
 					<VSCodeButton
 						appearance="secondary"
 						onClick={() => setShowApiOptions(!showApiOptions)}
-						className="mt-2.5 w-full">
-						Use your own API key
+						style={{ marginTop: 10, width: "100%" }}>
+						使用自己的API密钥
 					</VSCodeButton>
 				)}
 
@@ -64,8 +79,8 @@ const WelcomeView = memo(() => {
 					{showApiOptions && (
 						<div>
 							<ApiOptions showModelOptions={false} />
-							<VSCodeButton onClick={handleSubmit} disabled={disableLetsGoButton} className="mt-0.75">
-								Let's go!
+							<VSCodeButton onClick={handleSubmit} disabled={disableLetsGoButton} style={{ marginTop: "3px" }}>
+								开始使用
 							</VSCodeButton>
 						</div>
 					)}

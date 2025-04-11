@@ -1,0 +1,20 @@
+[1mdiff --cc package.json[m
+[1mindex c8742ed4,fea117fc..00000000[m
+[1m--- a/package.json[m
+[1m+++ b/package.json[m
+[36m@@@ -1,8 -1,8 +1,15 @@@[m
+  {[m
+[32m++<<<<<<< HEAD[m
+[32m +	"name": "cline-cn",[m
+[32m +	"displayName": "Cline Chinese [最新中文版]",[m
+[32m +	"description": "Cline Chinese [最新中文版] IDE中的自主编程助手，能够在您的许可下创建/编辑文件、运行命令、使用浏览器等功能，逐步完成各项任务。",[m
+[32m +	"version": "3.8.4.6",[m
+[32m++=======[m
+[32m+ 	"name": "claude-dev",[m
+[32m+ 	"displayName": "Cline",[m
+[32m+ 	"description": "Autonomous coding agent right in your IDE, capable of creating/editing files, running commands, using the browser, and more with your permission every step of the way.",[m
+[32m+ 	"version": "3.10.1",[m
+[32m++>>>>>>> upstream/main[m
+  	"icon": "assets/icons/icon.png",[m
+  	"engines": {[m
+  		"vscode": "^1.84.0"[m

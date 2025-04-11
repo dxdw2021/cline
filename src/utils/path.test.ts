@@ -7,22 +7,22 @@ import { arePathsEqual, getReadablePath } from "./path"
 describe("Path Utilities", () => {
 	describe("arePathsEqual", () => {
 		it("should handle undefined paths", () => {
-			arePathsEqual(undefined, undefined).should.be.true()
-			arePathsEqual("foo", undefined).should.be.false()
-			arePathsEqual(undefined, "foo").should.be.false()
+			arePathsEqual(undefined, undefined).should.equal(true)
+			arePathsEqual("foo", undefined).should.equal(false)
+			arePathsEqual(undefined, "foo").should.equal(false)
 		})
 
 		it("should handle case sensitivity based on platform", () => {
 			if (process.platform === "win32") {
-				arePathsEqual("FOO/BAR", "foo/bar").should.be.true()
+				arePathsEqual("FOO/BAR", "foo/bar").should.equal(true)
 			} else {
-				arePathsEqual("FOO/BAR", "foo/bar").should.be.false()
+				arePathsEqual("FOO/BAR", "foo/bar").should.equal(false)
 			}
 		})
 
 		it("should handle normalized paths", () => {
-			arePathsEqual("/tmp/./dir", "/tmp/../tmp/dir").should.be.true()
-			arePathsEqual("/tmp/./dir", "/tmp/../dir").should.be.false()
+			arePathsEqual("/tmp/./dir", "/tmp/../tmp/dir").should.equal(true)
+			arePathsEqual("/tmp/./dir", "/tmp/../dir").should.equal(false)
 		})
 	})
 

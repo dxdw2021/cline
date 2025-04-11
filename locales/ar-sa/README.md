@@ -24,7 +24,7 @@
 <a href="https://github.com/cline/cline/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop" target="_blank"><strong>طلبات الميزات</strong></a>
 </td>
 <td align="center">
-<a href="https://docs.cline.bot/getting-started/getting-started-new-coders" target="_blank"><strong>البدء</strong></a>
+<a href="https://docs.cline-cn.bot/getting-started/getting-started-new-coders" target="_blank"><strong>البدء</strong></a>
 </td>
 </tbody>
 </table>
@@ -139,14 +139,14 @@
 
 ## المساهمة
 
-للمساهمة في المشروع، ابدأ بـ [دليل المساهمة](CONTRIBUTING.md) لتعلم الأساسيات. يمكنك أيضًا الانضمام إلى [خادم Discord](https://discord.gg/cline) للدردشة مع المساهمين الآخرين في قناة `#contributors`. إذا كنت تبحث عن عمل بدوام كامل، تحقق من الوظائف المتاحة على [صفحة التوظيف](https://cline.bot/join-us)!  
+للمساهمة في المشروع، ابدأ بـ [دليل المساهمة](CONTRIBUTING.md) لتعلم الأساسيات. يمكنك أيضًا الانضمام إلى [خادم Discord](https://discord.gg/cline) للدردشة مع المساهمين الآخرين في قناة `#contributors`. إذا كنت تبحث عن عمل بدوام كامل، تحقق من الوظائف المتاحة على [صفحة التوظيف](https://cline-cn.bot/join-us)!  
 
 <details>
 <summary>تعليمات التطوير المحلي</summary>
 
 1. استنساخ المستودع _(يتطلب [git-lfs](https://git-lfs.com/))_:
     ```bash
-    git clone https://github.com/cline/cline.git
+    git clone https://github.com/cline/cline-cn.git
     ```
 2. افتح المشروع في VSCode:
     ```bash

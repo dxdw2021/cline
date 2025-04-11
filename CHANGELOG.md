@@ -1,42 +1,45 @@
-# Changelog
+# 更新日志
+
+
 
 ## [3.10.1]
-
--   Add CMD+' keyboard shortcut to add selected text to Cline
--   Cline now auto focuses the text field when using 'Add to Cline' shortcut
--   Add new 'Create New Task' tool to let Cline start a new task autonomously! 
--   Fix Mermaid diagram issues
--   Fix Gemini provider cost calculation to take new tiered pricing structure into account
+2025年4月11日 - 发布 3.10.1
+ -修复MCP服务器安装不能跳转到聊天
+ -增加硅基流动，豆包模型
+ -添加CMD+'键盘快捷键以将选定的文本添加到Cline
+ - Cline现在使用“添加到Cline”快捷方式时自动将文本字段聚焦
+ -添加新的“创建新任务”工具以使Cline自动启动新任务！ 
+ -修复美人鱼图问题
+ -修复双子座提供商的成本计算以考虑新的分层定价结构
 
 ## [3.10.0]
-
--   Add setting to let browser tool use local Chrome via remote debugging, enabling session-based browsing. Replaces sessionless Chromium, unlocking debugging and productivity workflows tied to your real browser state.
--   Add new auto-approve option to approve _ALL_ commands (use at your own risk!)
--   Add modal in the chat area to more easily enable or disable MCP servers
--   Add drag and drop of file/folders into cline chat (Thanks eljapi!)
--   Add prompt caching for LiteLLM + Claude (Thanks sammcj!)
--   Add Improved context management
--   Fix MCP auto approve toggle issues being out of sync with settings
+ -添加设置以使浏览器工具通过远程调试，启用基于会话的浏览。取代与您的真实浏览器状态相关的无会话铬，解锁调试和生产力工作流程。
+ -添加新的auto-approve选项以批准_all_命令（以您自己的风险使用！）
+ -在聊天区域中添加模态以更轻松地启用或禁用MCP服务器
+ -将文件/文件夹的拖放添加到Cline聊天中（感谢Eljapi！）
+ -添加提示缓存for litellm + claude（感谢SAMMCJ！）
+ -添加改进的上下文管理
+ -修复MCP Auto批准切换问题与设置不同步
 
 ## [3.9.2]
 
--   Add recommended models for Cline provider
--   Add ability to detect when user edits files manually so Cline knows to re-read, leading to reduced diff edit errors
--   Add improvements to file mention searching for faster searching
--   Add scoring logic to file mentions to sort and exlcude results based on relevance
--   Add Support for Bytedance Doubao (Thanks Tunixer!)
--   Fix to prevent duplicate BOM (Thanks bamps53!)
+ -为Cline提供商添加推荐的型号
+ -添加能够检测用户何时手动编辑文件的能力，以便Cline知道重新阅读，从而减少了diff编辑错误
+ -添加改进以提及搜索更快的搜索速度
+ -将评分逻辑添加到文件提及以根据相关性进行排序和Exlcude结果
+ -添加对BONDEDANCE DOUBAO的支持（谢谢Tunixer！）
+ -修复以防止重复BOM（感谢BAMPS53！）
 
 ## [3.9.1]
 
--   Add Gemini 2.5 Pro Preview 03-25 to Google Provider
+ -将Gemini 2.5 Pro Preview 03-25添加到Google提供商
 
 ## [3.9.0]
 
--   Add Enable extended thinking for LiteLLM provider (Thanks @jorgegarciarey!)
--   Add a tab for configuring local MCP Servers
--   Fix issue with DeepSeek API provider token counting + context management
--   Fix issues with checkpoints hanging under certain conditions
+ -添加对Litellm提供商的扩展思维（感谢@jorgegarciarrey！）
+ -添加一个选项卡以配置本地MCP服务器
+ -修复DeepSeek API提供商令牌计数 +上下文管理的问题
+ -解决某些条件下悬挂检查点的问题
 
 ## [3.8.6]
 

@@ -160,7 +160,7 @@ export const CheckpointOverlay = ({ messageTs }: CheckpointOverlayProps) => {
 								}}>
 								Restore Workspace Only
 							</VSCodeButton>
-							<p>Restores your project's files to a snapshot taken at this point (task may become out of sync)</p>
+							<p>将您的项目的文件恢复为此时拍摄的快照（任务可能不同步）</p>
 						</RestoreOption>
 					</RestoreConfirmTooltip>
 				)}

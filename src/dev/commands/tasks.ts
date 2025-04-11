@@ -11,7 +11,7 @@ import { ClineMessage } from "../../shared/ExtensionMessage"
  */
 export function registerTaskCommands(context: vscode.ExtensionContext, controller: Controller): vscode.Disposable[] {
 	return [
-		vscode.commands.registerCommand("cline.dev.createTestTasks", async () => {
+		vscode.commands.registerCommand("cline-cn.dev.createTestTasks", async () => {
 			const count = await vscode.window.showInputBox({
 				title: "Test Tasks",
 				prompt: "How many test tasks to create?",
@@ -120,7 +120,7 @@ function createRealisticMessageSequence(baseTimestamp: number, taskPrompt: strin
 
 	// Create a realistic message sequence
 	const messages: ClineMessage[] = [
-		// Initial task message - uses "say" with "text" which is the format used in Cline.ts
+		// Initial task message - uses "say" with "text" which is the format used in cline-cn.ts
 		{
 			ts: baseTimestamp,
 			type: "say",

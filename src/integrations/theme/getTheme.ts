@@ -33,6 +33,7 @@ function parseThemeString(themeString: string | undefined): any {
 export async function getTheme() {
 	let currentTheme = undefined
 	const colorTheme = vscode.workspace.getConfiguration("workbench").get<string>("colorTheme") || "Default Dark Modern"
+	console.log("Loading theme:", colorTheme)
 
 	try {
 		for (let i = vscode.extensions.all.length - 1; i >= 0; i--) {
@@ -79,9 +80,15 @@ export async function getTheme() {
 
 		return converted
 	} catch (e) {
-		console.log("Error loading color theme: ", e)
+		console.error("Error loading color theme:", e)
+		// 在主题加载失败时使用默认暗色主题
+		return {
+			base: "vs-dark",
+			inherit: true,
+			rules: [],
+			colors: {}
+		}
 	}
-	return undefined
 }
 
 type JsonObject = { [key: string]: any }
@@ -137,5 +144,5 @@ export function mergeJson(
 }
 
 function getExtensionUri(): vscode.Uri {
-	return vscode.extensions.getExtension("saoudrizwan.claude-dev")!.extensionUri
+	return vscode.extensions.getExtension("saoudrizwan.cline-cn")!.extensionUri
 }

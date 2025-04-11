@@ -1,5 +1,5 @@
 import { describe, it } from "mocha"
-import "should"
+import should from "should"
 import { findLastIndex, findLast } from "./array"
 
 describe("Array Utilities", () => {
@@ -35,7 +35,7 @@ describe("Array Utilities", () => {
 				indices.push(index)
 				return false
 			})
-			indices.should.deepEqual([2, 1, 0]) // Should iterate in reverse
+			indices.should.eql([2, 1, 0]) // Should iterate in reverse
 		})
 
 		it("should provide array reference in predicate", () => {
@@ -75,7 +75,7 @@ describe("Array Utilities", () => {
 			]
 			const element = findLast(array, (x) => x.value === "a")
 			should(element).not.be.undefined()
-			element!.should.deepEqual({ id: 3, value: "a" })
+			element!.should.eql({ id: 3, value: "a" })
 		})
 
 		it("should provide correct index in predicate", () => {
@@ -85,7 +85,7 @@ describe("Array Utilities", () => {
 				indices.push(index)
 				return false
 			})
-			indices.should.deepEqual([2, 1, 0]) // Should iterate in reverse
+			indices.should.eql([2, 1, 0]) // Should iterate in reverse
 		})
 	})
 })
