@@ -4,7 +4,11 @@
 		"experimentalDecorators": true,
 		"forceConsistentCasingInFileNames": true,
 		"isolatedModules": true,
-		"lib": ["es2022", "esnext.disposable", "DOM"],
+		"lib": [
+			"es2022",
+			"esnext.disposable",
+			"DOM"
+		],
 		"module": "esnext",
 		"moduleResolution": "Bundler",
 		"noFallthroughCasesInSwitch": true,
@@ -21,16 +25,39 @@
 		"useUnknownInCatchVariables": false,
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["src/*"],
-			"@api/*": ["src/api/*"],
-			"@core/*": ["src/core/*"],
-			"@integrations/*": ["src/integrations/*"],
-			"@services/*": ["src/services/*"],
-			"@shared/*": ["src/shared/*"],
-			"@utils/*": ["src/utils/*"],
-			"@packages/*": ["src/packages/*"]
+			"@/*": [
+				"src/*"
+			],
+			"@api/*": [
+				"src/api/*"
+			],
+			"@core/*": [
+				"src/core/*"
+			],
+			"@integrations/*": [
+				"src/integrations/*"
+			],
+			"@services/*": [
+				"src/services/*"
+			],
+			"@shared/*": [
+				"src/shared/*"
+			],
+			"@utils/*": [
+				"src/utils/*"
+			],
+			"@packages/*": [
+				"src/packages/*"
+			]
 		}
 	},
-	"include": ["src/**/*", "scripts/**/*"],
-	"exclude": ["node_modules", ".vscode-test", "webview-ui"]
+	"include": [
+		"src/**/*",
+		"scripts/**/*"
+	],
+	"exclude": [
+		"node_modules",
+		".vscode-test",
+		"webview-ui"
+	]
 }

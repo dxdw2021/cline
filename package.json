@@ -1,7 +1,7 @@
 {
 	"name": "claude-dev",
 	"displayName": "Cline",
-	"description": "Autonomous coding agent right in your IDE, capable of creating/editing files, running commands, using the browser, and more with your permission every step of the way.",
+	"description": "集成在IDE中的自主编程助手，可在您的授权下创建/编辑文件、运行命令、使用浏览器等操作。",
 	"version": "3.14.1",
 	"icon": "assets/icons/icon.png",
 	"engines": {

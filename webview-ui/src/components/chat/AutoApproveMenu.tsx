@@ -27,56 +27,43 @@ const ACTION_METADATA: {
 	shortName: string
 	description: string
 }[] = [
-	{
-		id: "readFiles",
-		label: "Read project files",
-		shortName: "Read Local",
-		description: "Allows Cline to read files within your workspace.",
-	},
-	{
-		id: "readFilesExternally",
-		label: "Read all files",
-		shortName: "Read (all)",
-		description: "Allows Cline to read any file on your computer.",
-	},
-	{
-		id: "editFiles",
-		label: "Edit project files",
-		shortName: "Edit",
-		description: "Allows Cline to modify files within your workspace.",
-	},
-	{
-		id: "editFilesExternally",
-		label: "Edit all files",
-		shortName: "Edit (all)",
-		description: "Allows Cline to modify any file on your computer.",
-	},
-	{
-		id: "executeSafeCommands",
-		label: "Execute safe commands",
-		shortName: "Safe Commands",
-		description:
-			"Allows Cline to execute of safe terminal commands. If the model determines a command is potentially destructive, it will still require approval.",
-	},
-	{
-		id: "executeAllCommands",
-		label: "Execute all commands",
-		shortName: "All Commands",
-		description: "Allows Cline to execute all terminal commands. Use at your own risk.",
-	},
-	{
-		id: "useBrowser",
-		label: "Use the browser",
-		shortName: "Browser",
-		description: "Allows Cline to launch and interact with any website in a browser.",
-	},
-	{
-		id: "useMcp",
-		label: "Use MCP servers",
-		shortName: "MCP",
-		description: "Allows Cline to use configured MCP servers which may modify filesystem or interact with APIs.",
-	},
-]
+		{
+			id: "readFiles",
+			label: "读取文件和目录",
+			shortName: "读取",
+			description: "允许访问读取您电脑上的任何文件。",
+		},
+		{
+			id: "editFiles",
+			label: "编辑文件",
+			shortName: "编辑",
+			description: "允许修改您电脑上的任何文件。",
+		},
+		{
+			id: "executeSafeCommands",
+			label: "执行安全命令",
+			shortName: "Safe 命令",
+			description: "允许执行安全的终端命令。如果模型认为命令可能具有破坏性，仍需要批准。",
+		},
+		{
+			id: "executeAllCommands",
+			label: "Execute all commands",
+			shortName: "All Commands",
+			description: "Allows execution of all terminal commands. Use at your own risk.",
+		},
+		{
+			id: "useBrowser",
+			label: "使用浏览器",
+			shortName: "浏览器",
+			description: "允许在无头浏览器中启动并与任何网站交互。",
+		},
+		{
+			id: "useMcp",
+			label: "使用MCP服务器",
+			shortName: "MCP",
+			description: "允许使用配置的MCP服务器，这些服务器可能会修改文件系统或与API交互。",
+		},
+	]
 
 const AutoApproveMenu = ({ style }: AutoApproveMenuProps) => {
 	const { autoApprovalSettings } = useExtensionState()
