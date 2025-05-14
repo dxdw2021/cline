@@ -779,7 +779,7 @@ export const ChatRowContent = ({
 														<br />
 														看起来您遇到了 Windows PowerShell 问题，请查看这个{" "}
 														<a
-															href="https://github.com/cline/cline/wiki/TroubleShooting-%E2%80%90-%22PowerShell-is-not-recognized-as-an-internal-or-external-command%22"
+															href="https://github.com/dxdw2021/cline/wiki/TroubleShooting-%E2%80%90-%22PowerShell-is-not-recognized-as-an-internal-or-external-command%22"
 															style={{
 																color: "inherit",
 																textDecoration: "underline",
@@ -848,7 +848,7 @@ export const ChatRowContent = ({
 										</div>
 									) : (
 										<div style={{ display: "flex", alignItems: "center" }}>
-											<span style={{ fontWeight: "bold", marginRight: "4px" }}>Thinking:</span>
+											<span style={{ fontWeight: "bold", marginRight: "4px" }}>思考:</span>
 											<span
 												style={{
 													whiteSpace: "nowrap",
@@ -943,9 +943,9 @@ export const ChatRowContent = ({
 											fontSize: 14,
 											color: "var(--vscode-descriptionForeground)",
 										}}></i>
-									<span style={{ fontWeight: 500 }}>Diff Edit Mismatch</span>
+									<span style={{ fontWeight: 500 }}>差异编辑不匹配</span>
 								</div>
-								<div>The model used search patterns that don't match anything in the file. Retrying...</div>
+								<div>模型使用的搜索模式与文件内容不匹配，正在重试...</div>
 							</div>
 						</>
 					)
@@ -1103,7 +1103,7 @@ export const ChatRowContent = ({
 									zsh, bash, fish, or PowerShell (<code>CMD/CTRL + Shift + P</code> → "Terminal: Select Default
 									Profile").{" "}
 									<a
-										href="https://github.com/cline/cline/wiki/Troubleshooting-%E2%80%90-Shell-Integration-Unavailable"
+										href="https://github.com/dxdw2021/cline/wiki/Troubleshooting-%E2%80%90-Shell-Integration-Unavailable"
 										style={{
 											color: "inherit",
 											textDecoration: "underline",

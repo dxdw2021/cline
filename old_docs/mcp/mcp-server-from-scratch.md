@@ -1,6 +1,6 @@
 # Building Custom MCP Servers From Scratch Using Cline: A Comprehensive Guide
 
-This guide provides a comprehensive walkthrough of building a custom MCP (Model Context Protocol) server from scratch, leveraging the powerful AI capabilities of Cline. The example used will be building a "GitHub Assistant Server" to illustrate the process.
+This guide provides a comprehensive walkthrough of building a custom MCP (Model Context Protocol) server from scratch, leveraging the powerful AI capabilities of cline. The example used will be building a "GitHub Assistant Server" to illustrate the process.
 
 ## Understanding MCP and Cline's Role in Building Servers
 
@@ -25,7 +25,7 @@ Cline streamlines the process of building and integrating MCP servers by utilizi
 
 ## Building a GitHub Assistant Server Using Cline: A Step-by-Step Guide
 
-This section demonstrates how to create a GitHub Assistant server using Cline. This server will be able to interact with GitHub data and perform useful actions:
+This section demonstrates how to create a GitHub Assistant server using cline. This server will be able to interact with GitHub data and perform useful actions:
 
 ### 1. Defining the Goal and Initial Requirements
 
@@ -66,7 +66,7 @@ Once Cline has completed the setup and configuration, you are ready to test the 
 
 Development is often iterative. As you work with your GitHub Assistant Server, you'll discover new functionalities to add, or ways to improve existing ones. Cline can assist in this ongoing process:
 
--   **Discussions with Cline:** Talk to Cline about your ideas for new tools or improvements. For example, you might want a tool to `create_issue` or to `get_user_profile`. Discuss the required inputs and outputs for these tools with Cline.
+-   **Discussions with Cline:** Talk to Cline about your ideas for new tools or improvements. For example, you might want a tool to `create_issue` or to `get_user_profile`. Discuss the required inputs and outputs for these tools with cline.
 -   **Code Refinement:** Cline can help you write the necessary code for new features. Cline can generate code snippets, suggest best practices, and help you debug any issues that arise.
 -   **Testing New Functionalities:** After adding new tools or functionalities, you would test them again using Cline, ensuring they work as expected and integrate well with the rest of the server.
 -   **Integration with Other Tools:** You might want to integrate your GitHub Assistant server with other tools. For instance, in the "github-cline-mcp" source, Cline assists in integrating the server with Notion to create a dynamic dashboard that tracks GitHub activity. \

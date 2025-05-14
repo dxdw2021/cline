@@ -63,7 +63,7 @@ Now that you have Cline installed, you'll need to set up your OpenRouter API key
 
 ## Your First Interaction with Cline
 
-Now you're ready to start building with Cline. Let's create your first project folder and build something! Copy and paste the following prompt into the Cline chat window:
+Now you're ready to start building with cline. Let's create your first project folder and build something! Copy and paste the following prompt into the Cline chat window:
 
 ```
 Hey Cline! Could you help me create a new project folder called "hello-world" in my Cline directory and make a simple webpage that says "Hello World" in big blue text?
@@ -85,7 +85,7 @@ Hey Cline! Could you help me create a new project folder called "hello-world" in
 
 ## Still Struggling?
 
-Feel free to contact me, and I'll help you get started with Cline.
+Feel free to contact me, and I'll help you get started with cline.
 
 nick | 608-558-2410
 

@@ -2,165 +2,144 @@
 
 ## [3.14.1]
 
--   Disables autocaptures when initializing feature flags
+-  初始化功能标志时禁用自动启动
 
 ## [3.14.0]
 
--   Add support for custom model ID in AWS Bedrock provider, enabling use of Application Inference Profile (Thanks @clicube!)
--   Add more robust caching & cache tracking for gemini & vertex providers
--   Add support for LaTeX rendering
--   Add support for custom API request timeout. Timeouts were 15-30s, but can now be configured via settings for OpenRouter/Cline & Ollama (Thanks @WingsDrafterwork!)
--   Add truncation notice when truncating manually
--   Add a timeout setting for the terminal connection, allowing users to set a time to wait for terminal startup
--   Add copy button to code blocks
--   Add copy button to markdown blocks (Thanks @weshoke!)
--   Add checkpoints to more messages
--   Add slash command to create a new rules file (/newrule)
--   Add cache ui for open router and cline provider
--   Add Amazon Nova Premier model to Bedrock (Thanks @watany!)
--   Add support for cursorrules and windsurfrules
--   Add support for batch history deletion (Thanks @danix800!)
--   Improve Drag & Drop experience
--   Create clinerules folder when creating new rule if it's needed
--   Enable pricing calculation for gemini and vertex providers
--   Refactor message handling to not show the MCP View of the server modal
--   Migrate the addRemoteServer to protobus (Thanks @DaveFres!)
--   Update task header to be expanded by default
--   Update Gemini cache TTL time to 15 minutes
--   Fix race condition in terminal command usage
--   Fix to correctly handle `import.meta.url`, avoiding leading slash in pathname for Windows (Thanks @DaveFres!)
--   Fix @withRetry() decoration syntax error when running extension locally (Thanks @DaveFres!)
--   Fix for git commit mentions in repos with no git commits
--   Fix cost calculation (Thanks @BarreiroT!)
-
+ -添加对AWS基岩提供商中自定义模型ID的支持，启用应用程序推理配置文件（感谢@clicube！）！
+ -为双子座和顶点提供商添加更多强大的缓存和高速缓存跟踪
+ -添加支持乳胶渲染
+ -添加对自定义API请求超时的支持。超时是15-30，但现在可以通过OpenRouter/Cline＆Ollama设置配置（感谢@WingsDrafterWork！）
+ -手动截断时添加截断通知
+ -为终端连接添加超时设置，允许用户设置时间等待终端启动
+ -将复制按钮添加到代码块
+ -将复制按钮添加到Markdown Blocks（谢谢@Weshoke！）
+ -将检查点添加到更多消息
+ -添加slash命令创建一个新规则文件（/newrule）
+ -为打开路由器和Cline提供商添加缓存UI
+ -将Amazon Nova Premier模型添加到基岩（谢谢@Watany！）
+ -添加对Cursorrules和Windsurfrules的支持
+ -添加对批处理历史记录删除的支持（谢谢 @danix800！）
+ -改善阻力体验
+ -创建新规则时创建Clinerules文件夹（如果需要）
+ -启用双子座和顶点提供商的定价计算
+ -重构消息处理以不显示服务器模式的MCP视图
+ -将AddRemoteserver迁移到Protobus（谢谢@DaveFres！）
+ -更新默认情况下要扩展的任务标头
+ -将双子座缓存TTL更新为15分钟
+ -在终端命令使用中修复种族条件
+ -修复以正确处理`import.meta.url`，避免在Windows的路径名中引导斜线（谢谢@davefres！）
+ -修复@withretry（）在本地运行扩展时装饰语法错误（谢谢@DaveFres！）
+ -修复GIT承诺在没有GIT提交的回购中提及
+ -修复成本计算（谢谢@barreirot！）
 ## [3.13.3]
 
--   Add download counts to MCP marketplace items
--   Add `/compact` command
--   Add prompt caching to gemini models in cline / openrouter providers
--   Add tooltips to bottom row menu
-
+ -将下载计数添加到MCP市场项目
+ -添加`/compact`命令
+ -在Cline /OpenRouter提供商的Gemini模型中添加提示缓存
+ -将工具提示添加到底部行菜单
 ## [3.13.2]
-
--   Add Gemini 2.5 Flash model to Vertex and Gemini Providers (Thanks monotykamary!)
--   Add Caching to gemini provider (Thanks arafatkatze!)
--   Add thinking budget support to Gemini Models (Thanks monotykamary!)
--   Add !include .file directive support for .clineignore (Thanks watany-dev!)
--   Improve slash command functionality
--   Improve prompting for new task tool
--   Fix o1 temperature being passed to the azure api (Thanks treeleaves30760!)
--   Fix to make "add new rule file" button functional
--   Fix Ollama provider timeout, allowing for a larger loading time (Thanks suvarchal!)
--   Fix Non-UTF-8 File Handling: Improve Encoding Detection to Prevent Garbled Text and Binary Misclassification (Thanks yt3trees!)
--   Fix settings to not reset by changing providers
--   Fix terminal outputs missing commas
--   Fix terminal errors caused by starting non-alphanumeric outputs
--   Fix auto approve settings becoming unset
--   Fix Mermaid syntax error in documentation (Thanks tuki0918!)
--   Remove supportsComputerUse restriction and support browser use through any model that supports images (Thanks arafatkatze!)
-
+ -将Gemini 2.5 Flash模型添加到顶点和双子座提供商（感谢Monotykamary！）
+ -将缓存添加到双子座提供商（感谢Arafatkatze！）
+ -在双子座模型中添加思维预算支持（感谢Monotykamary！）
+ -添加！包括.clineignore的.file指令支持（感谢WATANY-DEV！）
+ -提高斜线命令功能
+ -改进提示新任务工具
+ -固定将传递给Azure API的O1温度（感谢Treeleaves30760！）
+ -修复以制作“添加新规则文件”按钮功能
+ -修复Ollama提供商超时，允许更大的加载时间（感谢SUVarchal！）
+ -修复非UTF-8文件处理：改进编码检测，以防止乱码的文本和二进制错误分类（感谢yt3trees！）
+ -修复设置以通过更改提供商而不是重置
+ -修复终端输出缺少逗号
+ -修复由启动非αNumeric输出引起的终端错误
+ -修复自动批准设置变得不设置
+ -修复文档中的美人鱼语法错误（感谢tuki0918！）
+ -删除SupportScomputeruse限制和支持通过支持图像的任何模型的浏览器使用（感谢Arafatkatze！）！
 ## [3.13.1]
 
--   Fix bug where task cancellation during thinking stream would result in error state
-
+ -修复错误在思考流期间取消任务的错误将导致错误状态
 ## [3.13.0]
-
--   Add Cline rules popover under the chat field, allowing you to easily add, enable & disable workspace level or global rule files
--   Add new slash command menu letting you type “/“ to do quick actions like creating new tasks
--   Add ability to edit past messages, with options to restore your workspace back to that point
--   Allow sending a message when selecting an option provided by the question or plan tool
--   Add command to jump to Cline's chat input
--   Add support for OpenAI o3 & 4o-mini (Thanks @PeterDaveHello and @arafatkatze!)
--   Add baseURL option for Google Gemini provider (Thanks @owengo and @olivierhub!)
--   Add support for Azure's DeepSeek model. (Thanks @yt3trees!)
--   Add ability for models that support it to receive image responses from MCP servers (Thanks @rikaaa0928!)
--   Improve search and replace diff editing by making it more flexible with models that fail to follow structured output instructions. (Thanks @chi-cat!)
--   Add detection of Ctrl+C termination in terminal, improving output reading issues
--   Fix issue where some commands with large output would cause UI to freeze
--   Fix token usage tracking issues with vertex provider (Thanks @mzsima!)
--   Fix issue with xAI reasoning content not being parsed (Thanks @mrubens!)
-
+ -在聊天字段下添加cline规则弹出式弹出窗口，使您可以轻松添加，启用和禁用工作区级别或全局规则文件
+ -添加新的slash命令菜单，让您键入“/”进行快速操作，例如创建新任务
+ -添加编辑过去消息的能力，并具有将工作空间恢复到该点的选项
+ -选择问题或计划工具提供的选项时允许发送消息
+ -添加命令跳到Cline的聊天输入
+ -添加对OpenAi O3和4o-Mini的支持（感谢@peterdavehello和@arafatkatze！）
+ -为Google Gemini提供商添加baseurl选项（感谢@OWENGO和@olivierhub！）
+ -增加对Azure DeepSeek模型的支持。 （谢谢 @yt3trees！）
+ -为支持其接收MCP服务器的图像响应的模型添加功能（感谢 @rikaaa0928！）
+ -改善搜索并替换DIFF编辑，使其通过无法遵循结构化输出指令的模型更灵活。 （谢谢 @chi-cat！）
+ -添加终端中CTRL+C终止的检测，以改善输出阅读问题
+ -解决问题的问题，其中一些输出大型命令会导致UI冻结
+ -修复了Vertex提供商的“解决令牌”跟踪问题（谢谢@mzsima！）
+ -解决XAI推理内容没有解析的问题（谢谢@Mrubens！）
 ## [3.12.3]
-
--   Add copy button to MermaidBlock component (Thanks @cacosub7!)
--   Add the ability to fetch from global cline rules files
--   Add icon to indicate when a file outside of the users workspace is edited
-
+ -将复制按钮添加到MermaidBlock组件（谢谢 @cacosub7！）
+ -添加从全球式施利规则文件中获取的能力
+ -添加图标以指示何时编辑用户工作区外的文件
 ## [3.12.2]
 
--   Add gpt-4.1
-
+ -添加GPT-4.1
 ## [3.12.1]
 
--   Use visual checkpoint indicator to make it clear when checkpoints are created
--   Big shoutout to @samuel871211 for numerous code quality improvements, refactoring contributions, and webview performance improvements!
--   Use improved context manager
-
+ -使用视觉检查点指示器在创建检查点时清除
+ -向 @samuel871211大喊大叫，以进行大量的代码质量改进，重构贡献和WebView绩效改进！
+ -使用改进的上下文管理器
 ## [3.12.0]
 
--   Add favorite toggles for models when using the Cline & OpenRouter providers
--   Add auto-approve options for edits/reads outside of the workspace
--   Improve diff editing animation for large files
--   Add indicator showing number of diff edits when Cline edits a file
--   Add streaming support and reasoning effort option to xAI's Grok 3 Mini
--   Add settings button to MCP popover to easily modify installed servers
--   Fix bug where browser tool actions would show unparsed results in the chat view
--   Fix issue with new checkpoints popover hiding too quickly
--   Fix duplicate checkpoints bug
--   Improve Ollama provider with retry mechanism, timeout handling, and improved error handling (thanks suvarchal!)
-
+ -使用Cline＆OpenRouter提供商时，为型号添加喜爱的切换
+ -添加用于编辑/读取工作空间之外的Auto-Approve选项
+ -改进大文件的差异编辑动画
+ -添加指示灯显示Cline编辑文件时的差异编辑数量
+ -将流支持和推理工作选项添加到Xai的Grok 3 Mini
+ -将设置按钮添加到MCP Popover，以轻松修改已安装的服务器
+ -修复错误，其中浏览器工具操作将在聊天视图中显示无效的结果
+ -解决新检查点的问题弹出式隐藏太快
+ -修复重复检查点错误
+ -通过重试机制，超时处理和改进的错误处理（感谢SUVarchal！）来改善Ollama提供商。
 ## [3.11.0]
-
--   Redesign checkpoint UI to declutter chat view by using a subtle indicator line that expands to a popover on hover, with a new date indicator for when it was created
--   Add support for xAI's provider's Grok 3 models
--   Add more robust error tracking for users opted in to telemetry (thank you for helping us make Cline better!)
-
+ -重新设计检查点UI通过使用悬停在悬停的弹出窗口的微妙指示行，并为其创建新的日期指标
+ -增加对Xai提供商的Grok 3型号的支持
+ -为选择进入遥测的用户添加更多可靠的错误跟踪（感谢您帮助我们使Cline更好！）
 ## [3.10.1]
 
--   Add CMD+' keyboard shortcut to add selected text to Cline
--   Cline now auto focuses the text field when using 'Add to Cline' shortcut
--   Add new 'Create New Task' tool to let Cline start a new task autonomously!
--   Fix Mermaid diagram issues
--   Fix Gemini provider cost calculation to take new tiered pricing structure into account
-
+ -添加CMD+'键盘快捷键以将选定的文本添加到Cline
+ - Cline现在使用“添加到Cline”快捷方式时自动将文本字段聚焦
+ -添加新的“创建新任务”工具以使Cline自动启动新任务！
+ -修复美人鱼图问题
+ -修复双子座提供商的成本计算以考虑新的分层定价结构
 ## [3.10.0]
 
--   Add setting to let browser tool use local Chrome via remote debugging, enabling session-based browsing. Replaces sessionless Chromium, unlocking debugging and productivity workflows tied to your real browser state.
--   Add new auto-approve option to approve _ALL_ commands (use at your own risk!)
--   Add modal in the chat area to more easily enable or disable MCP servers
--   Add drag and drop of file/folders into cline chat (Thanks eljapi!)
--   Add prompt caching for LiteLLM + Claude (Thanks sammcj!)
--   Add Improved context management
--   Fix MCP auto approve toggle issues being out of sync with settings
-
+ -添加设置以使浏览器工具通过远程调试，启用基于会话的浏览。取代与您的真实浏览器状态相关的无会话铬，解锁调试和生产力工作流程。
+ -添加新的auto-approve选项以批准_all_命令（以您自己的风险使用！）
+ -在聊天区域中添加模态以更轻松地启用或禁用MCP服务器
+ -将文件/文件夹的拖放添加到Cline聊天中（感谢Eljapi！）
+ -添加提示缓存for litellm + claude（感谢SAMMCJ！）
+ -添加改进的上下文管理
+ -修复MCP Auto批准切换问题与设置不同步
 ## [3.9.2]
 
--   Add recommended models for Cline provider
--   Add ability to detect when user edits files manually so Cline knows to re-read, leading to reduced diff edit errors
--   Add improvements to file mention searching for faster searching
--   Add scoring logic to file mentions to sort and exclude results based on relevance
--   Add Support for Bytedance Doubao (Thanks Tunixer!)
--   Fix to prevent duplicate BOM (Thanks bamps53!)
-
+ -为Cline提供商添加推荐的型号 -添加能够检测用户何时手动编辑文件的能力，以便Cline知道重新阅读，从而减少了diff编辑错误 -添加改进以提及搜索更快的搜索速度
+ -将评分逻辑添加到文件提及以根据相关性进行排序和排除结果
+ -添加对BONDEDANCE DOUBAO的支持（谢谢Tunixer！）
+ -修复以防止重复BOM（感谢BAMPS53！）
 ## [3.9.1]
 
--   Add Gemini 2.5 Pro Preview 03-25 to Google Provider
-
+ -将Gemini 2.5 Pro Preview 03-25添加到Google提供商
 ## [3.9.0]
 
--   Add Enable extended thinking for LiteLLM provider (Thanks @jorgegarciarey!)
--   Add a tab for configuring local MCP Servers
--   Fix issue with DeepSeek API provider token counting + context management
--   Fix issues with checkpoints hanging under certain conditions
+ -添加对Litellm提供商的扩展思维（感谢@jorgegarciarrey！）
+ -添加一个选项卡以配置本地MCP服务器
+ -修复DeepSeek API提供商令牌计数 +上下文管理的问题
+ -解决某些条件下悬挂检查点的问题
 
 ## [3.8.6]
 
--   Add UI for adding remote servers
--   Add Mentions Feature Guide and update related documentation
--   Fix bug where menu would open in sidebar and open tab
--   Fix issue with Cline accounts not showing user info in popout tabs
--   Fix bug where menu buttons wouldn't open view in sidebar
-
+ -添加UI用于添加远程服务器
+ -添加提及功能指南和更新相关文档
+ -修复错误在侧边栏中打开的菜单并打开选项卡
+ -解决cline帐户的问题，未在弹出选项卡中显示用户信息
+ -修复错误，其中菜单按钮将无法在边栏中打开视图
 ## [3.8.5]
 
 -   Add support for remote MCP Servers using SSE

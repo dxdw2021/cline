@@ -160,7 +160,7 @@ const ThinkingBudgetSlider = ({ apiConfiguration, setApiConfiguration, maxBudget
 					/>
 
 					<Description id="thinking-budget-description">
-						Higher budgets may allow you to achieve more comprehensive and nuanced reasoning
+						更高的预算可能使您能够实现更全面和细微的推理
 					</Description>
 				</>
 			)}

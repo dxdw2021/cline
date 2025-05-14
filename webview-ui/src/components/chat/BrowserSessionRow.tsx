@@ -184,8 +184,8 @@ const BrowserSessionRow = memo((props: BrowserSessionRowProps) => {
 					nextAction:
 						nextActionMessages.length > 0
 							? {
-									messages: [...nextActionMessages],
-								}
+								messages: [...nextActionMessages],
+							}
 							: undefined,
 				})
 
@@ -215,8 +215,8 @@ const BrowserSessionRow = memo((props: BrowserSessionRowProps) => {
 				nextAction:
 					nextActionMessages.length > 0
 						? {
-								messages: [...nextActionMessages],
-							}
+							messages: [...nextActionMessages],
+						}
 						: undefined,
 			})
 		}
@@ -275,17 +275,17 @@ const BrowserSessionRow = memo((props: BrowserSessionRowProps) => {
 	// Use latest state if we're on the last page and don't have a state yet
 	const displayState = isLastPage
 		? {
-				url: currentPage?.currentState.url || latestState.url || initialUrl,
-				mousePosition: currentPage?.currentState.mousePosition || latestState.mousePosition || defaultMousePosition,
-				consoleLogs: currentPage?.currentState.consoleLogs,
-				screenshot: currentPage?.currentState.screenshot || latestState.screenshot,
-			}
+			url: currentPage?.currentState.url || latestState.url || initialUrl,
+			mousePosition: currentPage?.currentState.mousePosition || latestState.mousePosition || defaultMousePosition,
+			consoleLogs: currentPage?.currentState.consoleLogs,
+			screenshot: currentPage?.currentState.screenshot || latestState.screenshot,
+		}
 		: {
-				url: currentPage?.currentState.url || initialUrl,
-				mousePosition: currentPage?.currentState.mousePosition || defaultMousePosition,
-				consoleLogs: currentPage?.currentState.consoleLogs,
-				screenshot: currentPage?.currentState.screenshot,
-			}
+			url: currentPage?.currentState.url || initialUrl,
+			mousePosition: currentPage?.currentState.mousePosition || defaultMousePosition,
+			consoleLogs: currentPage?.currentState.consoleLogs,
+			screenshot: currentPage?.currentState.screenshot,
+		}
 
 	const [actionContent, { height: actionHeight }] = useSize(
 		<div>
@@ -339,7 +339,7 @@ const BrowserSessionRow = memo((props: BrowserSessionRowProps) => {
 	}, [messages])
 
 	// Calculate maxWidth
-	const maxWidth = browserSettings.viewport.width < BROWSER_VIEWPORT_PRESETS["Small Desktop (900x600)"].width ? 200 : undefined
+	const maxWidth = browserSettings.viewport.width < BROWSER_VIEWPORT_PRESETS["小桌面 (900x600)"].width ? 200 : undefined
 
 	const [browserSessionRow, { height }] = useSize(
 		// We don't declare a constant for the inline style here because `useSize` will try to modify the style object

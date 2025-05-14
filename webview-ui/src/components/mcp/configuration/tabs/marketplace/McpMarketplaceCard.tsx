@@ -120,7 +120,7 @@ const McpMarketplaceCard = ({ item, installedServers }: McpMarketplaceCardProps)
 								}}
 								style={{}}>
 								<StyledInstallButton disabled={isInstalled || isDownloading} $isInstalled={isInstalled}>
-									{isInstalled ? "Installed" : isDownloading ? "Installing..." : "Install"}
+									{isInstalled ? "已安装" : isDownloading ? "正在安装Installing..." : "安装"}
 								</StyledInstallButton>
 							</div>
 						</div>
@@ -293,12 +293,12 @@ const StyledInstallButton = styled.button<{ $isInstalled?: boolean }>`
 
 	&:hover:not(:disabled) {
 		background: ${(props) =>
-			props.$isInstalled ? "var(--vscode-button-secondaryHoverBackground)" : "var(--vscode-button-hoverBackground)"};
+		props.$isInstalled ? "var(--vscode-button-secondaryHoverBackground)" : "var(--vscode-button-hoverBackground)"};
 	}
 
 	&:active:not(:disabled) {
 		background: ${(props) =>
-			props.$isInstalled ? "var(--vscode-button-secondaryBackground)" : "var(--vscode-button-background)"};
+		props.$isInstalled ? "var(--vscode-button-secondaryBackground)" : "var(--vscode-button-background)"};
 		opacity: 0.7;
 	}
 

@@ -35,7 +35,7 @@ describe("ApiOptions Component", () => {
 				<ApiOptions showModelOptions={true} />
 			</ExtensionStateContextProvider>,
 		)
-		const apiKeyInput = screen.getByPlaceholderText("Enter API Key...")
+		const apiKeyInput = screen.getByPlaceholderText("输入API密钥")
 		expect(apiKeyInput).toBeInTheDocument()
 	})
 
@@ -82,7 +82,7 @@ describe("ApiOptions Component", () => {
 				<ApiOptions showModelOptions={true} />
 			</ExtensionStateContextProvider>,
 		)
-		const apiKeyInput = screen.getByPlaceholderText("Enter API Key...")
+		const apiKeyInput = screen.getByPlaceholderText("输入API密钥")
 		expect(apiKeyInput).toBeInTheDocument()
 	})
 
@@ -133,7 +133,7 @@ describe("OpenApiInfoOptions", () => {
 		expect(apiKeyInput).toBeInTheDocument()
 	})
 
-	it("renders OpenAI Context Window Size input", () => {
+	it("呈现OpenAI上下文窗口大小输入", () => {
 		render(
 			<ExtensionStateContextProvider>
 				<ApiOptions showModelOptions={true} />

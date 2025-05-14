@@ -43,22 +43,19 @@ const Announcement = ({ version, hideAnnouncement }: AnnouncementProps) => {
 			</h3>
 			<ul style={ulStyle}>
 				<li>
-					<b>Gemini prompt caching:</b> Gemini and Vertex providers now support prompt caching and price tracking for
-					Gemini models.
+					<b>Gemini提示缓存:</b> Gemini和Vertex提供商现在支持提示缓存和Gemini模型的价格跟踪。
 				</li>
 				<li>
-					<b>Copy Buttons:</b> Buttons were added to Markdown and Code blocks that allow you to copy their contents
-					easily.
+					<b>复制按钮:</b> 在Markdown和代码块中添加了按钮，方便您轻松复制其内容。
 				</li>
 				<li>
-					<b>/newrule command:</b> New slash command to have cline write your .clinerules for you based on your
-					workflow.
+					<b>/newrule命令:</b> 新增斜杠命令，让cline根据您的工作流程为您编写.clinerules文件。
 				</li>
 				<li>
-					<b>Drag and drop improvements:</b> Don't forget to hold shift while dragging files!
+					<b>拖放功能改进:</b> 拖拽文件时别忘了按住shift键！
 				</li>
-				<li>Added more checkpoints across the task, allowing you to restore from more than just file changes.</li>
-				<li>Added support for rendering LaTeX in message responses. (Try asking Cline to show the quadratic formula)</li>
+				<li>在整个任务中添加了更多检查点，允许您不仅从文件更改中恢复。</li>
+				<li>新增支持在消息响应中渲染LaTeX。(试试让Cline展示二次方程公式)</li>
 			</ul>
 			{/* <h4 style={{ margin: "5px 0 5px" }}>Previous Updates:</h4>
 			<ul style={ulStyle}>

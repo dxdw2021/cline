@@ -32,27 +32,24 @@ const WelcomeView = memo(() => {
 	return (
 		<div className="fixed inset-0 p-0 flex flex-col">
 			<div className="h-full px-5 overflow-auto">
-				<h2>Hi, I'm Cline</h2>
+				<h2>你好，我是 Cline</h2>
 				<div className="flex justify-center my-5">
 					<ClineLogoWhite className="size-16" />
 				</div>
 				<p>
-					I can do all kinds of tasks thanks to breakthroughs in{" "}
+					得益于{" "}
 					<VSCodeLink href="https://www.anthropic.com/claude/sonnet" className="inline">
-						Claude 3.7 Sonnet's
+						Claude 3.7 Sonnet
 					</VSCodeLink>
-					agentic coding capabilities and access to tools that let me create & edit files, explore complex projects, use
-					a browser, and execute terminal commands <i>(with your permission, of course)</i>. I can even use MCP to
-					create new tools and extend my own capabilities.
+					的代理编码能力突破，以及可以创建和编辑文件、探索复杂项目、使用浏览器和执行终端命令的工具访问权限，我可以完成各种任务<i>（当然，需要您的许可）</i>。我甚至可以使用 MCP 创建新工具并扩展自己的能力。
 				</p>
 
 				<p className="text-[var(--vscode-descriptionForeground)]">
-					Sign up for an account to get started for free, or use an API key that provides access to models like Claude
-					3.7 Sonnet.
+					注册账号即可免费开始使用，或使用可访问 Claude 3.7 Sonnet 等模型的 API 密钥。
 				</p>
 
 				<VSCodeButton appearance="primary" onClick={handleLogin} className="w-full mt-1">
-					Get Started for Free
+					免费开始使用
 				</VSCodeButton>
 
 				{!showApiOptions && (
@@ -60,7 +57,7 @@ const WelcomeView = memo(() => {
 						appearance="secondary"
 						onClick={() => setShowApiOptions(!showApiOptions)}
 						className="mt-2.5 w-full">
-						Use your own API key
+						使用您自己的 API 密钥
 					</VSCodeButton>
 				)}
 
@@ -69,7 +66,7 @@ const WelcomeView = memo(() => {
 						<div>
 							<ApiOptions showModelOptions={false} />
 							<VSCodeButton onClick={handleSubmit} disabled={disableLetsGoButton} className="mt-0.75">
-								Let's go!
+								开始使用！
 							</VSCodeButton>
 						</div>
 					)}

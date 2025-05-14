@@ -71,8 +71,8 @@ const TaskFeedbackButtons: React.FC<TaskFeedbackButtonsProps> = ({ messageTs, is
 						appearance="icon"
 						onClick={() => handleFeedback("thumbs_up")}
 						disabled={feedback !== null}
-						title="This was helpful"
-						aria-label="This was helpful">
+						title="这很有帮助"
+						aria-label="这很有帮助">
 						<IconWrapper>
 							<span
 								className={`codicon ${feedback === "thumbs_up" ? "codicon-thumbsup-filled" : "codicon-thumbsup"}`}
@@ -85,8 +85,8 @@ const TaskFeedbackButtons: React.FC<TaskFeedbackButtonsProps> = ({ messageTs, is
 						appearance="icon"
 						onClick={() => handleFeedback("thumbs_down")}
 						disabled={feedback !== null && feedback !== "thumbs_down"}
-						title="This wasn't helpful"
-						aria-label="This wasn't helpful">
+						title="这没有帮助"
+						aria-label="这没有帮助">
 						<IconWrapper>
 							<span
 								className={`codicon ${feedback === "thumbs_down" ? "codicon-thumbsdown-filled" : "codicon-thumbsdown"}`}
@@ -95,10 +95,10 @@ const TaskFeedbackButtons: React.FC<TaskFeedbackButtonsProps> = ({ messageTs, is
 					</VSCodeButton>
 				</ButtonWrapper>
 				{/* <VSCodeButtonLink
-					href="https://github.com/cline/cline/issues/new?template=bug_report.yml"
+					href="https://github.com/dxdw2021/cline/issues/new?template=bug_report.yml"
 					appearance="icon"
-					title="Report a bug"
-					aria-label="Report a bug">
+					title="报告问题"
+					aria-label="报告问题">
 					<span className="codicon codicon-bug" />
 				</VSCodeButtonLink> */}
 			</ButtonsContainer>

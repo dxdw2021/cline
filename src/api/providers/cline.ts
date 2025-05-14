@@ -18,8 +18,8 @@ export class ClineHandler implements ApiHandler {
 			baseURL: "https://api.cline.bot/v1",
 			apiKey: this.options.clineApiKey || "",
 			defaultHeaders: {
-				"HTTP-Referer": "https://cline.bot", // Optional, for including your app on cline.bot rankings.
-				"X-Title": "Cline", // Optional. Shows in rankings on cline.bot.
+				"HTTP-Referer": "https://cline.bot", // Optional, for including your app on cline
+				"X-Title": "Cline", // Optional. Shows in rankings on cline.
 				"X-Task-ID": this.options.taskId || "", // Include the task ID in the request headers
 			},
 		})
@@ -97,7 +97,7 @@ export class ClineHandler implements ApiHandler {
 	async getApiStreamUsage(): Promise<ApiStreamUsageChunk | undefined> {
 		if (this.lastGenerationId) {
 			try {
-				const response = await axios.get(`https://api.cline.bot/v1/generation?id=${this.lastGenerationId}`, {
+				const response = await axios.get(`https://api.cline./generation?id=${this.lastGenerationId}`, {
 					headers: {
 						Authorization: `Bearer ${this.options.clineApiKey}`,
 					},

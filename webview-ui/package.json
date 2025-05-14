@@ -18,6 +18,7 @@
 		"@floating-ui/react": "^0.27.4",
 		"@heroui/react": "^2.8.0-beta.2",
 		"@vscode/webview-ui-toolkit": "^1.4.0",
+		"claude-dev": "file:..",
 		"debounce": "^2.1.1",
 		"dompurify": "^3.2.4",
 		"fast-deep-equal": "^3.1.3",

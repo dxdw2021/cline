@@ -47,7 +47,7 @@ export const OptionsButtons = ({
 				// marginTop: "22px",
 			}}>
 			{/* <div style={{ color: "var(--vscode-descriptionForeground)", fontSize: "11px", textTransform: "uppercase" }}>
-				SELECT ONE:
+				选择一项:
 			</div> */}
 			{options.map((option, index) => (
 				<OptionButton

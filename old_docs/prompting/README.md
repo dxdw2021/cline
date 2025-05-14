@@ -1,6 +1,6 @@
 # Cline Prompting Guide 🚀
 
-Welcome to the Cline Prompting Guide! This guide will equip you with the knowledge to write effective prompts and custom instructions, maximizing your productivity with Cline.
+Welcome to the Cline Prompting Guide! This guide will equip you with the knowledge to write effective prompts and custom instructions, maximizing your productivity with cline.
 
 ## Custom Instructions ⚙️
 
@@ -151,7 +151,7 @@ All files under the `.clinerules/` directory are recursively loaded, and their c
 
 ## Prompting Cline 💬
 
-**Prompting is how you communicate your needs for a given task in the back-and-forth chat with Cline.** Cline understands natural language, so write conversationally.
+**Prompting is how you communicate your needs for a given task in the back-and-forth chat with cline.** Cline understands natural language, so write conversationally.
 
 Effective prompting involves:
 

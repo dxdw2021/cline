@@ -254,7 +254,7 @@ class LinkPreview extends React.Component<LinkPreviewProps, LinkPreviewState> {
 		// Create a fallback object if ogData is null
 		const data = ogData || {
 			title: getSafeHostname(url),
-			description: "No description available",
+			description: "没有可用的描述",
 			siteName: getSafeHostname(url),
 			url: url,
 		}

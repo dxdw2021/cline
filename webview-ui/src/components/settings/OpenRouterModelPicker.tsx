@@ -42,18 +42,18 @@ export interface OpenRouterModelPickerProps {
 const featuredModels = [
 	{
 		id: "anthropic/claude-3.7-sonnet",
-		description: "Leading model for agentic coding",
-		label: "Best",
+		description: "代理编码的领先模型",
+		label: "最好的",
 	},
 	{
 		id: "google/gemini-2.5-pro-preview-03-25",
-		description: "Large 1M context window, great value",
-		label: "Trending",
+		description: "大的1M上下文窗口，巨大的价值",
+		label: "趋势",
 	},
 	{
 		id: "openai/gpt-4.1",
-		description: "1M context window, blazing fast",
-		label: "New",
+		description: "1M上下文窗口，快速燃烧",
+		label: "新的",
 	},
 ]
 
@@ -104,14 +104,14 @@ const OpenRouterModelPicker: React.FC<OpenRouterModelPickerProps> = ({ isPopup }
 		const unfilteredModelIds = Object.keys(openRouterModels).sort((a, b) => a.localeCompare(b))
 
 		return apiConfiguration?.apiProvider === "cline"
-			? unfilteredModelIds.filter((id) => !id.includes(":free"))
+			? unfilteredModelIds.filter((id) => !id.includes(":[免费free]"))
 			: unfilteredModelIds
 	}, [openRouterModels, apiConfiguration?.apiProvider])
 
 	const searchableItems = useMemo(() => {
 		return modelIds.map((id) => ({
 			id,
-			html: id,
+			html: id.includes('free') ? `【免费】${id}` : id,
 		}))
 	}, [modelIds])
 
@@ -214,7 +214,7 @@ const OpenRouterModelPicker: React.FC<OpenRouterModelPickerProps> = ({ isPopup }
 			</style>
 			<div style={{ display: "flex", flexDirection: "column" }}>
 				<label htmlFor="model-search">
-					<span style={{ fontWeight: 500 }}>Model</span>
+					<span style={{ fontWeight: 500 }}>模型Model:</span>
 				</label>
 
 				{apiConfiguration?.apiProvider === "cline" && (
@@ -238,7 +238,7 @@ const OpenRouterModelPicker: React.FC<OpenRouterModelPickerProps> = ({ isPopup }
 				<DropdownWrapper ref={dropdownRef}>
 					<VSCodeTextField
 						id="model-search"
-						placeholder="Search and select a model..."
+						placeholder="搜索并选择一个模型..."
 						value={searchTerm}
 						onInput={(e) => {
 							handleModelChange((e.target as HTMLInputElement)?.value?.toLowerCase())
@@ -326,17 +326,17 @@ const OpenRouterModelPicker: React.FC<OpenRouterModelPickerProps> = ({ isPopup }
 						color: "var(--vscode-descriptionForeground)",
 					}}>
 					<>
-						The extension automatically fetches the latest list of models available on{" "}
+						扩展名自动获取最新的型号列表{" "}
 						<VSCodeLink style={{ display: "inline", fontSize: "inherit" }} href="https://openrouter.ai/models">
 							OpenRouter.
 						</VSCodeLink>
-						If you're unsure which model to choose, Cline works best with{" "}
+						如果您不确定要选择哪种型号，Cline最适合{" "}
 						<VSCodeLink
 							style={{ display: "inline", fontSize: "inherit" }}
 							onClick={() => handleModelChange("anthropic/claude-3.7-sonnet")}>
 							anthropic/claude-3.7-sonnet.
 						</VSCodeLink>
-						You can also try searching "free" for no-cost options currently available.
+						您还可以尝试为当前可用的无成本选项搜索“免费free”。
 					</>
 				</p>
 			)}
@@ -514,7 +514,7 @@ export const ModelDescriptionMarkdown = memo(
 									backgroundColor: isPopup ? CODE_BLOCK_BG_COLOR : "var(--vscode-sideBar-background)",
 								}}
 								onClick={() => setIsExpanded(true)}>
-								See more
+								查看更多
 							</VSCodeLink>
 						</div>
 					)}

@@ -76,7 +76,7 @@ export function initializeTestMode(context: vscode.ExtensionContext, webviewProv
 		Logger.log(`evals.env file created at ${uri.fsPath}`)
 		if (!isInTestMode()) {
 			setTestMode(true)
-			vscode.commands.executeCommand("setContext", "cline.isTestMode", true)
+			vscode.commands.executeCommand("setContext", "cline.Mode", true)
 			createTestServer(webviewProvider)
 		}
 	})
@@ -87,7 +87,7 @@ export function initializeTestMode(context: vscode.ExtensionContext, webviewProv
 		// Only deactivate if this was the last evals.env file
 		if (!checkForTestMode()) {
 			setTestMode(false)
-			vscode.commands.executeCommand("setContext", "cline.isTestMode", false)
+			vscode.commands.executeCommand("setContext", "cline.Mode", false)
 			shutdownTestServer()
 		}
 	})

@@ -42,7 +42,7 @@ There are multiple places online to find MCP servers:
 
     User: "No, that's all. Let's test it."
 
-    Cline: "Great! Starting the MCP Inspector to test the server connection. After that, we can try controlling the browser from Cline."
+    Cline: "Great! Starting the MCP Inspector to test the server connection. After that, we can try controlling the browser from cline."
     ```
 
 3.  **Cline's Actions:** Based on your instructions, Cline will perform the following:

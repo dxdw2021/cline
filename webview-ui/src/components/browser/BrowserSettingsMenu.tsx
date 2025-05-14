@@ -26,7 +26,7 @@ export const BrowserSettingsMenu = () => {
 	// Get actual connection info from the browser session using gRPC
 	useEffect(() => {
 		// Function to fetch connection info
-		;(async () => {
+		; (async () => {
 			try {
 				console.log("[DEBUG] SENDING BROWSER CONNECTION INFO REQUEST")
 				const info = await BrowserServiceClient.getBrowserConnectionInfo({})
@@ -152,7 +152,7 @@ export const BrowserSettingsMenu = () => {
 				appearance="icon"
 				className="browser-info-icon"
 				onClick={toggleInfoPopover}
-				title="Browser connection info"
+				title="浏览器连接信息"
 				style={{ marginRight: "4px" }}>
 				<i
 					className={`codicon ${getIconClass()}`}
@@ -165,27 +165,27 @@ export const BrowserSettingsMenu = () => {
 
 			{showInfoPopover && (
 				<InfoPopover ref={popoverRef}>
-					<h4 style={{ margin: "0 0 8px 0" }}>Browser Connection</h4>
+					<h4 style={{ margin: "0 0 8px 0" }}>浏览器连接</h4>
 					<InfoRow>
-						<InfoLabel>Status:</InfoLabel>
+						<InfoLabel>状态:</InfoLabel>
 						<InfoValue
 							style={{
 								color: connectionInfo.isConnected
 									? "var(--vscode-charts-green)"
 									: "var(--vscode-errorForeground)",
 							}}>
-							{connectionInfo.isConnected ? "Connected" : "Disconnected"}
+							{connectionInfo.isConnected ? "已连接" : "未连接"}
 						</InfoValue>
 					</InfoRow>
 					{connectionInfo.isConnected && (
 						<InfoRow>
-							<InfoLabel>Type:</InfoLabel>
-							<InfoValue>{connectionInfo.isRemote ? "Remote" : "Local"}</InfoValue>
+							<InfoLabel>类型:</InfoLabel>
+							<InfoValue>{connectionInfo.isRemote ? "远程" : "本地"}</InfoValue>
 						</InfoRow>
 					)}
 					{connectionInfo.isConnected && connectionInfo.isRemote && connectionInfo.host && (
 						<InfoRow>
-							<InfoLabel>Remote Host:</InfoLabel>
+							<InfoLabel>远程主机:</InfoLabel>
 							<InfoValue>{connectionInfo.host}</InfoValue>
 						</InfoRow>
 					)}

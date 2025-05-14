@@ -33,7 +33,7 @@ export class SWEBenchAdapter implements BenchmarkAdapter {
 			{
 				id: "swe-bench-task-1",
 				name: "Fix React Component Bug",
-				description: "Fix a bug in a React component where the state is not properly updated.",
+				description: "修复未正确更新状态的React组件中的错误.",
 				workspacePath: path.join(EVALS_DIR, "repositories", "swe-bench"),
 				setupCommands: [],
 				verificationCommands: [],
@@ -46,7 +46,7 @@ export class SWEBenchAdapter implements BenchmarkAdapter {
 			{
 				id: "swe-bench-task-2",
 				name: "Optimize Database Query",
-				description: "Optimize a slow database query in a Django application.",
+				description: "优化Django应用程序中的慢速数据库查询。",
 				workspacePath: path.join(EVALS_DIR, "repositories", "swe-bench"),
 				setupCommands: [],
 				verificationCommands: [],
@@ -59,7 +59,7 @@ export class SWEBenchAdapter implements BenchmarkAdapter {
 			{
 				id: "swe-bench-task-3",
 				name: "Fix Memory Leak",
-				description: "Fix a memory leak in a Node.js application.",
+				description: "修复内存泄漏在Node.js应用程序中。",
 				workspacePath: path.join(EVALS_DIR, "repositories", "swe-bench"),
 				setupCommands: [],
 				verificationCommands: [],

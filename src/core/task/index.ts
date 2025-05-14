@@ -635,7 +635,7 @@ export class Task {
 	}> {
 		// If this Cline instance was aborted by the provider, then the only thing keeping us alive is a promise still running in the background, in which case we don't want to send its result to the webview as it is attached to a new instance of Cline now. So we can safely ignore the result of any active promises, and this class will be deallocated. (Although we set Cline = undefined in provider, that simply removes the reference to this instance, but the instance is still alive until this promise resolves or rejects.)
 		if (this.abort) {
-			throw new Error("Cline instance aborted")
+			throw new Error("Cline实例中止")
 		}
 		let askTs: number
 		if (partial !== undefined) {
@@ -753,7 +753,7 @@ export class Task {
 
 	async say(type: ClineSay, text?: string, images?: string[], partial?: boolean): Promise<undefined> {
 		if (this.abort) {
-			throw new Error("Cline instance aborted")
+			throw new Error("Cline实例中止")
 		}
 
 		if (partial !== undefined) {
@@ -1594,7 +1594,7 @@ export class Task {
 
 	async presentAssistantMessage() {
 		if (this.abort) {
-			throw new Error("Cline instance aborted")
+			throw new Error("Cline实例中止")
 		}
 
 		if (this.presentAssistantMessageLocked) {
@@ -2870,8 +2870,8 @@ export class Task {
 										})
 										.filter(Boolean)
 										.join("\n\n") || "(No response)"
-								await this.say("mcp_server_response", toolResultPretty)
-								pushToolResult(formatResponse.toolResult(toolResultPretty))
+								await this.say("mcp_server_response", toolResultText)
+								pushToolResult(formatResponse.toolResult(toolResultText))
 
 								await this.saveCheckpoint()
 
@@ -3434,7 +3434,7 @@ export class Task {
 
 	async recursivelyMakeClineRequests(userContent: UserContent, includeFileDetails: boolean = false): Promise<boolean> {
 		if (this.abort) {
-			throw new Error("Cline instance aborted")
+			throw new Error("Cline实例中止")
 		}
 
 		// Used to know what models were used in the task if user wants to export metadata for error reporting purposes
@@ -3753,7 +3753,7 @@ export class Task {
 
 			// need to call here in case the stream was aborted
 			if (this.abort) {
-				throw new Error("Cline instance aborted")
+				throw new Error("Cline实例中止")
 			}
 
 			this.didCompleteReadingStream = true
@@ -3812,14 +3812,14 @@ export class Task {
 				// if there's no assistant_responses, that means we got no text or tool_use content blocks from API which we should assume is an error
 				await this.say(
 					"error",
-					"Unexpected API Response: The language model did not provide any assistant messages. This may indicate an issue with the API or the model's output.",
+					"意外的API响应：语言模型未提供任何助手消息。这可能表明API或模型的输出问题。",
 				)
 				await this.addToApiConversationHistory({
 					role: "assistant",
 					content: [
 						{
 							type: "text",
-							text: "Failure: I did not provide a response.",
+							text: "失败：我没有提供回应。",
 						},
 					],
 				})

@@ -119,7 +119,7 @@ export const CheckpointOverlay = ({ messageTs }: CheckpointOverlayProps) => {
 	return (
 		<CheckpointControls onMouseLeave={handleControlsMouseLeave}>
 			<VSCodeButton
-				title="Compare"
+				title="比较"
 				appearance="secondary"
 				disabled={compareDisabled}
 				style={{ cursor: compareDisabled ? "wait" : "pointer" }}
@@ -139,7 +139,7 @@ export const CheckpointOverlay = ({ messageTs }: CheckpointOverlayProps) => {
 			</VSCodeButton>
 			<div style={{ position: "relative" }} ref={containerRef}>
 				<VSCodeButton
-					title="Restore"
+					title="恢复"
 					appearance="secondary"
 					style={{ cursor: "pointer" }}
 					onClick={() => setShowRestoreConfirm(true)}>
@@ -154,9 +154,9 @@ export const CheckpointOverlay = ({ messageTs }: CheckpointOverlayProps) => {
 								style={{
 									cursor: restoreBothDisabled ? "wait" : "pointer",
 								}}>
-								Restore Task and Workspace
+								恢复任务和工作区
 							</VSCodeButton>
-							<p>Restores the task and your project's files back to a snapshot taken at this point</p>
+							<p>将任务和项目文件恢复到此时点的快照状态</p>
 						</RestoreOption>
 						<RestoreOption>
 							<VSCodeButton
@@ -165,9 +165,9 @@ export const CheckpointOverlay = ({ messageTs }: CheckpointOverlayProps) => {
 								style={{
 									cursor: restoreTaskDisabled ? "wait" : "pointer",
 								}}>
-								Restore Task Only
+								仅恢复任务
 							</VSCodeButton>
-							<p>Deletes messages after this point (does not affect workspace)</p>
+							<p>删除此时点之后的消息（不影响工作区）</p>
 						</RestoreOption>
 						<RestoreOption>
 							<VSCodeButton
@@ -176,9 +176,9 @@ export const CheckpointOverlay = ({ messageTs }: CheckpointOverlayProps) => {
 								style={{
 									cursor: restoreWorkspaceDisabled ? "wait" : "pointer",
 								}}>
-								Restore Workspace Only
+								仅恢复工作区
 							</VSCodeButton>
-							<p>Restores your project's files to a snapshot taken at this point (task may become out of sync)</p>
+							<p>将项目文件恢复到此时点的快照状态（任务可能会不同步）</p>
 						</RestoreOption>
 					</RestoreConfirmTooltip>
 				)}

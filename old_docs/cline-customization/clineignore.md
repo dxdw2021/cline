@@ -3,7 +3,7 @@
 To give you more control over which files are accessible to Cline, we've implemented `.clineignore` functionality, similar to `.gitignore`. This allows you to specify files and directories that Cline should **not** access or process. This is useful for:
 
 *   **Privacy:** Preventing Cline from accessing sensitive or private files in your workspace.
-*   **Performance:**  Excluding large directories or files that are irrelevant to your tasks, potentially improving the efficiency of Cline.
+*   **Performance:**  Excluding large directories or files that are irrelevant to your tasks, potentially improving the efficiency of cline.
 *   **Context Management:**  Focusing Cline's attention on the relevant parts of your project.
 
 **How to use `.clineignore`**

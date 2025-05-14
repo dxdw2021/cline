@@ -47,7 +47,7 @@ export class MultiSWEAdapter implements BenchmarkAdapter {
 			{
 				id: "multi-swe-task-2",
 				name: "Cross-Platform Mobile App",
-				description: "Create a cross-platform mobile app using React Native with native modules in Swift and Kotlin.",
+				description: "使用Swift和Kotlin中的本机模块的React本机创建一个跨平台移动应用程序。",
 				workspacePath: path.join(EVALS_DIR, "repositories", "multi-swe"),
 				setupCommands: [],
 				verificationCommands: [],
@@ -60,7 +60,7 @@ export class MultiSWEAdapter implements BenchmarkAdapter {
 			{
 				id: "multi-swe-task-3",
 				name: "Microservice Architecture",
-				description: "Design and implement a microservice architecture with services written in Go, Node.js, and Java.",
+				description: "设计和实施使用GO，Node.js和Java编写的服务的微服务体系结构。",
 				workspacePath: path.join(EVALS_DIR, "repositories", "multi-swe"),
 				setupCommands: [],
 				verificationCommands: [],

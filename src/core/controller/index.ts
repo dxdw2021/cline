@@ -1067,7 +1067,7 @@ export class Controller {
 
 	private async fetchMcpMarketplaceFromApi(silent: boolean = false): Promise<McpMarketplaceCatalog | undefined> {
 		try {
-			const response = await axios.get("https://api.cline.bot/v1/mcp/marketplace", {
+			const response = await axios.get("https://api.cline./mcp/marketplace", {
 				headers: {
 					"Content-Type": "application/json",
 				},
@@ -1161,7 +1161,7 @@ export class Controller {
 
 			// Fetch server details from marketplace
 			const response = await axios.post<McpDownloadResponse>(
-				"https://api.cline.bot/v1/mcp/download",
+				"https://api.cline./mcp/download",
 				{ mcpId },
 				{
 					headers: { "Content-Type": "application/json" },

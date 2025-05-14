@@ -1,4 +1,4 @@
-import execa from "execa"
+import { execa } from "execa"
 import * as path from "path"
 import * as fs from "fs"
 import fetch from "node-fetch"
@@ -105,6 +105,20 @@ export async function spawnVSCode(workspacePath: string, vsixPath?: string): Pro
 	const settingsDir = path.join(tempUserDataDir, "User")
 	fs.mkdirSync(settingsDir, { recursive: true })
 	const settingsPath = path.join(settingsDir, "settings.json")
+	/**
+	 * VSCode 工作区设置配置对象
+	 * 
+	 * 包含以下主要配置:
+	 * - 禁用工作区信任提示
+	 * - 配置启动行为
+	 * - 自动打开 Cline
+	 * - 显示活动栏和侧边栏
+	 * - Git 相关设置
+	 * - GitLens 扩展配置
+	 * - 禁用其他扩展自动更新
+	 * 
+	 * 这些设置用于优化 VSCode 的启动体验和工作区行为
+	 */
 	const settings = {
 		// Disable workspace trust
 		"security.workspace.trust.enabled": false,
@@ -124,6 +138,12 @@ export async function spawnVSCode(workspacePath: string, vsixPath?: string): Pro
 		"workbench.view.extension.saoudrizwan.claude-dev-ActivityBar.visible": true,
 		"workbench.view.alwaysShowHeaderActions": true,
 		"workbench.editor.openSideBySideDirection": "right",
+
+		// Git settings
+		"git.enabled": true,
+		"git.autoRepositoryDetection": true,
+		"git.confirmSync": false,
+		"git.autofetch": true,
 
 		// Disable GitLens from opening automatically
 		"gitlens.views.repositories.autoReveal": false,
@@ -237,7 +257,7 @@ export async function spawnVSCode(workspacePath: string, vsixPath?: string): Pro
 		const packageJson = {
 			name: "cline-activator",
 			displayName: "Cline Activator",
-			description: "Activates Cline and starts the test server",
+			description: "激活Cline并启动测试服务器",
 			version: "0.0.1",
 			engines: {
 				vscode: "^1.60.0",

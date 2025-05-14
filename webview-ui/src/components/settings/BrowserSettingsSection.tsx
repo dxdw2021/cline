@@ -23,15 +23,15 @@ const ConnectionStatusIndicator = ({
 			{isChecking ? (
 				<>
 					<Spinner />
-					<StatusText>Checking connection...</StatusText>
+					<StatusText>正在检查连接...</StatusText>
 				</>
 			) : isConnected === true ? (
 				<>
 					<CheckIcon className="codicon codicon-check" />
-					<StatusText style={{ color: "var(--vscode-terminal-ansiGreen)" }}>Connected</StatusText>
+					<StatusText style={{ color: "var(--vscode-terminal-ansiGreen)" }}>已连接</StatusText>
 				</>
 			) : isConnected === false ? (
-				<StatusText style={{ color: "var(--vscode-errorForeground)" }}>Not connected</StatusText>
+				<StatusText style={{ color: "var(--vscode-errorForeground)" }}>未连接</StatusText>
 			) : null}
 		</StatusContainer>
 	)
@@ -150,11 +150,11 @@ export const BrowserSettingsSection: React.FC = () => {
 			})
 				.then((response) => {
 					if (!response.value) {
-						console.error("Failed to update browser settings")
+						console.error("无法更新浏览器设置")
 					}
 				})
 				.catch((error) => {
-					console.error("Error updating browser settings:", error)
+					console.error("错误更新浏览器设置:", error)
 				})
 		}
 	}
@@ -172,11 +172,11 @@ export const BrowserSettingsSection: React.FC = () => {
 		})
 			.then((response) => {
 				if (!response.value) {
-					console.error("Failed to update browser settings")
+					console.error("无法更新浏览器设置")
 				}
 			})
 			.catch((error) => {
-				console.error("Error updating browser settings:", error)
+				console.error("错误更新浏览器设置:", error)
 			})
 	}
 
@@ -192,11 +192,11 @@ export const BrowserSettingsSection: React.FC = () => {
 		})
 			.then((response) => {
 				if (!response.value) {
-					console.error("Failed to update browser settings")
+					console.error("无法更新浏览器设置")
 				}
 			})
 			.catch((error) => {
-				console.error("Error updating browser settings:", error)
+				console.error("错误更新浏览器设置:", error)
 			})
 	}
 
@@ -265,10 +265,10 @@ export const BrowserSettingsSection: React.FC = () => {
 		<div
 			id="browser-settings-section"
 			style={{ marginBottom: 20, borderTop: "1px solid var(--vscode-panel-border)", paddingTop: 15 }}>
-			<h3 style={{ color: "var(--vscode-foreground)", margin: "0 0 10px 0", fontSize: "14px" }}>Browser Settings</h3>
+			<h3 style={{ color: "var(--vscode-foreground)", margin: "0 0 10px 0", fontSize: "14px" }}>浏览器设置</h3>
 			<div style={{ marginBottom: 15 }}>
 				<div style={{ marginBottom: 8 }}>
-					<label style={{ fontWeight: "500", display: "block", marginBottom: 5 }}>Viewport size</label>
+					<label style={{ fontWeight: "500", display: "block", marginBottom: 5 }}>视口大小</label>
 					<VSCodeDropdown
 						style={{ width: "100%" }}
 						value={
@@ -294,7 +294,7 @@ export const BrowserSettingsSection: React.FC = () => {
 						color: "var(--vscode-descriptionForeground)",
 						margin: 0,
 					}}>
-					Set the size of the browser viewport for screenshots and interactions.
+					将浏览器视口的大小设置为屏幕截图和交互。
 				</p>
 			</div>
 
@@ -303,7 +303,7 @@ export const BrowserSettingsSection: React.FC = () => {
 					<VSCodeCheckbox
 						checked={browserSettings.remoteBrowserEnabled}
 						onChange={(e) => updateRemoteBrowserEnabled((e.target as HTMLInputElement).checked)}>
-						Use remote browser connection
+						使用远程浏览器连接
 					</VSCodeCheckbox>
 					<ConnectionStatusIndicator
 						isChecking={isCheckingConnection}
@@ -317,9 +317,9 @@ export const BrowserSettingsSection: React.FC = () => {
 						color: "var(--vscode-descriptionForeground)",
 						margin: "0 0 6px 0px",
 					}}>
-					Enable Cline to use your Chrome
-					{isBundled ? "(not detected on your machine)" : detectedChromePath ? ` (${detectedChromePath})` : ""}. This
-					requires starting Chrome in debug mode
+					使Cline能够使用您的Chrome
+					{isBundled ? "(在您的机器上未检测到)" : detectedChromePath ? ` (${detectedChromePath})` : ""}. 这
+					需要在调试模式下开始Chrome
 					{browserSettings.remoteBrowserEnabled ? (
 						<>
 							{" "}

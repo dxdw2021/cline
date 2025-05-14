@@ -42,14 +42,14 @@ const ACTION_METADATA: {
 		{
 			id: "executeSafeCommands",
 			label: "执行安全命令",
-			shortName: "Safe 命令",
+			shortName: "安全的命令",
 			description: "允许执行安全的终端命令。如果模型认为命令可能具有破坏性，仍需要批准。",
 		},
 		{
 			id: "executeAllCommands",
-			label: "Execute all commands",
-			shortName: "All Commands",
-			description: "Allows execution of all terminal commands. Use at your own risk.",
+			label: "执行所有命令",
+			shortName: "所有命令",
+			description: "允许执行所有终端命令。自行使用。",
 		},
 		{
 			id: "useBrowser",
@@ -60,7 +60,7 @@ const ACTION_METADATA: {
 		{
 			id: "useMcp",
 			label: "使用MCP服务器",
-			shortName: "MCP",
+			shortName: "MCP服务器",
 			description: "允许使用配置的MCP服务器，这些服务器可能会修改文件系统或与API交互。",
 		},
 	]
@@ -100,23 +100,23 @@ const AutoApproveMenu = ({ style }: AutoApproveMenuProps) => {
 
 		// Handle read editing labels
 		if ((readFilesExternallyEnabled ?? false) && readFilesEnabled) {
-			labels.push("Read (All)")
+			labels.push("阅读（全部）")
 		} else if (readFilesEnabled) {
-			labels.push("Read")
+			labels.push("读")
 		}
 
 		// Handle file editing labels
 		if ((editFilesExternallyEnabled ?? false) && editFilesEnabled) {
-			labels.push("Edit (All)")
+			labels.push("编辑（全部）")
 		} else if (editFilesEnabled) {
-			labels.push("Edit")
+			labels.push("编辑")
 		}
 
 		// Handle command execution labels
 		if ((allCommandsEnabled ?? false) && safeCommandsEnabled) {
-			labels.push("All Commands")
+			labels.push("所有命令")
 		} else if (safeCommandsEnabled) {
-			labels.push("Safe Commands")
+			labels.push("安全命令")
 		}
 
 		// Add remaining actions
@@ -293,7 +293,7 @@ const AutoApproveMenu = ({ style }: AutoApproveMenuProps) => {
 							color: getAsVar(VSC_FOREGROUND),
 							whiteSpace: "nowrap",
 						}}>
-						Auto-approve:
+						自动批准：
 					</span>
 					<span
 						style={{
@@ -301,7 +301,7 @@ const AutoApproveMenu = ({ style }: AutoApproveMenuProps) => {
 							overflow: "hidden",
 							textOverflow: "ellipsis",
 						}}>
-						{!hasEnabledActions ? "None" : enabledActionsList}
+						{!hasEnabledActions ? "没有任何" : enabledActionsList}
 					</span>
 					<span
 						className={`codicon codicon-chevron-${isExpanded ? "down" : "right"}`}
@@ -320,8 +320,7 @@ const AutoApproveMenu = ({ style }: AutoApproveMenuProps) => {
 							color: getAsVar(VSC_DESCRIPTION_FOREGROUND),
 							fontSize: "12px",
 						}}>
-						Auto-approve allows Cline to perform the following actions without asking for permission. Please use with
-						caution and only enable if you understand the risks.
+						自动批准功能允许Cline在无需请求许可的情况下执行以下操作。请谨慎使用，仅在您了解其中风险时启用。
 					</div>
 					{ACTION_METADATA.map((action) => {
 						// Handle readFilesExternally, editFilesExternally, and executeAllCommands as animated sub-options
@@ -405,7 +404,7 @@ const AutoApproveMenu = ({ style }: AutoApproveMenuProps) => {
 							marginBottom: "8px",
 							color: getAsVar(VSC_FOREGROUND),
 						}}>
-						<span style={{ flexShrink: 1, minWidth: 0 }}>Max Requests:</span>
+						<span style={{ flexShrink: 1, minWidth: 0 }}>最大请求：</span>
 						<VSCodeTextField
 							// placeholder={DEFAULT_AUTO_APPROVAL_SETTINGS.maxRequests.toString()}
 							value={autoApprovalSettings.maxRequests.toString()}
@@ -433,7 +432,7 @@ const AutoApproveMenu = ({ style }: AutoApproveMenuProps) => {
 							fontSize: "12px",
 							marginBottom: "10px",
 						}}>
-						Cline will automatically make this many API requests before asking for approval to proceed with the task.
+						在要求批准继续执行任务之前，Cline将自动提出许多API请求。
 					</div>
 					<div style={{ margin: "6px 0" }}>
 						<VSCodeCheckbox
@@ -442,7 +441,7 @@ const AutoApproveMenu = ({ style }: AutoApproveMenuProps) => {
 								const checked = (e.target as HTMLInputElement).checked
 								updateNotifications(checked)
 							}}>
-							Enable Notifications
+							启用通知
 						</VSCodeCheckbox>
 						<div
 							style={{
@@ -450,7 +449,7 @@ const AutoApproveMenu = ({ style }: AutoApproveMenuProps) => {
 								color: getAsVar(VSC_DESCRIPTION_FOREGROUND),
 								fontSize: "12px",
 							}}>
-							Receive system notifications when Cline requires approval to proceed or when a task is completed.
+							当Cline需要批准或完成任务时，接收系统通知。
 						</div>
 					</div>
 				</div>

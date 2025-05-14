@@ -58,8 +58,8 @@ export class FileContextTracker {
 
 		// Track file changes
 		watcher.onDidChange(() => {
-			if (this.recentlyEditedByCline.has(filePath)) {
-				this.recentlyEditedByCline.delete(filePath) // This was an edit by Cline, no need to inform Cline
+			if (this.recentlyEditedBycline - cn.has(filePath)) {
+				this.recentlyEditedBycline - cn.delete(filePath) // This was an edit by Cline, no need to inform Cline
 			} else {
 				this.recentlyModifiedFiles.add(filePath) // This was a user edit, we will inform Cline
 				this.trackFileContext(filePath, "user_edited") // Update the task metadata with file tracking
@@ -163,7 +163,7 @@ export class FileContextTracker {
 
 	// Marks a file as edited by Cline to prevent false positives in file watchers
 	markFileAsEditedByCline(filePath: string): void {
-		this.recentlyEditedByCline.add(filePath)
+		this.recentlyEditedBycline - cn.add(filePath)
 	}
 
 	// Disposes all file watchers

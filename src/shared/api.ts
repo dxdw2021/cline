@@ -314,7 +314,7 @@ export const openRouterDefaultModelInfo: ModelInfo = {
 	cacheWritesPrice: 3.75,
 	cacheReadsPrice: 0.3,
 	description:
-		"Claude 3.7 Sonnet is an advanced large language model with improved reasoning, coding, and problem-solving capabilities. It introduces a hybrid reasoning approach, allowing users to choose between rapid responses and extended, step-by-step processing for complex tasks. The model demonstrates notable improvements in coding, particularly in front-end development and full-stack updates, and excels in agentic workflows, where it can autonomously navigate multi-step processes. \n\nClaude 3.7 Sonnet maintains performance parity with its predecessor in standard mode while offering an extended reasoning mode for enhanced accuracy in math, coding, and instruction-following tasks.\n\nRead more at the [blog post here](https://www.anthropic.com/news/claude-3-7-sonnet)",
+		"Claude 3.7 Sonnet是一款先进的大型语言模型，具备增强的推理、编码和问题解决能力。它引入了混合推理方法，允许用户在快速响应和针对复杂任务的逐步扩展处理之间选择。该模型在编码方面有显著改进，特别是在前端开发和全栈更新方面表现出色，并且在自主导航多步骤流程的代理工作流中表现优异。\n\nClaude 3.7 Sonnet在标准模式下保持与前一版本相同的性能，同时提供扩展推理模式以增强数学、编码和指令遵循任务的准确性。\n\n更多信息请参阅[博客文章](https://www.anthropic.com/news/claude-3-7-sonnet)",
 }
 // Vertex AI
 // https://cloud.google.com/vertex-ai/generative-ai/docs/partner-models/use-claude
@@ -1508,7 +1508,7 @@ export const xaiModels = {
 		supportsPromptCache: false,
 		inputPrice: 3.0,
 		outputPrice: 15.0,
-		description: "X AI's Grok-3 beta model with 131K context window",
+		description: "X AI的Grok-3 Beta模型，带有131K上下文窗口",
 	},
 	"grok-3-fast-beta": {
 		maxTokens: 8192,
@@ -1517,7 +1517,8 @@ export const xaiModels = {
 		supportsPromptCache: false,
 		inputPrice: 5.0,
 		outputPrice: 25.0,
-		description: "X AI's Grok-3 fast beta model with 131K context window",
+		description:
+			"X AI的Grok-3快速测试版模型，支持131K上下文窗口",
 	},
 	"grok-3-mini-beta": {
 		maxTokens: 8192,
@@ -1526,7 +1527,7 @@ export const xaiModels = {
 		supportsPromptCache: false,
 		inputPrice: 0.3,
 		outputPrice: 0.5,
-		description: "X AI's Grok-3 mini beta model with 131K context window",
+		description: "X AI的Grok-3 mini测试版模型，具有131K上下文窗口",
 	},
 	"grok-3-mini-fast-beta": {
 		maxTokens: 8192,
@@ -1571,7 +1572,7 @@ export const xaiModels = {
 		supportsPromptCache: false,
 		inputPrice: 2.0,
 		outputPrice: 10.0,
-		description: "X AI's Grok-2 Vision model - latest version with image support and 32K context window",
+		description: "X AI的Grok-2 Vision模型 - 最新版本，支持图像处理和32K上下文窗口",
 	},
 	"grok-2-vision": {
 		maxTokens: 8192,

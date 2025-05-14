@@ -50,17 +50,17 @@ describe("Extension Tests", function () {
 
 	it("should handle basic commands", async () => {
 		// Test basic command execution
-		await vscode.commands.executeCommand("cline.historyButtonClicked")
+		await vscode.commands.executeCommand("cline.yButtonClicked")
 		// Success if no error thrown
 	})
 
 	it("should handle advanced settings configuration", async () => {
 		// Test browser session setting
-		await vscode.workspace.getConfiguration().update("cline.disableBrowserTool", true, true)
+		await vscode.workspace.getConfiguration().update("cline.eBrowserTool", true, true)
 		const updatedConfig = vscode.workspace.getConfiguration("cline")
 		expect(updatedConfig.get("disableBrowserTool")).to.be.true
 
 		// Reset settings
-		await vscode.workspace.getConfiguration().update("cline.disableBrowserTool", undefined, true)
+		await vscode.workspace.getConfiguration().update("cline.eBrowserTool", undefined, true)
 	})
 })

@@ -78,6 +78,8 @@
 		"prompt": "Search Cline documentation..."
 	},
 	"contextual": {
-		"options": ["copy"]
+		"options": [
+			"copy"
+		]
 	}
 }

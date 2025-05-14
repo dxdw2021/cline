@@ -50,7 +50,7 @@ const NewRuleRow: React.FC<NewRuleRowProps> = ({ isGlobal }) => {
 			const extension = getExtension(trimmedFilename)
 
 			if (!isValidExtension(extension)) {
-				setError("Only .md, .txt, or no file extension allowed")
+				setError("仅允许 .md, .txt 或无扩展名")
 				return
 			}
 
@@ -89,15 +89,14 @@ const NewRuleRow: React.FC<NewRuleRowProps> = ({ isGlobal }) => {
 			className={`mb-2.5 transition-all duration-300 ease-in-out ${isExpanded ? "opacity-100" : "opacity-70 hover:opacity-100"}`}
 			onClick={() => !isExpanded && setIsExpanded(true)}>
 			<div
-				className={`flex items-center p-2 rounded bg-[var(--vscode-input-background)] transition-all duration-300 ease-in-out h-[18px] ${
-					isExpanded ? "shadow-sm" : ""
-				}`}>
+				className={`flex items-center p-2 rounded bg-[var(--vscode-input-background)] transition-all duration-300 ease-in-out h-[18px] ${isExpanded ? "shadow-sm" : ""
+					}`}>
 				{isExpanded ? (
 					<form onSubmit={handleSubmit} className="flex flex-1 items-center">
 						<input
 							ref={inputRef}
 							type="text"
-							placeholder="rule-name (.md, .txt, or no extension)"
+							placeholder="规则名称 (.md, .txt, 或无扩展名)"
 							value={filename}
 							onChange={(e) => setFilename(e.target.value)}
 							onKeyDown={handleKeyDown}
@@ -111,8 +110,8 @@ const NewRuleRow: React.FC<NewRuleRowProps> = ({ isGlobal }) => {
 							<VSCodeButton
 								appearance="icon"
 								type="submit"
-								aria-label="Create rule file"
-								title="Create rule file"
+								aria-label="创建规则文件"
+								title="创建规则文件"
 								style={{ padding: "0px" }}>
 								<span className="codicon codicon-add text-[14px]" />
 							</VSCodeButton>
@@ -121,13 +120,13 @@ const NewRuleRow: React.FC<NewRuleRowProps> = ({ isGlobal }) => {
 				) : (
 					<>
 						<span className="flex-1 text-[var(--vscode-descriptionForeground)] bg-[var(--vscode-input-background)] italic text-xs">
-							New rule file...
+							新建规则文件...
 						</span>
 						<div className="flex items-center ml-2 space-x-2">
 							<VSCodeButton
 								appearance="icon"
-								aria-label="New rule file"
-								title="New rule file"
+								aria-label="新建规则文件"
+								title="新建规则文件"
 								onClick={(e) => {
 									e.stopPropagation()
 									setIsExpanded(true)

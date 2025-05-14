@@ -1,6 +1,30 @@
 {
 	"name": "claude-dev",
-	"displayName": "Cline",
+	"extensionDependencies": [
+		"ms-python.python"
+	],
+	"enabledApiProposals": [
+		"aiRelatedInformation",
+		"chatParticipantAdditions",
+		"chatProvider",
+		"chatReadonlyPromptReference",
+		"codeActionAI",
+		"contribSourceControlInputBoxMenu",
+		"defaultChatParticipant",
+		"findFiles2",
+		"findTextInFiles",
+		"inlineCompletionsAdditions",
+		"interactive",
+		"mappedEditsProvider",
+		"newSymbolNamesProvider",
+		"terminalDataWriteEvent",
+		"terminalExecuteCommandEvent",
+		"terminalQuickFixProvider",
+		"terminalSelection",
+		"terminalShellType",
+		"textSearchProvider"
+	],
+	"displayName": "Cline Chinese [最新中文版]",
 	"description": "集成在IDE中的自主编程助手，可在您的授权下创建/编辑文件、运行命令、使用浏览器等操作。",
 	"version": "3.14.1",
 	"icon": "assets/icons/icon.png",
@@ -11,7 +35,7 @@
 		"name": "Cline Bot Inc."
 	},
 	"license": "Apache-2.0",
-	"publisher": "saoudrizwan",
+	"publisher": "617694668",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/cline/cline"
@@ -65,58 +89,58 @@
 		"commands": [
 			{
 				"command": "cline.plusButtonClicked",
-				"title": "New Task",
+				"title": "新建任务",
 				"icon": "$(add)"
 			},
 			{
 				"command": "cline.mcpButtonClicked",
-				"title": "MCP Servers",
+				"title": "MCP 服务器",
 				"icon": "$(server)"
 			},
 			{
 				"command": "cline.historyButtonClicked",
-				"title": "History",
+				"title": "历史记录",
 				"icon": "$(history)"
 			},
 			{
 				"command": "cline.popoutButtonClicked",
-				"title": "Open in Editor",
+				"title": "在编辑器中打开",
 				"icon": "$(link-external)"
 			},
 			{
 				"command": "cline.accountButtonClicked",
-				"title": "Account",
+				"title": "账户",
 				"icon": "$(account)"
 			},
 			{
 				"command": "cline.settingsButtonClicked",
-				"title": "Settings",
+				"title": "设置",
 				"icon": "$(settings-gear)"
 			},
 			{
 				"command": "cline.openInNewTab",
-				"title": "Open In New Tab",
+				"title": "在新标签页中打开",
 				"category": "Cline"
 			},
 			{
 				"command": "cline.dev.createTestTasks",
-				"title": "Create Test Tasks",
+				"title": "创建测试任务",
 				"category": "Cline",
 				"when": "cline.isDevMode"
 			},
 			{
 				"command": "cline.addToChat",
-				"title": "Add to Cline",
+				"title": "添加到 Cline",
 				"category": "Cline"
 			},
 			{
 				"command": "cline.addTerminalOutputToChat",
-				"title": "Add to Cline",
+				"title": "添加到 Cline",
 				"category": "Cline"
 			},
 			{
 				"command": "cline.focusChatInput",
-				"title": "Jump to Chat Input",
+				"title": "跳转到聊天输入框",
 				"category": "Cline"
 			}
 		],
@@ -217,24 +241,24 @@
 					"properties": {
 						"vendor": {
 							"type": "string",
-							"description": "The vendor of the language model (e.g. copilot)"
+							"description": "语言模型供应商（例如：copilot）"
 						},
 						"family": {
 							"type": "string",
-							"description": "The family of the language model (e.g. gpt-4)"
+							"description": "语言模型系列（例如：gpt-4）"
 						}
 					},
-					"description": "Settings for VSCode Language Model API"
+					"description": "VSCode 语言模型 API 设置"
 				},
 				"cline.enableCheckpoints": {
 					"type": "boolean",
 					"default": true,
-					"description": "Enables extension to save checkpoints of workspace throughout the task. Uses git under the hood which may not work well with large workspaces."
+					"description": "启用扩展在任务过程中保存工作区检查点。内部使用 git，可能在大型工作区中表现不佳。"
 				},
 				"cline.disableBrowserTool": {
 					"type": "boolean",
 					"default": false,
-					"description": "Disables extension from spawning browser session."
+					"description": "禁用扩展启动浏览器会话。"
 				},
 				"cline.modelSettings.o3Mini.reasoningEffort": {
 					"type": "string",
@@ -244,12 +268,12 @@
 						"high"
 					],
 					"default": "medium",
-					"description": "Controls the reasoning effort when using the o3-mini model. Higher values may result in more thorough but slower responses."
+					"description": "控制使用 o3-mini 模型时的推理努力程度。较高的值可能会产生更全面但响应更慢的结果。"
 				},
 				"cline.chromeExecutablePath": {
 					"type": "string",
 					"default": null,
-					"description": "Path to Chrome executable for browser use functionality. If not set, the extension will attempt to find or download it automatically."
+					"description": "Chrome 可执行文件路径，用于浏览器功能。如果未设置，扩展将尝试自动查找或下载。"
 				},
 				"cline.preferredLanguage": {
 					"type": "string",
@@ -279,7 +303,7 @@
 				"cline.mcpMarketplace.enabled": {
 					"type": "boolean",
 					"default": true,
-					"description": "Controls whether the MCP Marketplace is enabled."
+					"description": "控制是否启用 MCP 市场。"
 				}
 			}
 		}
@@ -299,7 +323,8 @@
 		"lint": "eslint src --ext ts && eslint webview-ui/src --ext ts",
 		"format": "prettier . --check",
 		"format:fix": "prettier . --write",
-		"test": "npm-run-all test:unit test:integration",
+		"test": "node ./test-setup.js && node ./scripts/test-ci.js",
+		"build": "tsc && node ./scripts/build-tests.js",
 		"test:ci": "node scripts/test-ci.js",
 		"test:integration": "vscode-test",
 		"test:unit": "TS_NODE_PROJECT='./tsconfig.unit-test.json' mocha",
@@ -333,6 +358,7 @@
 		"@typescript-eslint/parser": "^7.11.0",
 		"@vscode/test-cli": "^0.0.9",
 		"@vscode/test-electron": "^2.4.0",
+		"@vscode/vsce": "^3.3.2",
 		"chai": "^4.3.10",
 		"chalk": "^5.3.0",
 		"esbuild": "^0.25.0",

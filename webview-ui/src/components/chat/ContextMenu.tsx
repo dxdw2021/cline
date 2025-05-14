@@ -82,13 +82,13 @@ const ContextMenu: React.FC<ContextMenuProps> = ({
 	const renderOptionContent = (option: ContextMenuQueryItem) => {
 		switch (option.type) {
 			case ContextMenuOptionType.Problems:
-				return <span>Problems</span>
+				return <span>问题</span>
 			case ContextMenuOptionType.Terminal:
-				return <span>Terminal</span>
+				return <span>终端</span>
 			case ContextMenuOptionType.URL:
-				return <span>Paste URL to fetch contents</span>
+				return <span>粘贴URL以获取内容</span>
 			case ContextMenuOptionType.NoResults:
-				return <span>No results found</span>
+				return <span>找不到结果</span>
 			case ContextMenuOptionType.Git:
 				if (option.value) {
 					return (
@@ -108,7 +108,7 @@ const ContextMenu: React.FC<ContextMenuProps> = ({
 						</div>
 					)
 				} else {
-					return <span>Git Commits</span>
+					return <span>Git 提交记录</span>
 				}
 			case ContextMenuOptionType.File:
 			case ContextMenuOptionType.Folder:
@@ -130,7 +130,7 @@ const ContextMenu: React.FC<ContextMenuProps> = ({
 						</>
 					)
 				} else {
-					return <span>Add {option.type === ContextMenuOptionType.File ? "File" : "Folder"}</span>
+					return <span>Add {option.type === ContextMenuOptionType.File ? "File添加文件" : "文件夹"}</span>
 				}
 		}
 	}
@@ -255,15 +255,15 @@ const ContextMenu: React.FC<ContextMenuProps> = ({
 								option.type === ContextMenuOptionType.Folder ||
 								option.type === ContextMenuOptionType.Git) &&
 								option.value)) && (
-							<i
-								className="codicon codicon-add"
-								style={{
-									fontSize: "14px",
-									flexShrink: 0,
-									marginLeft: 8,
-								}}
-							/>
-						)}
+								<i
+									className="codicon codicon-add"
+									style={{
+										fontSize: "14px",
+										flexShrink: 0,
+										marginLeft: 8,
+									}}
+								/>
+							)}
 					</div>
 				))}
 			</div>

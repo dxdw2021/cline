@@ -1481,11 +1481,11 @@ const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 								height: "100%",
 								zIndex: 6,
 							}}>
-							<Tooltip tipText="Add Context" style={{ left: 0 }}>
+							<Tooltip tipText="添加上下文" style={{ left: 0 }}>
 								<VSCodeButton
 									data-testid="context-button"
 									appearance="icon"
-									aria-label="Add Context"
+									aria-label="添加上下文"
 									disabled={textAreaDisabled}
 									onClick={handleContextButtonClick}
 									style={{ padding: "0px 0px", height: "20px" }}>
@@ -1497,11 +1497,11 @@ const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 								</VSCodeButton>
 							</Tooltip>
 
-							<Tooltip tipText="Add Images">
+							<Tooltip tipText="添加图像" style={{ left: 26 }}>
 								<VSCodeButton
 									data-testid="images-button"
 									appearance="icon"
-									aria-label="Add Images"
+									aria-label="添加图像"
 									disabled={shouldDisableImages}
 									onClick={() => {
 										if (!shouldDisableImages) {
@@ -1554,26 +1554,26 @@ const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 					<Tooltip
 						style={{ zIndex: 1000 }}
 						visible={shownTooltipMode !== null}
-						tipText={`In ${shownTooltipMode === "act" ? "Act" : "Plan"}  mode, Cline will ${shownTooltipMode === "act" ? "complete the task immediately" : "gather information to architect a plan"}`}
-						hintText={`Toggle w/ ${metaKeyChar}+Shift+A`}>
+						tipText={`在${shownTooltipMode === "act" ? "执行" : "规划"}模式下，Cline将${shownTooltipMode === "act" ? "立即完成任务" : "收集信息制定计划"}`}
+						hintText={`切换快捷键: ${metaKeyChar}+Shift+A`}>
 						<SwitchContainer data-testid="mode-switch" disabled={false} onClick={onModeToggle}>
 							<Slider isAct={chatSettings.mode === "act"} isPlan={chatSettings.mode === "plan"} />
 							<SwitchOption
 								isActive={chatSettings.mode === "plan"}
 								onMouseOver={() => setShownTooltipMode("plan")}
 								onMouseLeave={() => setShownTooltipMode(null)}>
-								Plan
+								Plan计划
 							</SwitchOption>
 							<SwitchOption
 								isActive={chatSettings.mode === "act"}
 								onMouseOver={() => setShownTooltipMode("act")}
 								onMouseLeave={() => setShownTooltipMode(null)}>
-								Act
+								Act行动
 							</SwitchOption>
 						</SwitchContainer>
 					</Tooltip>
-				</ControlsContainer>
-			</div>
+				</ControlsContainer >
+			</div >
 		)
 	},
 )

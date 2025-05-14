@@ -11,7 +11,7 @@ import { handleWebContentServiceRequest } from "./web-content"
  * Handles gRPC requests from the webview
  */
 export class GrpcHandler {
-	constructor(private controller: Controller) {}
+	constructor(private controller: Controller) { }
 
 	/**
 	 * Handle a gRPC request from the webview
@@ -38,32 +38,32 @@ export class GrpcHandler {
 						message: await handleAccountServiceRequest(this.controller, method, message),
 						request_id: requestId,
 					}
-				case "cline.BrowserService":
+				case "cline.rService":
 					return {
 						message: await handleBrowserServiceRequest(this.controller, method, message),
 						request_id: requestId,
 					}
-				case "cline.CheckpointsService":
+				case "cline.ointsService":
 					return {
 						message: await handleCheckpointsServiceRequest(this.controller, method, message),
 						request_id: requestId,
 					}
-				case "cline.FileService":
+				case "cline.rvice":
 					return {
 						message: await handleFileServiceRequest(this.controller, method, message),
 						request_id: requestId,
 					}
-				case "cline.TaskService":
+				case "cline.rvice":
 					return {
 						message: await handleTaskServiceRequest(this.controller, method, message),
 						request_id: requestId,
 					}
-				case "cline.McpService":
+				case "cline.vice":
 					return {
 						message: await handleMcpServiceRequest(this.controller, method, message),
 						request_id: requestId,
 					}
-				case "cline.WebContentService":
+				case "cline.tentService":
 					return {
 						message: await handleWebContentServiceRequest(this.controller, method, message),
 						request_id: requestId,

@@ -33,7 +33,7 @@ export class SWELancerAdapter implements BenchmarkAdapter {
 			{
 				id: "swelancer-task-1",
 				name: "Create Landing Page",
-				description: "Create a responsive landing page for a new product using HTML, CSS, and JavaScript.",
+				description: "使用HTML，CSS和JavaScript为新产品创建响应式着陆页.",
 				workspacePath: path.join(EVALS_DIR, "repositories", "swelancer"),
 				setupCommands: [],
 				verificationCommands: [],
@@ -46,7 +46,7 @@ export class SWELancerAdapter implements BenchmarkAdapter {
 			{
 				id: "swelancer-task-2",
 				name: "Build REST API",
-				description: "Create a RESTful API for a blog application using Node.js and Express.",
+				description: "使用node.js为博客应用程序创建一个安息的API并Express.",
 				workspacePath: path.join(EVALS_DIR, "repositories", "swelancer"),
 				setupCommands: [],
 				verificationCommands: [],
@@ -59,7 +59,7 @@ export class SWELancerAdapter implements BenchmarkAdapter {
 			{
 				id: "swelancer-task-3",
 				name: "Fix CSS Layout Issues",
-				description: "Fix layout issues in a responsive website across different screen sizes.",
+				description: "在响应迅速的网站上解决不同屏幕尺寸的布局问题.",
 				workspacePath: path.join(EVALS_DIR, "repositories", "swelancer"),
 				setupCommands: [],
 				verificationCommands: [],
