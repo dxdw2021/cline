@@ -196,9 +196,7 @@ export const CheckmarkControl = ({ messageTs, isCheckpointCheckedOut }: Checkmar
 										}}>
 										恢复文件
 									</VSCodeButton>
-									<p>
-										将项目文件恢复到此时的快照（使用"比较"查看将被还原的内容）
-									</p>
+									<p>将项目文件恢复到此时的快照（使用"比较"查看将被还原的内容）</p>
 								</RestoreOption>
 								<RestoreOption>
 									<VSCodeButton
@@ -306,9 +304,9 @@ const CustomButton = styled.button<{ disabled?: boolean; isActive?: boolean; $is
 		bottom: 0;
 		border-radius: 1px;
 		background-image: ${(props) =>
-		props.isActive || props.disabled
-			? "none"
-			: `linear-gradient(to right, ${props.$isCheckedOut ? "var(--vscode-textLink-foreground)" : "var(--vscode-descriptionForeground)"} 50%, transparent 50%),
+			props.isActive || props.disabled
+				? "none"
+				: `linear-gradient(to right, ${props.$isCheckedOut ? "var(--vscode-textLink-foreground)" : "var(--vscode-descriptionForeground)"} 50%, transparent 50%),
 			linear-gradient(to bottom, ${props.$isCheckedOut ? "var(--vscode-textLink-foreground)" : "var(--vscode-descriptionForeground)"} 50%, transparent 50%),
 			linear-gradient(to right, ${props.$isCheckedOut ? "var(--vscode-textLink-foreground)" : "var(--vscode-descriptionForeground)"} 50%, transparent 50%),
 			linear-gradient(to bottom, ${props.$isCheckedOut ? "var(--vscode-textLink-foreground)" : "var(--vscode-descriptionForeground)"} 50%, transparent 50%)`};
@@ -323,7 +321,7 @@ const CustomButton = styled.button<{ disabled?: boolean; isActive?: boolean; $is
 
 	&:hover:not(:disabled) {
 		background: ${(props) =>
-		props.$isCheckedOut ? "var(--vscode-textLink-foreground)" : "var(--vscode-descriptionForeground)"};
+			props.$isCheckedOut ? "var(--vscode-textLink-foreground)" : "var(--vscode-descriptionForeground)"};
 		color: var(--vscode-editor-background);
 		&::before {
 			display: none;

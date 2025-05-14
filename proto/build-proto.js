@@ -43,11 +43,11 @@ async function main() {
 		// Build the protoc command with proper path handling for cross-platform
 		const protocCommand = [
 			protoc,
-			`--plugin=protoc-gen-ts_proto=${tsProtoPlugin.replace(/\\/g, '/')}`,
-			`--ts_proto_out=${TS_OUT_DIR.replace(/\\/g, '/')}`,
+			`--plugin=protoc-gen-ts_proto=${tsProtoPlugin.replace(/\\/g, "/")}`,
+			`--ts_proto_out=${TS_OUT_DIR.replace(/\\/g, "/")}`,
 			"--ts_proto_opt=outputServices=generic-definitions,env=node,esModuleInterop=true,useDate=false,useOptionals=messages",
-			`--proto_path=${SCRIPT_DIR.replace(/\\/g, '/')}`,
-			`${path.join(SCRIPT_DIR, protoFile).replace(/\\/g, '/')}`,
+			`--proto_path=${SCRIPT_DIR.replace(/\\/g, "/")}`,
+			`${path.join(SCRIPT_DIR, protoFile).replace(/\\/g, "/")}`,
 		].join(" ")
 
 		try {

@@ -94,17 +94,17 @@ Otherwise, if you have not completed the task and do not need additional informa
 
 		const clineIgnoreParsed = clineIgnoreController
 			? sorted.map((filePath) => {
-				// 路径相对于绝对路径，而不是CWD
-				// valataccess期望相对于CWD或绝对路径的路径
-				// 否则，为了验证忽略诸如“资产/图标”之类的模式，我们最终将以“图标”为例，这将导致路径不被忽略。
-				const absoluteFilePath = path.resolve(absolutePath, filePath)
-				const isIgnored = !clineIgnoreController.validateAccess(absoluteFilePath)
-				if (isIgnored) {
-					return LOCK_TEXT_SYMBOL + " " + filePath
-				}
+					// 路径相对于绝对路径，而不是CWD
+					// valataccess期望相对于CWD或绝对路径的路径
+					// 否则，为了验证忽略诸如“资产/图标”之类的模式，我们最终将以“图标”为例，这将导致路径不被忽略。
+					const absoluteFilePath = path.resolve(absolutePath, filePath)
+					const isIgnored = !clineIgnoreController.validateAccess(absoluteFilePath)
+					if (isIgnored) {
+						return LOCK_TEXT_SYMBOL + " " + filePath
+					}
 
-				return filePath
-			})
+					return filePath
+				})
 			: sorted
 
 		if (didHitLimit) {
@@ -133,20 +133,23 @@ Otherwise, if you have not completed the task and do not need additional informa
 		wasRecent: boolean | 0 | undefined,
 		responseText?: string,
 	): [string, string] => {
-		const taskResumptionMessage = `[TASK RESUMPTION] ${mode === "plan"
-			? `这个任务被打断了 ${agoText}。对话可能是不完整的。请注意，从那时起，项目状态可能已经改变。当前的工作目录现在为'$ {cwd.toposix（）}'.\n\n注意：如果您以前尝试使用用户没有提供结果的工具，则应假设工具使用不成功。但是，您处于计划模式，因此您不必继续任务，而必须响应用户的消息。`
-			: `这个任务被打断了 ${agoText}。它可能完成也可能不完整，因此请重新评估任务上下文。请注意，从那时起，项目状态可能已经改变。当前的工作目录现在是'${cwd.toPosix()}'。如果任务尚未完成，请在中断之前重试最后一步，然后继续完成任务。\n\n注意：如果您以前尝试使用用户没有提供结果的工具使用，则应假定工具使用不成功，并评估是否应该重试。如果最后一个工具是浏览器_action，则浏览器已关闭，并且必须在需要时启动新浏览器。`
-			}${wasRecent
+		const taskResumptionMessage = `[TASK RESUMPTION] ${
+			mode === "plan"
+				? `这个任务被打断了 ${agoText}。对话可能是不完整的。请注意，从那时起，项目状态可能已经改变。当前的工作目录现在为'$ {cwd.toposix（）}'.\n\n注意：如果您以前尝试使用用户没有提供结果的工具，则应假设工具使用不成功。但是，您处于计划模式，因此您不必继续任务，而必须响应用户的消息。`
+				: `这个任务被打断了 ${agoText}。它可能完成也可能不完整，因此请重新评估任务上下文。请注意，从那时起，项目状态可能已经改变。当前的工作目录现在是'${cwd.toPosix()}'。如果任务尚未完成，请在中断之前重试最后一步，然后继续完成任务。\n\n注意：如果您以前尝试使用用户没有提供结果的工具使用，则应假定工具使用不成功，并评估是否应该重试。如果最后一个工具是浏览器_action，则浏览器已关闭，并且必须在需要时启动新浏览器。`
+		}${
+			wasRecent
 				? "\n\n重要的是：如果最后一个工具使用是中断的替换_in_file或write_to_file，则文件在中断编辑之前将文件恢复回原始状态，并且您无需重新阅读该文件，因为您已经拥有其最新内容。"
 				: ""
-			}`
+		}`
 
-		const userResponseMessage = `${responseText
-			? `${mode === "plan" ? "使用Plan_mode_respond工具响应的新消息（请确保在<响应>参数中提供您的响应）" : "任务继续的新说明"}:\n<user_message>\n${responseText}\n</user_message>`
-			: mode === "plan"
-				? "(The user did not provide a new message. Consider asking them how they'd like you to proceed, or suggest to them to switch to Act mode to continue with the task.)"
-				: ""
-			}`
+		const userResponseMessage = `${
+			responseText
+				? `${mode === "plan" ? "使用Plan_mode_respond工具响应的新消息（请确保在<响应>参数中提供您的响应）" : "任务继续的新说明"}:\n<user_message>\n${responseText}\n</user_message>`
+				: mode === "plan"
+					? "(The user did not provide a new message. Consider asking them how they'd like you to proceed, or suggest to them to switch to Act mode to continue with the task.)"
+					: ""
+		}`
 
 		return [taskResumptionMessage, userResponseMessage]
 	},
@@ -226,18 +229,18 @@ Otherwise, if you have not completed the task and do not need additional informa
 const formatImagesIntoBlocks = (images?: string[]): Anthropic.ImageBlockParam[] => {
 	return images
 		? images.map((dataUrl) => {
-			// data:image/png;base64,base64string
-			const [rest, base64] = dataUrl.split(",")
-			const mimeType = rest.split(":")[1].split(";")[0]
-			return {
-				type: "image",
-				source: {
-					type: "base64",
-					media_type: mimeType,
-					data: base64,
-				},
-			} as Anthropic.ImageBlockParam
-		})
+				// data:image/png;base64,base64string
+				const [rest, base64] = dataUrl.split(",")
+				const mimeType = rest.split(":")[1].split(";")[0]
+				return {
+					type: "image",
+					source: {
+						type: "base64",
+						media_type: mimeType,
+						data: base64,
+					},
+				} as Anthropic.ImageBlockParam
+			})
 		: []
 }
 

@@ -48,9 +48,7 @@ export const TerminalSettingsSection: React.FC = () => {
 			<h3 style={{ color: "var(--vscode-foreground)", margin: "0 0 10px 0", fontSize: "14px" }}>终端设置</h3>
 			<div style={{ marginBottom: 15 }}>
 				<div style={{ marginBottom: 8 }}>
-					<label style={{ fontWeight: "500", display: "block", marginBottom: 5 }}>
-						Shell集成超时时间（秒）
-					</label>
+					<label style={{ fontWeight: "500", display: "block", marginBottom: 5 }}>Shell集成超时时间（秒）</label>
 					<div style={{ display: "flex", alignItems: "center" }}>
 						<VSCodeTextField
 							style={{ width: "100%" }}

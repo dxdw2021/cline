@@ -159,9 +159,7 @@ const ThinkingBudgetSlider = ({ apiConfiguration, setApiConfiguration, maxBudget
 						aria-describedby="thinking-budget-description"
 					/>
 
-					<Description id="thinking-budget-description">
-						更高的预算可能使您能够实现更全面和细微的推理
-					</Description>
+					<Description id="thinking-budget-description">更高的预算可能使您能够实现更全面和细微的推理</Description>
 				</>
 			)}
 		</Container>

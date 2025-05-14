@@ -1517,8 +1517,7 @@ export const xaiModels = {
 		supportsPromptCache: false,
 		inputPrice: 5.0,
 		outputPrice: 25.0,
-		description:
-			"X AI的Grok-3快速测试版模型，支持131K上下文窗口",
+		description: "X AI的Grok-3快速测试版模型，支持131K上下文窗口",
 	},
 	"grok-3-mini-beta": {
 		maxTokens: 8192,

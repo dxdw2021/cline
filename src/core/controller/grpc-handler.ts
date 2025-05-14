@@ -11,7 +11,7 @@ import { handleWebContentServiceRequest } from "./web-content"
  * Handles gRPC requests from the webview
  */
 export class GrpcHandler {
-	constructor(private controller: Controller) { }
+	constructor(private controller: Controller) {}
 
 	/**
 	 * Handle a gRPC request from the webview

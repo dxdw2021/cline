@@ -2,7 +2,7 @@ import { mentionRegex } from "@shared/context-mentions"
 import { Fzf } from "fzf"
 // 使用浏览器兼容的路径处理方式
 function basename(path: string): string {
-	return path.split('/').pop() || path
+	return path.split("/").pop() || path
 }
 
 export interface SearchResult {

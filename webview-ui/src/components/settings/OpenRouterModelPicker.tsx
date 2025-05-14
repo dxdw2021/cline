@@ -111,7 +111,7 @@ const OpenRouterModelPicker: React.FC<OpenRouterModelPickerProps> = ({ isPopup }
 	const searchableItems = useMemo(() => {
 		return modelIds.map((id) => ({
 			id,
-			html: id.includes('free') ? `【免费】${id}` : id,
+			html: id.includes("free") ? `【免费】${id}` : id,
 		}))
 	}, [modelIds])
 

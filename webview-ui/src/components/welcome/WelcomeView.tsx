@@ -41,7 +41,8 @@ const WelcomeView = memo(() => {
 					<VSCodeLink href="https://www.anthropic.com/claude/sonnet" className="inline">
 						Claude 3.7 Sonnet
 					</VSCodeLink>
-					的代理编码能力突破，以及可以创建和编辑文件、探索复杂项目、使用浏览器和执行终端命令的工具访问权限，我可以完成各种任务<i>（当然，需要您的许可）</i>。我甚至可以使用 MCP 创建新工具并扩展自己的能力。
+					的代理编码能力突破，以及可以创建和编辑文件、探索复杂项目、使用浏览器和执行终端命令的工具访问权限，我可以完成各种任务
+					<i>（当然，需要您的许可）</i>。我甚至可以使用 MCP 创建新工具并扩展自己的能力。
 				</p>
 
 				<p className="text-[var(--vscode-descriptionForeground)]">

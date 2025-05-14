@@ -1,29 +1,27 @@
 {
-    "rules": {
-        "eventListeners": {
-            "passive": true,
-            "maxListeners": 20
-        },
-        "git": {
-            "enabled": true,
-            "providers": [
-                "default"
-            ]
-        },
-        "sandbox": {
-            "iframeOptions": {
-                "sandbox": "allow-scripts"
-            }
-        },
-        "network": {
-            "tls": {
-                "rejectUnauthorized": false,
-                "retryOptions": {
-                    "retries": 3,
-                    "minTimeout": 1000,
-                    "maxTimeout": 5000
-                }
-            }
-        }
-    }
+	"rules": {
+		"eventListeners": {
+			"passive": true,
+			"maxListeners": 20
+		},
+		"git": {
+			"enabled": true,
+			"providers": ["default"]
+		},
+		"sandbox": {
+			"iframeOptions": {
+				"sandbox": "allow-scripts"
+			}
+		},
+		"network": {
+			"tls": {
+				"rejectUnauthorized": false,
+				"retryOptions": {
+					"retries": 3,
+					"minTimeout": 1000,
+					"maxTimeout": 5000
+				}
+			}
+		}
+	}
 }

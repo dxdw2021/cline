@@ -91,7 +91,7 @@ export async function detectImageUrl(url: string): Promise<boolean> {
 	try {
 		const response = await axios.head(url, {
 			headers: {
-				"User-Agent": "Mozilla/5.0 (compatible; VSCodeExtension/1.0; +https://cline.
+				"User-Agent": "Mozilla/5.0 (compatible; VSCodeExtension/1.0; +https://cline.bot)",
 			},
 			timeout: 3000,
 		})

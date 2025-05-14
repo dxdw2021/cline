@@ -809,8 +809,8 @@ const ApiOptions = ({
 									marginTop: "5px",
 									color: "var(--vscode-descriptionForeground)",
 								}}>
-								在基岩中使用应用程序推理配置文件时，请选择“自定义”。输入应用程序
-								模型ID字段中的推理配置文件ID。 但是，请确保对ARN中的 /在％2F中进行编码。
+								在基岩中使用应用程序推理配置文件时，请选择“自定义”。输入应用程序 模型ID字段中的推理配置文件ID。
+								但是，请确保对ARN中的 /在％2F中进行编码。
 								<br />
 								Example: arn:aws:bedrock:us-west-2:&lt;AWS Account
 								ID&gt;:application-inference-profile%2Fxxxxxxxxxxxx
@@ -854,8 +854,8 @@ const ApiOptions = ({
 					{(selectedModelId === "anthropic.claude-3-7-sonnet-20250219-v1:0" ||
 						(apiConfiguration?.awsBedrockCustomSelected &&
 							apiConfiguration?.awsBedrockCustomModelBaseId === "anthropic.claude-3-7-sonnet-20250219-v1:0")) && (
-							<ThinkingBudgetSlider apiConfiguration={apiConfiguration} setApiConfiguration={setApiConfiguration} />
-						)}
+						<ThinkingBudgetSlider apiConfiguration={apiConfiguration} setApiConfiguration={setApiConfiguration} />
+					)}
 					<ModelInfoView
 						selectedModelId={selectedModelId}
 						modelInfo={selectedModelInfo}
@@ -1398,8 +1398,7 @@ const ApiOptions = ({
 									color: "var(--vscode-descriptionForeground)",
 								}}>
 								VS代码语言模型API允许您运行其他VS代码扩展名提供的模型
-								（包括但不限于Github副驾驶）。最简单的开始方法是安装
-								从VS市场上扩展，并使Claude 3.7十四行诗能够。
+								（包括但不限于Github副驾驶）。最简单的开始方法是安装 从VS市场上扩展，并使Claude 3.7十四行诗能够。
 							</p>
 						)}
 
@@ -1821,8 +1820,8 @@ const ApiOptions = ({
 
 						{((selectedProvider === "anthropic" && selectedModelId === "claude-3-7-sonnet-20250219") ||
 							(selectedProvider === "vertex" && selectedModelId === "claude-3-7-sonnet@20250219")) && (
-								<ThinkingBudgetSlider apiConfiguration={apiConfiguration} setApiConfiguration={setApiConfiguration} />
-							)}
+							<ThinkingBudgetSlider apiConfiguration={apiConfiguration} setApiConfiguration={setApiConfiguration} />
+						)}
 
 						{selectedProvider === "xai" && selectedModelId.includes("3-mini") && (
 							<>
@@ -1990,8 +1989,7 @@ export const ModelInfoView = ({
 		// Display both standard and thinking budget prices
 		outputPriceElement = (
 			<Fragment key="outputPriceConditional">
-				<span style={{ fontWeight: 500 }}>输出价格 (Standard):</span> {formatPrice(modelInfo.outputPrice)}/million
-				令牌
+				<span style={{ fontWeight: 500 }}>输出价格 (Standard):</span> {formatPrice(modelInfo.outputPrice)}/million 令牌
 				<br />
 				<span style={{ fontWeight: 500 }}>输出价格 (Thinking Budget &gt; 0):</span>{" "}
 				{formatPrice(modelInfo.thinkingConfig.outputPrice)}/百万个令牌
@@ -2061,8 +2059,7 @@ export const ModelInfoView = ({
 		),
 		modelInfo.supportsPromptCache && modelInfo.cacheReadsPrice && (
 			<span key="cacheReadsPrice">
-				<span style={{ fontWeight: 500 }}>缓存读取价格:</span> {formatPrice(modelInfo.cacheReadsPrice || 0)}/million
-				令牌
+				<span style={{ fontWeight: 500 }}>缓存读取价格:</span> {formatPrice(modelInfo.cacheReadsPrice || 0)}/million 令牌
 			</span>
 		),
 		outputPriceElement, // Add the generated output price block

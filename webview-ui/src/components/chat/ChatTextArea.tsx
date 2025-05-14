@@ -1572,8 +1572,8 @@ const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 							</SwitchOption>
 						</SwitchContainer>
 					</Tooltip>
-				</ControlsContainer >
-			</div >
+				</ControlsContainer>
+			</div>
 		)
 	},
 )

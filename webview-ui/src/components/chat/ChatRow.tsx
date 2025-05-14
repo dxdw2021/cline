@@ -55,7 +55,7 @@ interface ChatRowProps {
 	sendMessageFromChatRow?: (text: string, images: string[]) => void
 }
 
-interface ChatRowContentProps extends Omit<ChatRowProps, "onHeightChange"> { }
+interface ChatRowContentProps extends Omit<ChatRowProps, "onHeightChange"> {}
 
 export const ProgressIndicator = () => (
 	<div

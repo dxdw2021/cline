@@ -89,8 +89,9 @@ const NewRuleRow: React.FC<NewRuleRowProps> = ({ isGlobal }) => {
 			className={`mb-2.5 transition-all duration-300 ease-in-out ${isExpanded ? "opacity-100" : "opacity-70 hover:opacity-100"}`}
 			onClick={() => !isExpanded && setIsExpanded(true)}>
 			<div
-				className={`flex items-center p-2 rounded bg-[var(--vscode-input-background)] transition-all duration-300 ease-in-out h-[18px] ${isExpanded ? "shadow-sm" : ""
-					}`}>
+				className={`flex items-center p-2 rounded bg-[var(--vscode-input-background)] transition-all duration-300 ease-in-out h-[18px] ${
+					isExpanded ? "shadow-sm" : ""
+				}`}>
 				{isExpanded ? (
 					<form onSubmit={handleSubmit} className="flex flex-1 items-center">
 						<input

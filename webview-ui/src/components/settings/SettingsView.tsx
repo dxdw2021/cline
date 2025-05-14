@@ -193,9 +193,7 @@ const SettingsView = ({ onDone }: SettingsViewProps) => {
 							className="w-full"
 							resize="vertical"
 							rows={4}
-							placeholder={
-								'例如："在最后运行单元测试"、"使用TypeScript的async/await"、"用中文交流"'
-							}
+							placeholder={'例如："在最后运行单元测试"、"使用TypeScript的async/await"、"用中文交流"'}
 							onInput={(e: any) => setCustomInstructions(e.target?.value ?? "")}>
 							<span className="font-medium">自定义指令</span>
 						</VSCodeTextArea>
@@ -232,8 +230,7 @@ const SettingsView = ({ onDone }: SettingsViewProps) => {
 						允许匿名错误和使用情况报告
 					</VSCodeCheckbox>
 					<p className="text-xs mt-[5px] text-[var(--vscode-descriptionForeground)]">
-						通过发送匿名使用数据和错误报告来帮助改进Cline。我们绝不会发送任何代码、提示或个人信息。
-						查看我们的{" "}
+						通过发送匿名使用数据和错误报告来帮助改进Cline。我们绝不会发送任何代码、提示或个人信息。 查看我们的{" "}
 						<VSCodeLink href="https://docs.cline.bot/more-info/telemetry" className="text-inherit">
 							遥测概述
 						</VSCodeLink>{" "}
@@ -280,7 +277,8 @@ const SettingsView = ({ onDone }: SettingsViewProps) => {
 						如果您有任何问题或反馈，请随时在{" "}
 						<VSCodeLink href="https://github.com/dxdw2021/cline" className="inline">
 							https://github.com/dxdw2021/cline
-						</VSCodeLink>{" "}提出问题
+						</VSCodeLink>{" "}
+						提出问题
 					</p>
 					<p className="italic mt-[10px] mb-0 p-0">v{version}</p>
 				</div>

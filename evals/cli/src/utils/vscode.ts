@@ -107,7 +107,7 @@ export async function spawnVSCode(workspacePath: string, vsixPath?: string): Pro
 	const settingsPath = path.join(settingsDir, "settings.json")
 	/**
 	 * VSCode 工作区设置配置对象
-	 * 
+	 *
 	 * 包含以下主要配置:
 	 * - 禁用工作区信任提示
 	 * - 配置启动行为
@@ -116,7 +116,7 @@ export async function spawnVSCode(workspacePath: string, vsixPath?: string): Pro
 	 * - Git 相关设置
 	 * - GitLens 扩展配置
 	 * - 禁用其他扩展自动更新
-	 * 
+	 *
 	 * 这些设置用于优化 VSCode 的启动体验和工作区行为
 	 */
 	const settings = {
